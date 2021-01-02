@@ -1,0 +1,7 @@
+Projeto para facilitar o trabalho do personal trainer
+
+Minha ideia é criar uma aplicação voltada ao mundo da academia. Quero fazer com que a aplicação gere treinos com uma periodização (periodo de treino entre 3 á 6 meses)
+
+Hoje a plicação gera treinos aleatorios de grupos musculares. Um musculo recebe um exercicio para cada porção que ele possui, sendo assim, musculos maiores recebem mais exercicios.
+
+Adicionei um filtro para lesão, em que, ele procura uma porção(ões) especifica de um musculo que esteja lesionada e corta o treino do algoritmo.
