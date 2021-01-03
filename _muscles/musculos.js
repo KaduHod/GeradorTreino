@@ -1,15 +1,11 @@
-
-
-serratilAnterior = {
+const serratilAnterior = {
     nome: "Serratil Anterior",
     regiao: ['Superior','Anterior'],
     porcoes: {
                 'areaAdicional': ['Depressão de ombro na barra fixa','Paralela triceps com depressão de ombro','Depressão de ombro na paralela']
             }
 }
-
-
-Ombro = {
+const Ombro = {
     nome:'Deltoide',
     regiao:['Superior,', 'Lateral,', 'Anterior &', 'Posterior'],
     porcoes: {
@@ -20,7 +16,7 @@ Ombro = {
                         
                         
 }
-Biceps = {
+const Biceps = {
     nome:'Bíceps',
     regiao:['Superior &', 'Anterior'],
     porcoes:{
@@ -29,7 +25,7 @@ Biceps = {
             'Coracobraquial':['Rosca martelo com flexão de ','Rosca martelo polia','Rosca alta na polia']
             }
 }
-Triceps = {
+const Triceps = {
     nome:'Tríceps',
     regiao:['Superior &','Posterior'],
     porcoes:{
@@ -39,7 +35,7 @@ Triceps = {
     }
 }
 
-Antebraco = {
+const Antebraco = {
     nome: 'Ante-Braço',
     regiao: ['Superior &', 'Anterior'],
     porcoes:{
@@ -48,8 +44,7 @@ Antebraco = {
             "Flexor ulnar do carpo":['Flexão de punho','Flexão de punho pronado sentado barra','Flexão de punho pronado sentado halter','Flexão de punho pronado em pé barra','Flexão de punho pronado em pé barra']
     }
 }
-
-Trapezio ={
+const Trapezio ={
     nome: 'Trapézio',
     regiao:['Superior &','Posterior'],
     porcoes:{
@@ -59,8 +54,7 @@ Trapezio ={
 
     }
 }
-
-Peitoral = { 
+const Peitoral = { 
     nome: 'Peitoral',
     regiao:['Superior &','Anterior'],
     porcoes:{
@@ -71,9 +65,8 @@ Peitoral = {
                 },
         'Menor':['Supino com protação da escapula', 'Flexão com protração da escapula']
     }
-};
-
-Abdomen ={
+}
+const Abdomen ={
     nome: 'Abdomen',
     regiao: ['Superior &', 'Anterior'],
     porcoes: {
@@ -85,8 +78,7 @@ Abdomen ={
                 'Transversal': ['Elevação de coxa e perna na paralela ','Abd no aparelho','Prancha']
     }
 }
-
-Psoas = {
+const Psoas = {
     nome: 'Ilio Psoas',
     regiao:['Superior &','Anterior'],
     porcoes:{
@@ -94,15 +86,14 @@ Psoas = {
             'Maior': ['Rotação de tronco na polia','Rotação de tronco com ketbell','Estabilização no jump ketbell']
     }
 }
-SerratilPosterior = {
+const SerratilPosterior = {
     nome: 'Serratil Posterior',
     regiao:['Superior &', 'Posterior'],
     porcoes:{
         'Superior':['Corrida na esteira','Corrida','Bicicleta','Eoliptico','Remador aerobico'],
     }
 }
-
-Dorso = {
+const Dorso = {
     nome: 'Latíssimo do dorso',
     regiao:['Superior &','Posterior'],
     porcoes:{
@@ -111,17 +102,14 @@ Dorso = {
         'areaAdicional':['Pulley','PullDown','Serrote','puchada TRX']
         }
 }
-Lombar = {
+const Lombar = {
     nome: 'Quadrado Lombar',
     regiao: ['Superior &','Anterior'],
     porcoes:{
         'areaAdicional': ['Stiff','Abd Superman','Extensão de tronco']
     }
 }
-
-
-
-Gluteo = {
+const Gluteo = {
     nome: 'Gluteo',
     regiao: ['Posterior &','Inferior'],
     porcoes:{
@@ -130,7 +118,7 @@ Gluteo = {
         'Minimo':['Abdução do quadrl colete','Cadeira Abdutora','Abdução do quadril deitado']
     }
 };
-Quadriceps = {
+const Quadriceps = {
     nome: 'Quadriceps',
     regiao: ['Anterior &','Inferior'],
     porcoes:{
@@ -140,7 +128,7 @@ Quadriceps = {
         'Intermédio':['Lounges com halter','Lounges com barra','Lounges Unilateral com barra','Lounges Unilateral com halter']
     }
 };
-PosteriorCoxa = {
+const PosteriorCoxa = {
     nome: 'Isquiotibial',
     regiao: ['Posterior &','Inferior'],
     porcoes:{
@@ -149,7 +137,7 @@ PosteriorCoxa = {
         'Biceps': ['Cadeira Flexora','Bom-dia','Rotação lateral da coxa']
         }
 }
-Panturrilha = {
+const Panturrilha = {
     nome: 'Panturrilha',
     regiao: ['Posterior &','Inferior'],
     porcoes: {
@@ -159,7 +147,7 @@ Panturrilha = {
     }
 };
 //-------------------------------------Treinos especiais-------------------------------------------
-CodromalaciaPatelar = {
+const CodromalaciaPatelar = {
     RotadoresExternos: ['Elevação de quadrial com RobberBand nos joelhos 12 reps'],
     Gluteo: ['Abdução dos joelhos com RobberBand nos joelhos 3 reps','Cadeira abdutora','Cadeira abdutora com inclinação leve frontal do tronco'],
     Isquiotibiais:['Alongamento c/ perna & coxa extendida com RobberBnad nos dedos com inclinação interna da coxa 15/20 seg','Alongamento de isquiotibiais em pé unilateral 3 series de 30 segundos cada','Mesa flexora'],
