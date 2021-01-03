@@ -1,6 +1,16 @@
+require("../../_muscles/musculos")
 class TreinoMusculoSimples{
-    constructor(nome, porcoes){
+    constructor(nome, exercicios){
         this.nome = nome;
-        this.porcoes = porcoes;
+        this.exercicios = exercicios;
     }
 }
+
+var novoTreino = new TreinoMusculoSimples(Quadriceps.nome, Quadriceps.porcoes)
+
+//console.log(novoTreino)
+
+module.exports = {
+    TreinoMusculoSimples,
+    novoTreino
+};

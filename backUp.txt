@@ -1,6 +1,5 @@
 require("../_muscles/musculos")
 require("./classeTreino/musculoSimples")
-const importaClasse = require('./classeTreino/musculoSimples')
 
 au_hasard = function(array){
     range = array.length
@@ -33,11 +32,15 @@ function mostraTreino(obj){// função que vai pegar um exercicio de cada porç�
                 }
             }
         }
-    Tabela_Musculo = new importaClasse.TreinoMusculoSimples(tabela_musculo.nome, tabela_musculo.exercicios)
-    return Tabela_Musculo
+    return tabela_musculo
 }
+tabela = mostraTreino(Quadriceps)
+
 
 
 module.exports = {
     mostraTreino,
+    tabela
 }
+Ultima atualização 02/01/2021 MostraTreino
+------------------------------------------------------------------------------------------------------------
