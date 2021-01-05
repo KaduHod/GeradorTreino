@@ -1,7 +1,7 @@
 const class_dobras = require('./classeSeteDobras')
 
 class Aluno {
-    constructor(nome, nascimento, sexo, dobras, peso, altura){
+    constructor(nome, nascimento, sexo, dobras, peso, altura ,  circunCintura, circunQuadril){
         this.nome = nome
         this.sexo = sexo
         this.nascimento = nascimento
@@ -15,6 +15,9 @@ class Aluno {
         this.soma_7_dobras = dobras.total7dobras
         this.DBRU = dobras.DBRU
         this.DBDF = dobras.DBDF
+        this.circunQuadril = circunQuadril
+        this.circunCintura = circunCintura
+        this.GorduraVisceral = "Não calculado ainda"
         this.GorduraPorcem = " Não calculado, ainda"
         this.Peso_Gordura_KG = " Não calculado, ainda"
         this.Peso_Osseo_KG = " Não calculado, ainda"
@@ -22,6 +25,10 @@ class Aluno {
         this.Metabolismo_Basal = " Não calculado, ainda"
         this.Imc = " Não calculado, ainda"
     }
+    calcGorduraVisceral(){
+        this.GorduraVisceral = this.circunCintura/this.circunQuadril
+    }
+
     calcIMC(){
         this.Imc = this.peso/(Math.pow(this.altura,2))
     }
@@ -73,7 +80,7 @@ Carlos = new class_dobras.dadosAntropometricos(10 ,8, 25, 8, 25, 1, 22, 55, 98)
 Carlos.Total7dobras()
 
 
-AlunoNovo = new Aluno('Carlos', dataNasc, 'f', Carlos, 71, 1.80)
+AlunoNovo = new Aluno('Carlos', dataNasc, 'f', Carlos, 71, 1.80, 60, 85)
 AlunoNovo.calcDensidade()
 AlunoNovo.calcGordura()
 AlunoNovo.calcPesoGordura()
@@ -82,4 +89,5 @@ AlunoNovo.calcPesoResidual()
 AlunoNovo.calcPesoMuscular()
 AlunoNovo.calcMetabolismoBasal()
 AlunoNovo.calcIMC()
+AlunoNovo.calcGorduraVisceral()
 console.log(AlunoNovo)
