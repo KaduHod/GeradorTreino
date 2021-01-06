@@ -24,6 +24,11 @@ class Aluno {
         this.Peso_Muscular_KG = "  Não calculado, ainda"
         this.Metabolismo_Basal = " Não calculado, ainda"
         this.Imc = " Não calculado, ainda"
+        this.Peso_Residual_KG = " Não calculado ainda"
+        this.Porcem_Musculo = " Não calculado ainda"
+        this.Porcem_Gordura = " Não calculado ainda"     
+        this.Porcem_Residual = " Não calculado ainda"
+        this.Porcem_Osseo = " Não calculado ainda"
     }
     calcGorduraVisceral(){
         this.GorduraVisceral = this.circunCintura/this.circunQuadril
@@ -65,6 +70,12 @@ class Aluno {
         }
         
     }
+    calcPorcentagemPeso(){
+        this.Porcem_Musculo = (this.Peso_Muscular_KG * 100)/this.peso
+        this.Porcem_Gordura = (this.Peso_Gordura_KG* 100)/this.peso
+        this.Porcem_Residual = (this.Peso_Residual_KG * 100)/this.peso
+        this.Porcem_Osseo = (this.Peso_Osseo_KG * 100)/this.peso
+    }
 }
 
 dataNasc = {
@@ -80,7 +91,7 @@ Carlos = new class_dobras.dadosAntropometricos(10 ,8, 25, 8, 25, 1, 22, 55, 98)
 Carlos.Total7dobras()
 
 
-AlunoNovo = new Aluno('Carlos', dataNasc, 'f', Carlos, 71, 1.80, 60, 85)
+AlunoNovo = new Aluno('Carlos', dataNasc, 'm', Carlos, 71, 1.80, 60, 85)
 AlunoNovo.calcDensidade()
 AlunoNovo.calcGordura()
 AlunoNovo.calcPesoGordura()
@@ -90,4 +101,6 @@ AlunoNovo.calcPesoMuscular()
 AlunoNovo.calcMetabolismoBasal()
 AlunoNovo.calcIMC()
 AlunoNovo.calcGorduraVisceral()
+AlunoNovo.calcPorcentagemPeso()
+
 console.log(AlunoNovo)
