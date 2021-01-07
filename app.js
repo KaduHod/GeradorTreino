@@ -5,7 +5,7 @@ require('./_muscles/musculos')
 
 //var MusculoLesionado = importaLesao.lesao(Abdomen, lesionado)
 
-lesaoBiceps = ['', '']
+lesaoBiceps = ['Braquial', 'Coracobraquial']
 lesao = []
 //console.log(Peitoral.porcoes)
 
