@@ -5,22 +5,29 @@ require('./_muscles/musculos')
 
 //var MusculoLesionado = importaLesao.lesao(Abdomen, lesionado)
 
-lesaoBiceps = ['Braquial', 'Coracobraquial']
+lesaoDorso = ['Braquial']
 lesao = []
+lesaoTrapezio = []
 //console.log(Peitoral.porcoes)
 
-var BIcepsLesionado = importaLesao.lesao(Biceps, lesaoBiceps)
-var TreinoBiceps = impTreino.mostraTreino(BIcepsLesionado)
+var BIcepsLesionado = importaLesao.lesao(Trapezio, lesaoTrapezio)
+var TreinoTrapezio = impTreino.mostraTreino(BIcepsLesionado)
 
 var PeitoralVerificaLesão  = importaLesao.lesao(Peitoral, lesao) 
 var TreinoPeitoral = impTreino.mostraTreino(PeitoralVerificaLesão)
 
-var DorsoVerificaLesão  = importaLesao.lesao(Dorso, lesao) 
+var DorsoVerificaLesão  = importaLesao.lesao(Dorso, lesaoDorso) 
 var TreinoDorso = impTreino.mostraTreino(DorsoVerificaLesão)
 //console.log(BIcepsLesionado)
+console.log(TreinoTrapezio.exercicios)
 console.log(TreinoPeitoral.exercicios)
-console.log(TreinoBiceps.exercicios)
+
 console.log(TreinoDorso.exercicios)
+
+
+
+
+
 
 
 

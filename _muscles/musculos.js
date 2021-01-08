@@ -50,7 +50,7 @@
     porcoes:{
             'Superior':['Elevação da escapula', 'Remada Alta'],
             'Medio':['Retração da escapula', 'Remada sentado'],
-            'Inferior':['Depressão da escapula', 'Rotação de raço(Adução com adbdução']
+            'Inferior':['Depressão da escapula', 'Rotação de braço(Adução com adbdução']
 
     }
 }

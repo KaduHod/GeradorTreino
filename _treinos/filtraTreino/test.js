@@ -62,4 +62,4 @@ function filtraTreino(Musculo, Lesoes){
 
 teste = filtraTreino(Panturrilha, lesao)
 
-console.log(teste)
+console.log(teste[0])

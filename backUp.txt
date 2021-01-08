@@ -44,3 +44,169 @@ module.exports = {
 }
 Ultima atualização 02/01/2021 MostraTreino
 ------------------------------------------------------------------------------------------------------------
+require("../_muscles/musculos")
+
+function lesao(musculo, porcao_lesionada){
+    afeta_musculo_inteiro = [Biceps.nome, Triceps.nome, Antebraco.nome, Peitoral.nome, Abdomen.nome, Psoas.nome, Dorso.nome, Gluteo.nome, Quadriceps.nome, PosteriorCoxa.nome]
+
+    if(porcao_lesionada.length > 0){
+        if(afeta_musculo_inteiro.indexOf(musculo.nome) !== -1){// Se o musculo entra na condição afeta tds os musculos
+        
+        
+            for(porcao in musculo.porcoes){
+                if((Array.isArray(musculo.porcoes[porcao]) == true)){
+                    musculo.porcoes[porcao] = ['Musculo lesionado']
+                }else{
+                    for(subPorcao in musculo.porcoes[porcao]){
+                        musculo.porcoes[porcao][subPorcao] = ['Musculo lesionado']
+                    }
+                }
+            }
+        }else{// aqui vou ter qeanalisar o array com porções lesionadas passado como parametro
+            //console.log(porcao_lesionada)
+            for(porcao in musculo.porcoes){
+                for(porcaoLesionada of porcao_lesionada){
+                    if(porcao == porcaoLesionada){
+                        musculo.porcoes[porcaoLesionada] = ['Musculo lesionado']
+                    }
+                }
+            }
+    
+        }
+    }
+    /*if(afeta_musculo_inteiro.indexOf(musculo.nome) !== -1){// Se o musculo entra na condição afeta tds os musculos
+        
+        
+        for(porcao in musculo.porcoes){
+            if((Array.isArray(musculo.porcoes[porcao]) == true)){
+                musculo.porcoes[porcao] = ['Musculo lesionado']
+            }else{
+                for(subPorcao in musculo.porcoes[porcao]){
+                    musculo.porcoes[porcao][subPorcao] = ['Musculo lesionado']
+                }
+            }
+        }
+    }else{// aqui vou ter qeanalisar o array com porções lesionadas passado como parametro
+        //console.log(porcao_lesionada)
+        for(porcao in musculo.porcoes){
+            for(porcaoLesionada of porcao_lesionada){
+                if(porcao == porcaoLesionada){
+                    musculo.porcoes[porcaoLesionada] = ['Musculo lesionado']
+                }
+            }
+        }
+
+    }*/
+    //console.log(musculo.porcoes)
+    
+    
+    /*if(porcao_lesionada !== ['']){   REFAZER ESTE LOOP POIS ESTA MUITO CONFUSO
+        if(afeta_musculo_inteiro.indexOf(musculo.nome) !== -1 ){
+            porcoes_arr = Object.keys(musculo.porcoes)
+            for(values of porcoes_arr){
+                if(Array.isArray(musculo.porcoes[values]) == 1){
+                    musculo.porcoes[values] = ['Musculo lesionado']
+                }else{
+                    for(values2 in musculo.porcoes[values]){
+                        musculo.porcoes[values][values2] = ['Musculo lesionado']
+                    }
+                }
+            }
+        }else{
+            if(porcao_lesionada.length > 0){
+                for(chaves in musculo.porcoes){
+                    if(Array.isArray(musculo.porcoes[chaves])){
+                        for(chave_da_lesao of porcao_lesionada){
+                            if(chaves == chave_da_lesao){
+                                musculo.porcoes[chaves] = ['Musculo lesionado']
+                            }
+                        }   
+                    }else{
+                        for(porcao_secundaria in musculo.porcoes[chaves]){
+                            musculo.porcoes[chaves][porcao_secundaria] = ['Musculo lesionado']
+                        }
+                    }
+                }
+            }
+        }
+    }*/
+
+    
+    
+
+    //Tenho que criar uma função que verifica se o musculo esta com todas as suas porções validas lesionadas, se sim, verificar se este musculo possui uma chave chama area adicional, caso tenho cortar o treino desta parte tmb
+    chaves_do_musculo_pos_verificaLesao =Object.keys(musculo.porcoes)
+    verifica_areaAdicional_existe = chaves_do_musculo_pos_verificaLesao.indexOf('areaAdicional')
+    cont_porcao_lesionada = 0
+    //ESTOU COM PROBLEMA AO CHAMAR O TREINO DE PEITORAL
+    if(verifica_areaAdicional_existe !== -1 ){ // VERIFICO SE AREA ADICIONAL EXISTE
+        for(chave of chaves_do_musculo_pos_verificaLesao){
+            if(chave !== 'areaAdicional'){
+                if(musculo.porcoes[chave][0] == 'Musculo lesionado'){// VERIFICO SE OUTRAS PORÇÕES ESTAO LESIONADAS
+                    cont_porcao_lesionada ++
+                }
+            }
+        } 
+        if((cont_porcao_lesionada + 1) == chaves_do_musculo_pos_verificaLesao.length){
+            musculo.porcoes['areaAdicional'] = ['Musculo lesionado']
+            return musculo
+        }else{
+            return musculo
+        }
+    }else{
+        return musculo
+        
+    }
+    
+    
+    
+    
+}
+//lesionado = ["Obliquo", "Reto"]//Array que guarda as porções lesionadas
+
+
+
+
+
+module.exports = {
+    lesao
+};
+--------------------------------------------------LESAO DIA 08/01/2021
+
+for(lesao_ of porcao_lesionada){
+        for(porcao_verifica_isArray in musculo.porcoes){
+            if(Array.isArray(musculo.porcoes[porcao_verifica_isArray]) == true){
+                if(arr_verifica_lesao.indexOf(lesao_) > -1){
+                    if(porcao_lesionada.length > 0 ){ 
+                        if(afeta_musculo_inteiro.indexOf(musculo.nome) !== -1){// Se o musculo entra na condição afeta tds os musculos
+                            for(porcao in musculo.porcoes){
+                                if((Array.isArray(musculo.porcoes[porcao]) == true)){
+                                    musculo.porcoes[porcao] = ['Musculo lesionado']
+                                }else{
+                                    for(subPorcao in musculo.porcoes[porcao]){
+                                        musculo.porcoes[porcao][subPorcao] = ['Musculo lesionado']
+                                    }
+                                }
+                            }
+                        }else{// aqui vou ter qeanalisar o array com porções lesionadas passado como parametro
+                            //console.log(porcao_lesionada)
+                            for(porcao in musculo.porcoes){
+                                for(porcaoLesionada of porcao_lesionada){
+                                    if(porcao == porcaoLesionada){
+                                        musculo.porcoes[porcaoLesionada] = ['Musculo lesionado']
+                                    }
+                                }
+                            }
+                    
+                        }
+                    }
+                }else{
+                    //Aqui vai um req.flash((error_massege: "Erro ao analisar a lesão, porcção muscular não confere com o musculo"))
+                }
+            }else{
+                
+            }
+        }
+        /*arr_verifica_lesao = Object.keys(musculo.porcoes)
+        */
+    }
