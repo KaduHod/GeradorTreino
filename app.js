@@ -3,26 +3,28 @@ const importaLesao = require('./_treinos/lesao')// Arquivo contendo a função d
 const impTreino = require('./_treinos/mostraTreino')// Arquivo com a função de mostrar o treino
 require('./_muscles/musculos')
 
-//var MusculoLesionado = importaLesao.lesao(Abdomen, lesionado)
+// Chamada ao treino
 
-lesaoDorso = ['Braquial']
-lesao = []
-lesaoTrapezio = []
-//console.log(Peitoral.porcoes)
+    /*lesaoDorso = ['Braquial']
+    lesao = []
+    lesaoTrapezio = []
+    //console.log(Peitoral.porcoes)
 
-var BIcepsLesionado = importaLesao.lesao(Trapezio, lesaoTrapezio)
-var TreinoTrapezio = impTreino.mostraTreino(BIcepsLesionado)
+    var BIcepsLesionado = importaLesao.lesao(Trapezio, lesaoTrapezio)
+    var TreinoTrapezio = impTreino.mostraTreino(BIcepsLesionado)
 
-var PeitoralVerificaLesão  = importaLesao.lesao(Peitoral, lesao) 
-var TreinoPeitoral = impTreino.mostraTreino(PeitoralVerificaLesão)
+    var PeitoralVerificaLesão  = importaLesao.lesao(Peitoral, lesao) 
+    var TreinoPeitoral = impTreino.mostraTreino(PeitoralVerificaLesão)
 
-var DorsoVerificaLesão  = importaLesao.lesao(Dorso, lesaoDorso) 
-var TreinoDorso = impTreino.mostraTreino(DorsoVerificaLesão)
-//console.log(BIcepsLesionado)
-console.log(TreinoTrapezio.exercicios)
-console.log(TreinoPeitoral.exercicios)
+    var DorsoVerificaLesão  = importaLesao.lesao(Dorso, lesaoDorso) 
+    var TreinoDorso = impTreino.mostraTreino(DorsoVerificaLesão)
+    //console.log(BIcepsLesionado)
+    console.log(TreinoTrapezio.exercicios)
+    console.log(TreinoPeitoral.exercicios)
 
-console.log(TreinoDorso.exercicios)
+    console.log(TreinoDorso.exercicios)*/
+
+// Criar objetos com exercicios funcionais
 
 
 

@@ -1,0 +1,73 @@
+//Preciso criar uma base de objetos contendo exercicios
+
+// Aluno iniciante: treinos com puxadas, empurrar, agachar e leantameto terra. MOntar o treino com variações destes exercicios.
+// Trabalhar estabilidade no aquecimento
+
+// Aps 6 meses: REsistencia, mobilidade, Força e resistencia aerobia
+
+//Criar um modelo que adapte a intensidade do exercicio. Isso pode variar com o tempo de execução do exercicio
+
+// AQuecimento 
+        //Criar modelo com um bom aquecimento que esteja de acordo com o treino a ser feito!!! Vou ter que analisar o treino para poder fazer o aquecimento
+
+        O aquecimento???? ai carai
+
+
+//TReino
+       //DEfinir o treino de acordo com o objetivo e nivel do aluno. Será interessante criar modelos que se adaptem ao objetivo do aluno ganho de forço, resistencia, ambos, misto etc
+       //Para criar esses treinos especificos preciso separar osexercicios em categorias que tenham objetivos especificos.
+       // VOU SEPARAR OS TREINOS EM TREINO COM FOCO DE FORÇA/RESISTENCIA/AMBOS
+       // EX: tal exercicio melhora capacidade aerobia tal exercicio melhora força, tal exercicio melhora mobilidade
+
+       //EXERCICIOS DO TREINO
+            //PRECISO CRIAR O TREINO!!!como???
+            //SEparar os exercicios como??
+            //CRiar categorias?
+            //seriam essas categorias os treinos separados de força resistencia / ambos?
+            // como vou armazenar os exercicios??
+            //Posso criar classes de objetos que tenham as descrições necessarias
+            /* objt exercicioCrossTRainning :
+            {
+                Categoria: Potencia, Resistencia, Isometria  e mobilidade
+                Nome_exercicio:
+                execução: "Não sei se vou ter que descrever os exercicios por ser muito trabalho
+                Parte_do_corpo_atingida : membros inferiores, core, membros superiores
+                Equipamento: Barra, Barra fixa, Halter, Ketbell, jump, corda, escada etc
+                "aqui preciso criar uma propriedade que descreve o descanso entre exercicios, seria interessante criar um metodo que analisa a categoria do exercicio e seta um tempo de descanso ou tipo de descanso de acordo com a categoria"
+
+            }
+            // OBJ exerciciosAquecimentoCRoss  Pensar em como vou organizar os treinos
+            {
+                Categoria
+                Nome:
+            }
+            */
+       
+//ORDEM
+    // A ordem do exercicio depende do nivel do aluno, caso o aluno seja um atletaser pssivel colocar mais exercicios dificeis
+    //Caso o aluno seja mai nicianteou intermediario é necessario monar um treino que o aluno consiga completar ra nao se frustrar
+    A ordem do exercicio sera dita pelos exercicios contidos no treino. Precisarei criar um lgritmo que separa a ordem aumatcamente.
+    O que esta unção deve fazer?
+    Analisar o tipo do exercicio anterior, e chamar um outro exercicio, apos o primeiro loop os exercicios seguints não podem ser chamados novamente. posso criar um jeito de chamar o objto, extrair  o exercicio e excluir o exercicio, obviamento objeto uado sera um clone do objeo passado como parametro
+    //OU PESQUISAR SOBRE METODS COMO O TABATA E APLICAR O METODO AO ALGORITMO. COMO A ACADEMIA UTILZA PRINCIPALMENTE O TABATA POSSO UTILIZAR estabilidade
+
+// QUANTDADEDE EXERCICIO E FASES DO TREINO
+    //FASES
+        O TREINO DEVE CONTER AQUECIMENTO: TREINO PRINCIPAL: E FINALIZAÇÃO QUE PODERA SER TODA COM TREINOS PARA FORTALEIMENO DE CORE
+
+    // QUANTIDADE DE EXERCICIOS
+        OS EXERCICIOS SERAO EXECUTADOS POR TEMPO SENDO ASSIM PRECISO SETAR O TEMPO DE TREINO E O TEMPO DE DESCANSO, FAZER UMA FUNÇÃO QUE CALCULA O TEMPO TOTAL DO TREINO
+
+
+// Equipamentos
+    //Seria inteesante criar um dado que armazene o exercicio e o seu equipamento a ser utilizado
+    // ketbll, jump, bola, halter,barra fixa, corda, escada etc
+
+//INtervaos entre exercicios
+    //é importat definir como sera o intervalo dos exercicios
+    // Segundo a minha pesquisa o intervalo mais eficiente éo ativo pois o aluno não perde o foco
+
+//AGORA PRECISO ORGANIZAR O AQUECIMENTO E FINALIZAÇÃO DO TREINO
+AQUECIMENTO TEM QUAIS CARACTERISTICAS? 
+POSSO CRIAR UM MINICIRCUITO COM PREDOMINIO DE EXERCICIOS MULTIARTICULARES E DE RESISTENCIA
+POSSO CRIAR EXERCICIOS ESPECIFICOS PARA O AQUECIMENTO COMO POLICHINELO
