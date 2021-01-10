@@ -23,7 +23,7 @@ const importaCrossExercicio = require("./crossTrainingClass")
             'Potencia', 'Agachamento', 'Membro inferior','Peso corporal' 
             )
         BackSquat = new importaCrossExercicio.exercicioCrossTrainning(
-            'Potencia', 'Agachamento', 'Membro inferior', 'Barra com pesos'
+            'Potencia', 'BackSquat', 'Membro inferior', 'Barra com pesos'
         )
         FrontSquat = new importaCrossExercicio.exercicioCrossTrainning(
             'Potencia', 'Agachamento Front', 'Membro inferior', 'Barra com pesos'
@@ -35,7 +35,7 @@ const importaCrossExercicio = require("./crossTrainingClass")
             'Potencia', 'Agachamento com uma perna', 'Membro inferior', 'Peso corporal'
         )
         
-        
+          
     
     //CORE
         ToesToBar = new importaCrossExercicio.exercicioCrossTrainning(
@@ -70,6 +70,7 @@ const importaCrossExercicio = require("./crossTrainingClass")
         )
         
 
+        
 
 //Mobilidade ESTA PARTE DE MOBILIDADE SERA A ULTIMA A SER EXECUTADA NO TREINO, FORA DO BLOCO DO TREINO PRINCIPAL
     
@@ -102,6 +103,8 @@ const importaCrossExercicio = require("./crossTrainingClass")
             'Resistencia', 'Degrau com impulsão de joelho', 'Membro inferior', 'TRX'
         )
 
+
+        
     //Multi-articular
         Burpee = new importaCrossExercicio.exercicioCrossTrainning(
             'Resistencia', 'Burpee', 'Multi-articular', 'Peso corporal'
@@ -123,7 +126,7 @@ const importaCrossExercicio = require("./crossTrainingClass")
         RotaçãoToncoComPeso = new importaCrossExercicio.exercicioCrossTrainning(
             'Resistencia', 'Rotação de tronco', 'Core', 'Ket bell / Anilha / Barra' 
         )
-        
+       
 
 //Isometria
     //Membros superiores
@@ -144,11 +147,15 @@ const importaCrossExercicio = require("./crossTrainingClass")
 
     //Core
     prancha = new importaCrossExercicio.exercicioCrossTrainning(
-        'Isometria',   'Prancha', 'Multi-articular', 'Peso corporal'
+        'Isometria',   'Prancha', 'Core', 'Peso corporal'
     )
     pranchaShoulderTouch = new importaCrossExercicio.exercicioCrossTrainning(
-        'Isometria', 'Prancha shoulder touch', 'Multi-articular', 'Peso corporal'
+        'Isometria', 'Prancha shoulder touch', 'Core', 'Peso corporal'
     )
 
+    crossExercicios = 
+    [
+        Dip,Remada,BarraFixa,RoscaBiceps,AirSaquat,BackSquat,FrontSquat,OverHeadSquat,OverHeadSquat,Pistol,ToesToBar,Obliquo,AbdominalInvertido,AbdominalInvertido,Tesoura,Thruster,LevantamentoOLimpico,Terra,ShoulderPress,Flexão_de_braço, CordaNaval, KetBellSwing, FlexãoTRX, CrucifixoInverso, BoxJump, WalkingLounges, AgachamentoUnilateral, BoxHighKneeAlternado, Burpee, PularCorda, Bicicleta, SuperMan, Rotação, RotaçãoToncoComPeso, HoldPullUp, ElevacaoLateralIso, ElevacaoFrontalIso, Cadeira, prancha, pranchaShoulderTouch
+    ]   
 
-console.log(Burpee)
+

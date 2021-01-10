@@ -3,7 +3,7 @@ require("./classeTreino/musculoSimples")
 const importaClasseMusculoSimples = require('./classeTreino/musculoSimples')
 
 au_hasard = function(array){
-    range = array.length
+    var range = array.length
     la_chance  = Math.floor(Math.random() * range)
     return la_chance;
 }
@@ -11,12 +11,12 @@ au_hasard = function(array){
 
 function mostraTreino(obj){// função que vai pegar um exercicio de cada porção muscular
     //Objeto que vai armazenar informações separadas nesta função
-        tabela_musculo = {}   
+       var tabela_musculo = {}   
         tabela_musculo.nome = obj.nome
-        tabela_musculo.exercicios = []
+       tabela_musculo.exercicios = []
 
     // Variavel que armazena a parte que possui os exericio do objeto passado como parametro 
-        obj_porcoes = obj.porcoes
+       var obj_porcoes = obj.porcoes
 
     // Loops que vão separar os exercicios
         for(chave in obj_porcoes){
