@@ -126,6 +126,9 @@ const importaCrossExercicio = require("./crossTrainingClass")
         RotaçãoToncoComPeso = new importaCrossExercicio.exercicioCrossTrainning(
             'Resistencia', 'Rotação de tronco', 'Core', 'Ket bell / Anilha / Barra' 
         )
+        Mountain_climber = new importaCrossExercicio.exercicioCrossTrainning(
+            'Resistencia', 'Mountain climber', 'Core', 'Peso Corporal' 
+        )
        
 
 //Isometria
@@ -158,7 +161,7 @@ const importaCrossExercicio = require("./crossTrainingClass")
 
     crossExercicios = 
     [
-        Dip,Remada,BarraFixa,RoscaBiceps,AirSaquat,BackSquat,FrontSquat,OverHeadSquat,OverHeadSquat,Pistol,ToesToBar,Obliquo,AbdominalInvertido,AbdominalInvertido,Tesoura,Thruster,LevantamentoOLimpico,Terra,ShoulderPress,Flexão_de_braço, CordaNaval, KetBellSwing, FlexãoTRX, CrucifixoInverso, BoxJump, WalkingLounges, AgachamentoUnilateral, BoxHighKneeAlternado, Burpee, PularCorda, Bicicleta, SuperMan, Rotação, RotaçãoToncoComPeso, HoldPullUp, ElevacaoLateralIso, ElevacaoFrontalIso, Cadeira, prancha, pranchaShoulderTouch,CadeiraSemEquipamento
+        Dip,Remada,BarraFixa,RoscaBiceps,AirSaquat,BackSquat,FrontSquat,OverHeadSquat,Pistol,ToesToBar,Obliquo,AbdominalInvertido,AbdominalInvertido,Tesoura,Thruster,LevantamentoOLimpico,Terra,ShoulderPress,Flexão_de_braço, CordaNaval, KetBellSwing, FlexãoTRX, CrucifixoInverso, BoxJump, WalkingLounges, AgachamentoUnilateral, BoxHighKneeAlternado, Burpee, PularCorda, Bicicleta, SuperMan, Rotação, RotaçãoToncoComPeso, HoldPullUp, ElevacaoLateralIso, ElevacaoFrontalIso, Cadeira, prancha, pranchaShoulderTouch,CadeiraSemEquipamento, Mountain_climber
     ]   
 
 
