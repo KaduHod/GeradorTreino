@@ -1,4 +1,4 @@
-require('./main')
+require('./VariaveisAtalhoCross')
 
 // Preciso criar um objeto que contem o treino
 // preciso decidir qual a ordem do treino
@@ -11,14 +11,8 @@ require('./main')
 // Cada treino deve ter 2 exercicios de membros superiores, 2 exercicios de membros inferiores, 2 exercicios de core e 2 exercicios multiarticulares
 // preciso criar o algoritmo que pega dois exercicios de cada "porcao".
 
-/*console.log(Membros_inferiores_Resistencia)
-console.log(Membros_superiores_Resistencia)
-console.log(Core_Resistencia)*/
 
 ArrayTabata = [ Multi_articular, Membros_inferiores, Membros_superior, Core]
-console.log((ArrayTabata.length-1))
-
-
 
 
 function pegaExerciciosCross(arrayPartesTreino){// ESta função pega dois exercicios de cada parte do corpor atingida

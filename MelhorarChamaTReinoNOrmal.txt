@@ -1,0 +1,9 @@
+TEnho uque melhorar o codigo que puxa os treinos de MUSCULAÇÃO
+vou manter as classes CRIADAS
+em vez de utilizar for of e for in vou usar map, reduce e filter
+
+O que tenho que fazer?
+algoritmo que recebe um musculo como parametro e puxa um exercicio aleatorio de cada PERIODIZAÇÃO
+algoritmo que reebe um array com porcoes lesionadas de um musculos
+algoritmo que le quais musculos não podem ser treinados com uma porção lesionadas
+
