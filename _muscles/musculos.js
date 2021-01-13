@@ -1,13 +1,13 @@
  serratilAnterior = {
     nome: "Serratil Anterior",
-    regiao: ['Superior','Anterior'],
+    regiao: 'Superior & Anterior',
     porcoes: {
                 'areaAdicional': ['Depressão de ombro na barra fixa','Paralela triceps com depressão de ombro','Depressão de ombro na paralela']
             }
 }
  Ombro = {
     nome:'Deltoide',
-    regiao:['Superior,', 'Lateral,', 'Anterior &', 'Posterior'],
+    regiao:'Superior, Lateral, Anterior &, Posterior',
     porcoes: {
         'Anterior': ['Elevação frontal','Elevação frontal polia','Desenvolvimento Arnold','Remada Alta'],
         'Medial': ['Elevação lateral', 'Elevação lateral polia','Desenvolvimento Barra','Desenvolvimento halter'],
@@ -18,7 +18,7 @@
 }
  Biceps = {
     nome:'Bíceps',
-    regiao:['Superior &', 'Anterior'],
+    regiao:'Superior & Anterior',
     porcoes:{
             'areaAdicional':['Rosca Barra com o braço a 90º estático','Rosca Halter com o braço a 90º estático','Barra','Rosca testa polia','Biceps superman'],
             'Braquial':['Rosca alternada','Rosca alternada polia','Rosca concentrada','Rosca Scott'],
@@ -27,7 +27,7 @@
 }
  Triceps = {
     nome:'Tríceps',
-    regiao:['Superior &','Posterior'],
+    regiao:'Superior & Posterior',
     porcoes:{
         'Longa': ['Paralela triceps','Paralela Banco','Triceps testa barra'],
         'Medial': ['Francês halter','Francês barra','Francês halter unilateral'],
@@ -37,7 +37,7 @@
 
  Antebraco = {
     nome: 'Ante-Braço',
-    regiao: ['Superior &', 'Anterior'],
+    regiao: 'Superior &, Anterior',
     porcoes:{
             "Pronador do carpo":['Rosca Alternada','Rosca Alternada Polia'], 
             "Flexor do carpo":['Martelo com o punho halter','Martelo com o punho barra'], 
@@ -46,7 +46,7 @@
 }
  Trapezio ={
     nome: 'Trapézio',
-    regiao:['Superior &','Posterior'],
+    regiao:'Superior & Posterior',
     porcoes:{
             'Superior':['Elevação da escapula', 'Remada Alta'],
             'Medio':['Retração da escapula', 'Remada sentado'],
@@ -56,7 +56,7 @@
 }
  Peitoral = { 
     nome: 'Peitoral',
-    regiao:['Superior &','Anterior'],
+    regiao:'Superior & Anterior',
     porcoes:{
         'Maior': { 
                 'Superior': ['Supino Inclinado','Flexão com o pé no banco','Voador Inclinado halter','Voador Inclinado polia'],
@@ -80,7 +80,7 @@
 }
  Psoas = {
     nome: 'Ilio Psoas',
-    regiao:['Superior &','Anterior'],
+    regiao:'Superior & Anterior',
     porcoes:{
             'Menor': ['Elevação da coxa com joelho a 90º','infra','Infra barra fixa'],
             'Maior': ['Rotação de tronco na polia','Rotação de tronco com ketbell','Estabilização no jump ketbell']
@@ -88,14 +88,14 @@
 }
  SerratilPosterior = {
     nome: 'Serratil Posterior',
-    regiao:['Superior &', 'Posterior'],
+    regiao:'Superior & Posterior',
     porcoes:{
         'Superior':['Corrida na esteira','Corrida','Bicicleta','Eoliptico','Remador aerobico'],
     }
 }
  Dorso = {
     nome: 'Latíssimo do dorso',
-    regiao:['Superior &','Posterior'],
+    regiao:'Superior & Posterior',
     porcoes:{
         'Superior': ['Remada sentado com braço a 45°','Puxada barra com braço a 45°','Barra fixa com os pés no chão e braço a 45º'],
         'Inferior': ['Barra fixa supinada','Barra fixa pronado','Barra fixa aberta','Barra fixa fechada'],
@@ -104,14 +104,14 @@
 }
  Lombar = {
     nome: 'Quadrado Lombar',
-    regiao: ['Superior &','Anterior'],
+    regiao: 'Superior & Anterior',
     porcoes:{
         'areaAdicional': ['Stiff','Abd Superman','Extensão de tronco']
     }
 }
  Gluteo = {
     nome: 'Gluteo',
-    regiao: ['Posterior &','Inferior'],
+    regiao: 'Posterior & Inferior',
     porcoes:{
         'Máximo': ['Coice polia','Coice com colete na perna','Agachamento','Elevação pelvica smith','Elevação pelvica com anilha no quadril'],
         'Médio': ['Abdução do quadril polia','Cadeira Abdutora Unilateral','Abdução do quadril em pé'],
@@ -120,7 +120,7 @@
 };
 Quadriceps = {
     nome: 'Quadriceps',
-    regiao: ['Anterior &','Inferior'],
+    regiao: 'Anterior & Inferior',
     porcoes:{
         'Femoral': ['Agachamento Smith','Agachamento barra','Agachamento com Halter','Agachamento base barra fechada'],
         'Medial': ['Terra','Terra com halter','Cadeira extensora','Cadeira extensora unilateral'],
@@ -130,7 +130,7 @@ Quadriceps = {
 };
  PosteriorCoxa = {
     nome: 'Isquiotibial',
-    regiao: ['Posterior &','Inferior'],
+    regiao: 'Posterior & Inferior',
     porcoes:{
         'Semimenbranoso': ['Stiff','Stiff halter','Stiff Smith'],
         'Semitendinoso': ['Passada com o pé no banco','Agachamento Barra','Rotação medial da perna'],
@@ -139,7 +139,7 @@ Quadriceps = {
 }
  Panturrilha = {
     nome: 'Panturrilha',
-    regiao: ['Posterior &','Inferior'],
+    regiao: 'Posterior & Inferior',
     porcoes: {
         'Gastrocnemio': ['Flexão plantar cavalo GVT','Flexão plantar leg Press'],
         'Soleo': ['Flexão plantar unilateral GVT','Flexao plantar aparelho'],
