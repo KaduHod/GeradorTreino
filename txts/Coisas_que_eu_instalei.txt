@@ -1,2 +1,5 @@
 /APP/
-    npm install express --save
+    npm install express --save (express - api que facilita a criação de aplicaçoes js)
+    npm install nodemon -g (reinicia servidro a cada modificação no codigo)
+    npm install --save express-handlebars (usar dados do back ed no front end)
+    mongodb community server (banco de dados)
