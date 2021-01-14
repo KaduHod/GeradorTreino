@@ -210,3 +210,160 @@ for(lesao_ of porcao_lesionada){
         /*arr_verifica_lesao = Object.keys(musculo.porcoes)
         */
     }
+
+
+
+    ------------------------------------------------------------
+    backup banco de dados
+    // classe afeta_musculo_inteiro/*nome :Aluno.nome,
+        sexo :Aluno.sexo,
+        nascimento :Aluno.nascimento,
+        dobras :Aluno.dobras,
+        idade :Aluno.idade,
+        peso :Aluno.peso,
+        altura :Aluno.altura,
+        Densidade_Corporal :Aluno.Densidade_Corporal,
+        soma_7_dobras :Aluno.soma_7_dobras,
+        DBRU :Aluno.DBRU,
+        DBDF :Aluno.DBDF,
+        circunPunho :Aluno.circunPunho,
+        circunQuadril :Aluno.circunQuadril,
+        circunCintura :Aluno.circunCintura,
+        GorduraVisceral :Aluno.GorduraVisceral,
+        GorduraPorcem:Aluno.GorduraPorcem,
+        Peso_Gordura_KG:Aluno.Peso_Gordura_KG,
+        Peso_Osseo_KG:Aluno.Peso_Osseo_KG,
+        Peso_Muscular_KG:Aluno.Peso_Muscular_KG,
+        Metabolismo_Basal:Aluno.Metabolismo_Basal,
+        Imc:Aluno.Imc,
+        Peso_Residual_KG:Aluno.Peso_Residual_KG,
+        Porcem_Musculo:Aluno.Porcem_Musculo,
+        muscle_Rate:Aluno.muscle_Rate,
+        Porcem_Gordura:Aluno.Porcem_Gordura,
+        Body_Fat_rate:Aluno.Body_Fat_rate,
+        Porcem_Residual:Aluno.Porcem_Residual,
+        Porcem_Osseo:Aluno.Porcem_Osseo,
+        bone_Rate:Aluno.bone_Rate,
+        estrutra_Ossea: Aluno.estrutra_Ossea*/
+
+        // Schema Aluno
+         /*nome :{
+            type: String,
+            required: true
+        },
+        sexo :{
+            type: String,
+            required: true
+        },
+        nascimento :{
+            type: Object,
+            required: true
+        },
+        dobras :{
+            type: Object,
+            required: true
+        },
+        idade :{
+            type: Number,
+            required: true
+        },
+        peso :{
+            type: Number,
+            required: true
+        },
+        altura :{
+            type: Number,
+            required: true
+        },
+        Densidade_Corporal :{
+            type: Number,
+            required: true
+        },
+        soma_7_dobras :{
+            type: Number,
+            required: true
+        },
+        DBRU :{
+            type: Number,
+            required: true
+        },
+        DBDF :{
+            type: Number,
+            required: true
+        },
+        circunPunho :{
+            type: Number,
+            required: true
+        },
+        circunQuadril :{
+            type: Number,
+            required: true
+        },
+        circunCintura :{
+            type: Number,
+            required: true
+        },
+        GorduraVisceral :{
+            type: Number,
+            required: true
+        },
+        GorduraPorcem:{
+            type: Number,
+            required: true
+        },
+        Peso_Gordura_KG:{
+            type: Number,
+            required: true
+        },
+        Peso_Osseo_KG:{
+            type: Number,
+            required: true
+        },
+        Peso_Muscular_KG:{
+            type: Number,
+            required: true
+        },
+        Metabolismo_Basal:{
+            type: Number,
+            required: true
+        },
+        Imc:{
+            type: Number,
+            required: true
+        },
+        Peso_Residual_KG:{
+            type: Number,
+            required: true
+        },
+        Porcem_Musculo:{
+            type: Number,
+            required: true
+        },
+        muscle_Rate:{
+            type: String,
+            required: true
+        },
+        Porcem_Gordura:{
+            type: Number,
+            required: true
+        },
+        Body_Fat_rate:{
+            type: String,
+            required: true
+        },
+        Porcem_Residual:{
+            type: Number,
+            required: true
+        },
+        Porcem_Osseo:{
+            type: Number,
+            required: true
+        },
+        bone_Rate:{
+            type: String,
+            required: true
+        },
+        estrutra_Ossea:{
+            type:Number,
+            required: true
+        }*/

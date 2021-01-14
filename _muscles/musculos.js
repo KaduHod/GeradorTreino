@@ -1,4 +1,4 @@
- serratilAnterior = {
+ /*serratilAnterior = {
     nome: "Serratil Anterior",
     regiao: 'Superior & Anterior',
     porcoes: {
@@ -68,7 +68,7 @@
 }
  Abdomen ={
     nome: 'Abdomen',
-    regiao: ['Superior &', 'Anterior'],
+    regiao: 'Superior & Anterior',
     porcoes: {
                 'Obliquo':{
                         'Interno': ['Abd tradicional','Infra','Bicicleta','Supra Bola de Pilates'],
@@ -156,3 +156,4 @@ Quadriceps = {
 
 
 
+*/
