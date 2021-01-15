@@ -22,5 +22,5 @@ function adicionaAlunoDB(Aluno){
         console.log("ERROR: " + err)
     })
 }
-console.log(AlunoNovo)
-adicionaAlunoDB(AlunoNovo)
+//console.log(AlunoNovo)
+//adicionaAlunoDB(AlunoNovo)

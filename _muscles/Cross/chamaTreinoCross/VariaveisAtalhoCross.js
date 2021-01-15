@@ -53,4 +53,4 @@ Array_exercicios_parte_do_corpo_recrutada // array que separa os exercicios por 
         Multi_articular_Potencia_SeparaEquipamento
         Multi_articular_Isometria_SeparaEquipamento
 
-        
+     
