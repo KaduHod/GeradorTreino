@@ -5,7 +5,6 @@ const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const treinos = require('./routes/treinos')// rota para treinos
 const path = require('path')
-const mongoose = require('mongoose')
 const session = require('express-session')
 const flash = require('connect-flash')
 
@@ -26,7 +25,13 @@ const flash = require('connect-flash')
         })
 
     // Tamplate engine HANDLEBARS
-        app.engine('handlebars', handlebars({defaultLayout: 'main'}))
+        app.engine('handlebars', handlebars({
+            defaultLayout: 'main',
+            runtimeOptions: {
+                allowProtoPropertiesByDefault: true,
+                allowProtoMethodsByDefault: true,
+            },
+        }))
         app.set('view engine','handlebars')
 
     // bodyparser
@@ -36,7 +41,7 @@ const flash = require('connect-flash')
     // Mongoose
         const mongoose = require('mongoose')
         mongoose.Promisse = global.Promisse
-        mongoose.connect("mongodb://localhost/AppStudioNFit",{useMongoClient: true}).then(()=>{
+        mongoose.connect("mongodb://localhost/AppStudioNFit").then(()=>{
             console.log("Conectado ao banco de dados com sucesso")
         }).catch((err)=>{
             console.log("Erro:" + err)
@@ -51,8 +56,10 @@ const flash = require('connect-flash')
         res.send('Pagina principal da aplicação')
     })
 
-    //Rotas de treinos
-    app.use('/treinos',treinos)
+    //Rotas 
+
+        //Rota para os treinos de musculaçao
+        app.use('/treinos',treinos)
 
    
 

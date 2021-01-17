@@ -1,0 +1,28 @@
+
+<form action="/treinos/lesao" method="post" class="form-control">
+    <h1>Escolha o musculo a ser treinado</h1>
+        <select class="form-control" name="musculo" id="musculo">
+            {{#each musculos}}
+               <option value="{{nome}}">{{nome}}</option>
+            {{else}}
+
+            {{/each}}
+        </select> <br>
+        <select class="form-control" name="musculo1" id="musculo1">
+            {{#each musculos}}
+               <option value="{{nome}}">{{nome}}</option>
+            {{else}}
+
+            {{/each}}
+        </select> <br>
+        <select class="form-control" name="musculo2" id="musculo2">
+            {{#each musculos}}
+               <option value="{{nome}}">{{nome}}</option>
+            {{else}}
+
+            {{/each}}
+        </select> <br>
+    <button type="submit" class="btn btn-success mt-3">Gerar treino</button>
+</form>       
+ 
+ 

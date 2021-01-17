@@ -1,11 +1,16 @@
 <h1>Lista de musculos</h1>
 
-<div class="card">
-    <div class="card-body" >
-        <form action="/treinos/mostraMusculo" method="POST">
-    <label for="musc">Nome do musculo:</label>
-    <input class="form-control mt-4" type="text" name="musc" id="musc" >
-</form>
-<a href="/treinos/Musculos/mostra"><button type="submit" class="btn btn-success mt-4">Pesquisar Musculo</button></a> 
+
+{{#each musculos}}
+    <div class='body mt-4' >
+        <div class="card-body" >
+            <h5>{{nome}}</h5>
+            <small>{{regiao}}</small><br>
+            {{#each porcoes}}
+            <small><strong>{{nome}} {{@key}}</strong></small> <br>
+            {{/each}}
+        </div>
     </div>
-</div>
+{{else}}
+
+{{/each}}
