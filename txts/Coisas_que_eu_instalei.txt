@@ -2,4 +2,13 @@
     npm install express --save (express - api que facilita a criação de aplicaçoes js)
     npm install nodemon -g (reinicia servidro a cada modificação no codigo)
     npm install --save express-handlebars (usar dados do back ed no front end)
-    mongodb community server (banco de dados)
+
+    //BANCO DE DADOS
+        mongodb community server (banco de dados)
+
+    // ajuda no formulario
+        npm install body-parser --save (trabalhar com formularios)
+        
+    // session e cookies
+        npm install --save express-session
+        npm install --save connect-flash

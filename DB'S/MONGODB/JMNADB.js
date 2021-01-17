@@ -1,6 +1,6 @@
 const NovoMusculo = require("./models/models")
 require("../../_muscles/musculos")
-MusculosSimples = [Panturrilha, PosteriorCoxa, Quadriceps, Gluteo, Lombar, Dorso, SerratilPosterior, Psoas, Peitoral, Trapezio, Antebraco, Triceps, Ombro, serratilAnterior, Biceps, Abdomen]
+//MusculosSimples = [Panturrilha, PosteriorCoxa, Quadriceps, Gluteo, Lombar, Dorso, SerratilPosterior, Psoas, Peitoral, Trapezio, Antebraco, Triceps, Ombro, serratilAnterior, Biceps, Abdomen]
 
 // Arquivo utilizado para transferir objetos dos musculos ao Banco de dados
 
@@ -17,6 +17,12 @@ function adicionaMusculoDB(arraymusculo){
         })
     })
 }
+
+
+
+
+
+
 
 
 

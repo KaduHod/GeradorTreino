@@ -14,7 +14,7 @@ require('../../_muscles/musculos')
     
 })*/
 
-function VerificaPorcaoLesao2(musculo, lesoes){// este loop retorna true se as lesoes sao do musculo passado como parametro
+function VerificaPorcaoLesao(musculo, lesoes){// este loop retorna true se as lesoes sao do musculo passado como parametro
     // vou ter que pegar as porcoes do musculo e as porções lesionadas passadas como parametro
     if(lesoes.length == 0){
         return true

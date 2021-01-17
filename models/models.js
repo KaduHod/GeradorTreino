@@ -1,15 +1,5 @@
-require("../../../_muscles/musculos")
-
-
-
-// aprendendo a se conectar
+require("../_muscles/musculos")
     const mongoose = require('mongoose')
-    mongoose.Promisse = global.Promisse
-    mongoose.connect("mongodb://localhost/AppStudioNFit",{useMongoClient: true}).then(()=>{
-        console.log("Conectado ao banco de dados com sucesso")
-    }).catch((err)=>{
-        console.log("Erro:" + err)
-    })
 // quero adicionar os musculos a base de dados
 //DEfinindo um model
     //exemplo MUsculo simples
@@ -28,6 +18,9 @@ require("../../../_muscles/musculos")
         }
         
     })
+    // collection//colocando o musculo no banco de dados
+    mongoose.model('Muscle', MusclesSchema)
+    const NovoMusculo = mongoose.model('Muscle')
 
     const AlunoSchema = mongoose.Schema({
         objNSNIPA:{
@@ -53,23 +46,23 @@ require("../../../_muscles/musculos")
         
     })
 
+     // collection Aluno
+     mongoose.model('Aluno', AlunoSchema)
+     const NovoAluno = mongoose.model('Aluno')
+
     const ExercicioCrossSchema = mongoose.Schema({
         exercicio: {
             type:Object,
             required: true
         }
     })
-    // collection//colocando o musculo no banco de dados
-    mongoose.model('Muscle', MusclesSchema)
-    const NovoMusculo = mongoose.model('Muscle')
-
-    // collection Aluno
-    mongoose.model('Aluno', AlunoSchema)
-    const NovoAluno = mongoose.model('Aluno')
-
     // Collection exercicio cross
     mongoose.model('Exercicios_Cross', ExercicioCrossSchema)
     const ExerciciosCross = mongoose.model('Exercicios_Cross')
+
+   
+
+    
 
     //Models de variaveis atalhos do cross
     const CrossMembroSuperiorSchema = mongoose.Schema({

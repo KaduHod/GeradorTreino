@@ -12,7 +12,7 @@ function oi(){
 }
 
 
-function adicionaLesao2(musculo, arr_lesao){
+function adicionaLesao(musculo, arr_lesao){
     verificaLesao = filtraLesao.VerificaPorcaoLesao(musculo, arr_lesao)
     musculoFiltrado = musculo
     if(verificaLesao == true){
