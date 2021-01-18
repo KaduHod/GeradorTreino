@@ -29,23 +29,23 @@ router.get('/Formulario', (req , res)=>{// pagina para escolher musculo do trein
     })
 })
 
-router.post('/lesao', (req, res)=>{// pagina que vai registrar as lesoes
+/*router.post('/lesao', (req, res)=>{// pagina que vai registrar as lesoes
     var musculo_form = req.body.musculo
     var musculo1_form = req.body.musculo1
     var musculo2_form = req.body.musculo2
     arr_musc_form = [musculo_form, musculo1_form, musculo2_form]
+    
+    
     // tenho que fazerum script que busca os 3 musculos escolhidos para o treino
     // para isso vou ter que fazer um loop que itera sobre o array que contem os musculos dos inputs
     //agora tenho que buscar as porcoes de cada musculo
-    console.log(arr_musc_form)
-    console.log("---")
     array_Com_Musculos = []
     arr_musc_form.map((nomeMusculo)=>{
         Musculo.findOne({'nome': nomeMusculo}).then((musculo)=>{
             musculo2 = musculo
             //console.log(musculo2)
             array_Com_Musculos.push(musculo2)
-            console.log(array_Com_Musculos)
+            //console.log(array_Com_Musculos)
         }).catch((err)=>{
             console.log("Erro na consulta "+err)
         })
@@ -53,16 +53,50 @@ router.post('/lesao', (req, res)=>{// pagina que vai registrar as lesoes
         return array_Com_Musculos
     })
 
+    
+    
     res.render('treinos/lesao', {array_Com_Musculos:array_Com_Musculos })
-})
+})*/
 
 // pagina que vai montar o treino
 
 //preciso saber quais inputs das porcoes foram marcados foram marcados
 router.post('/geraTreino', (req, res)=>{
-    result = req.params.Medio
-    console.log(result)
-    res.render('treinos/geraTreino',)
+
+    // require das funções para a lesao
+        require('../_muscles/musculos')
+        const filtraLesao = require('../_treinos/_treinoMuscFuncoes/VerificaPorcaoLesao')
+
+    //dados do formulario com os nomes dos musculos
+        var musculo_form = req.body.musculo
+        var musculo1_form = req.body.musculo1
+        var musculo2_form = req.body.musculo2
+        arr_musc_form = [musculo_form, musculo1_form, musculo2_form]
+
+
+
+
+        function retornaMusc(nomeMusc){
+            var muscu = null;
+            
+        }
+        console.log(retornaMusc(musculo1_form))
+        /*function consltaDB(array){
+            for(valor of array){
+                muscDB = Musculo.findOne({nome: valor})
+            }
+            console.log(muscDB)
+        }
+        consltaDB(arr_musc_form)*/
+
+
+        
+        
+    
+    au_hasard = Math.floor(Math.random() * 4)
+
+    
+    res.render('treinos/geraTreino')
 })
 
 
