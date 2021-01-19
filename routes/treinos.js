@@ -74,20 +74,59 @@ router.post('/geraTreino', (req, res)=>{
         arr_musc_form = [musculo_form, musculo1_form, musculo2_form]
 
 
-
-
-        function retornaMusc(nomeMusc){
-            var muscu = null;
+        
+        arr_muscs_db = []
+        /*async function retornaMusc(nomeMusc, nomeMusc2 ,nomeMusc2){
             
+            musculooo = Musculo.findOne({nome: nomeMusc}).then((musculo_)=>{
+                //console.log(musculo_)
+                return musculo_
+            })
+            return musculooo
         }
-        console.log(retornaMusc(musculo1_form))
-        /*function consltaDB(array){
-            for(valor of array){
-                muscDB = Musculo.findOne({nome: valor})
-            }
-            console.log(muscDB)
-        }
-        consltaDB(arr_musc_form)*/
+         retornaMusc(musculo_form).then((v) =>{
+            arr_muscs_db.push(v)
+            console.log(arr_muscs_db)
+        })*/
+
+
+        musculo = Musculo.findOne({nome: musculo_form}).then((musculo)=>{
+            return musculo
+        }).then((musculo)=>{
+            arr=[]
+            arr.push(musculo)
+            console.log(arr)
+            return arr
+        }).then((arr)=>{
+            Musculo.findOne({nome: musculo1_form}).then((musculo)=>{
+                arr.push(musculo)
+                console.log('---')
+                return arr
+            }).then((arr)=>{
+                Musculo.findOne({nome: musculo2_form}).then((musculo)=>{
+                    arr.push(musculo)
+                    return arr
+                }).then((arr)=>{
+                    arr2 = []
+                    arr.map((musc)=>{
+                        arr2.push(musc.porcoes)
+                        // preciso separar um exercicio de cada porção
+                    })
+                    //console.log(arr2)
+                })
+            })
+        })
+
+       
+        res.render('treinos/geraTreino')
+       
+        
+        
+
+        
+
+        
+        
 
 
         
@@ -96,7 +135,7 @@ router.post('/geraTreino', (req, res)=>{
     au_hasard = Math.floor(Math.random() * 4)
 
     
-    res.render('treinos/geraTreino')
+    
 })
 
 
