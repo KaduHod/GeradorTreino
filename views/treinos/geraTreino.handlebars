@@ -1,15 +1,40 @@
 
-
-
-{{#each array_Com_Musculos}}
-    <div class="card">
-        <div class="card-body">
-            
-            <h4>{{porcoes}}</h4>
-            {{#each porcoes}}
-                <small>{{this.[]}}</small>
-            {{/each}}
-            
-        </div>
+<!--<div class="card">
+    <div class="card-body">
+        {{#each treino}}
+    <h3>{{nome}}</h3>
+    
+    <p>{{exercicios}}</p> <br><hr>
+    
+    {{/each}}
     </div>
-{{/each}}
+</div>-->
+<table class="table table-dark">
+  <thead>
+    <tr>
+        {{#each arr_nomes}}
+      
+      <th scope="col">{{this}}</th>
+      
+      {{/each}}
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        {{#each arr_exercicios}}
+     
+      <td>{{@index}}{{this}}</td>
+      {{/each}}
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+    </tr>
+  </tbody>
+</table>

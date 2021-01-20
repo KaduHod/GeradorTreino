@@ -3,6 +3,7 @@ const router = express.Router()
 const mongoose = require('mongoose')
 require('../models/models')
 const Musculo = mongoose.model('Muscle')
+const {MontaTreino} = require('../_treinos/_treinoMuscFuncoes/MontaTreino')
 
 
 router.get('/', (req, res)=>{
@@ -73,29 +74,13 @@ router.post('/geraTreino', (req, res)=>{
         var musculo2_form = req.body.musculo2
         arr_musc_form = [musculo_form, musculo1_form, musculo2_form]
 
-
-        
         arr_muscs_db = []
-        /*async function retornaMusc(nomeMusc, nomeMusc2 ,nomeMusc2){
-            
-            musculooo = Musculo.findOne({nome: nomeMusc}).then((musculo_)=>{
-                //console.log(musculo_)
-                return musculo_
-            })
-            return musculooo
-        }
-         retornaMusc(musculo_form).then((v) =>{
-            arr_muscs_db.push(v)
-            console.log(arr_muscs_db)
-        })*/
-
-
+       
         musculo = Musculo.findOne({nome: musculo_form}).then((musculo)=>{
             return musculo
         }).then((musculo)=>{
             arr=[]
             arr.push(musculo)
-            console.log(arr)
             return arr
         }).then((arr)=>{
             Musculo.findOne({nome: musculo1_form}).then((musculo)=>{
@@ -105,20 +90,31 @@ router.post('/geraTreino', (req, res)=>{
             }).then((arr)=>{
                 Musculo.findOne({nome: musculo2_form}).then((musculo)=>{
                     arr.push(musculo)
-                    return arr
-                }).then((arr)=>{
-                    arr2 = []
-                    arr.map((musc)=>{
-                        arr2.push(musc.porcoes)
-                        // preciso separar um exercicio de cada porção
+                    treino = MontaTreino(arr)
+                    console.log(treino)
+                    arr_nomes = []
+                    arr_exercicios = []
+                    treino.map((musculo)=>{
+                        arr_nomes.push(musculo.nome)
+                        arr_exercicios.push(musculo.exercicios)
                     })
-                    //console.log(arr2)
+                    //console.log('----')
+                    //console.log(arr_exercicios)
+                    res.render('treinos/geraTreino', {arr_exercicios:arr_exercicios, arr_nomes:arr_nomes })
+                    //return arr
+                    
+                }).catch((err)=>{
+                    console.log(`Erro em` + err)
                 })
+            }).catch((err)=>{
+                console.log(`Erro em` + err)
             })
+        }).catch((err)=>{
+            console.log(`Erro em` + err)
         })
 
        
-        res.render('treinos/geraTreino')
+        
        
         
         
@@ -132,7 +128,7 @@ router.post('/geraTreino', (req, res)=>{
         
         
     
-    au_hasard = Math.floor(Math.random() * 4)
+    
 
     
     

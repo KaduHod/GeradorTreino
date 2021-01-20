@@ -367,3 +367,16 @@ for(lesao_ of porcao_lesionada){
             type:Number,
             required: true
         }*/
+--------------------Funcçao async exemplo
+         /*async function retornaMusc(nomeMusc, nomeMusc2 ,nomeMusc2){
+            
+            musculooo = Musculo.findOne({nome: nomeMusc}).then((musculo_)=>{
+                //console.log(musculo_)
+                return musculo_
+            })
+            return musculooo
+        }
+         retornaMusc(musculo_form).then((v) =>{
+            arr_muscs_db.push(v)
+            console.log(arr_muscs_db)
+        })*/
