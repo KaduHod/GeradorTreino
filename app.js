@@ -4,6 +4,7 @@ const porta = 8080
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const treinos = require('./routes/treinos')// rota para treinos
+const user = require('./routes/user')// rota para configurar os alunos
 const path = require('path')
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -60,6 +61,9 @@ const flash = require('connect-flash')
 
         //Rota para os treinos de musculaçao
         app.use('/treinos',treinos)
+
+        //Rota dos alunos
+        app.use('/users', user)
 
    
 

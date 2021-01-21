@@ -2,6 +2,13 @@ require("../_muscles/musculos")
     const mongoose = require('mongoose')
 // quero adicionar os musculos a base de dados
 //DEfinindo um model
+
+    // model de aluno
+    //Inicialmente tneho que defnir quais são os dados necessarios que o aluno deve ter
+    //nome, nascimento, email, senha, sexo
+
+
+
     //exemplo MUsculo simples
     const MusclesSchema = mongoose.Schema({
         nome:{

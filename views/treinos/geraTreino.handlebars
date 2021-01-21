@@ -9,32 +9,30 @@
     {{/each}}
     </div>
 </div>-->
-<table class="table table-dark">
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-        {{#each arr_nomes}}
-      
-      <th scope="col">{{this}}</th>
-      
-      {{/each}}
+      <th scope="col" colspan="5"><h2>MUSCULAÇÃO</h2></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-        {{#each arr_exercicios}}
-     
-      <td>{{@index}}{{this}}</td>
+        {{#each treino_arr_handlebars1}}
+      <td>{{this}}</td>
       {{/each}}
     </tr>
     <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
+      {{#each treino_arr_handlebars2}}
+     
+      <td>{{this}}</td>
+      {{/each}}
     </tr>
     <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
+      {{#each treino_arr_handlebars3}}
+      <td>{{this}}</td>
+      {{/each}}
     </tr>
   </tbody>
 </table>
+
+<a href="/treinos/Formulario"><button type="button" class="btn btn-outline-dark">Voltar</button></a>

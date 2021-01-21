@@ -3,7 +3,8 @@ const router = express.Router()
 const mongoose = require('mongoose')
 require('../models/models')
 const Musculo = mongoose.model('Muscle')
-const {MontaTreino} = require('../_treinos/_treinoMuscFuncoes/MontaTreino')
+const {MontaTreino} = require('../_treinos/_treinoMuscFuncoes/MontaTreino')// retorna array com objs do treino
+const {formaArrayHandlebarsTable} = require('../_treinos/_treinoMuscFuncoes/MontaTreino') // retorna array com treino para a tabela no handlebars
 
 
 router.get('/', (req, res)=>{
@@ -90,18 +91,11 @@ router.post('/geraTreino', (req, res)=>{
             }).then((arr)=>{
                 Musculo.findOne({nome: musculo2_form}).then((musculo)=>{
                     arr.push(musculo)
-                    treino = MontaTreino(arr)
-                    console.log(treino)
-                    arr_nomes = []
-                    arr_exercicios = []
-                    treino.map((musculo)=>{
-                        arr_nomes.push(musculo.nome)
-                        arr_exercicios.push(musculo.exercicios)
-                    })
-                    //console.log('----')
-                    //console.log(arr_exercicios)
-                    res.render('treinos/geraTreino', {arr_exercicios:arr_exercicios, arr_nomes:arr_nomes })
-                    //return arr
+                    treino = MontaTreino(arr)// ESTE TREINO RETORNA UM ARRAY COM OBJETOS CONTENDO NOME DO MUSCULO E EXERCICIOS SORTEADOS
+                    
+                    treino_arr_handlebars = formaArrayHandlebarsTable(treino)// cada indice do array retornado sera uma linha na tabela da interface do usuario
+                    
+                    res.render('treinos/geraTreino', {treino_arr_handlebars1:treino_arr_handlebars[0],treino_arr_handlebars2:treino_arr_handlebars[1],treino_arr_handlebars3:treino_arr_handlebars[2]})
                     
                 }).catch((err)=>{
                     console.log(`Erro em` + err)

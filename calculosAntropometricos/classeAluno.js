@@ -453,8 +453,7 @@ dataNasc = {
     dia: 12,
     mes: 10,
     ano: 1998
-}
-
+}//
 
 //console.log(AlunoNovo)
 

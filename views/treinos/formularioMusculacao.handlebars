@@ -1,6 +1,6 @@
-
+<h1>Seleção de musculos</h1>
 <form action="/treinos/geraTreino" method="post" class="form-control">
-    <h1>Escolha o musculo a ser treinado</h1>
+    
         <select class="form-control" name="musculo" id="musculo">
             {{#each musculos}}
                <option value="{{nome}}">{{nome}}</option>
@@ -22,7 +22,7 @@
 
             {{/each}}
         </select> <br>
-    <button type="submit" class="btn btn-success mt-3">Gerar treino</button>
+    <button type="submit" class="btn btn-secondary">Gerar treino</button>
 </form>       
  
  
