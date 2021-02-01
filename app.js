@@ -4,7 +4,8 @@ const porta = 8080
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const treinos = require('./routes/treinos')// rota para treinos
-const user = require('./routes/user')// rota para configurar os alunos
+const users = require('./routes/users')// rota para configurar os alunos
+const teste = require('./routes/teste')
 const path = require('path')
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -54,7 +55,7 @@ const flash = require('connect-flash')
 //Rotas
     // rota principal
     app.get("/",(req, res)=>{
-        res.send('Pagina principal da aplicação')
+        res.render(__dirname + '/views/inicio.handlebars')
     })
 
     //Rotas 
@@ -63,7 +64,10 @@ const flash = require('connect-flash')
         app.use('/treinos',treinos)
 
         //Rota dos alunos
-        app.use('/users', user)
+        app.use('/users', users)
+
+        //Rota TESTE
+        app.use('/teste', teste)
 
    
 

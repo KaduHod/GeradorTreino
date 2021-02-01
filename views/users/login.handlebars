@@ -1,0 +1,21 @@
+
+<div class="card" >
+    <div class="card-body" >
+        <h4>LOGIN</h4>
+        {{#if dados}}
+            <p class="alert alert-danger" >{{dados}}</p>
+        {{/if}}
+        <form action="/users/verificaLogin" method="POST" >
+            <div class="form-group" >
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email">
+                <label for="Senha">Password</label>
+                <input type="password" class="form-control" id="Senha" name="Senha">
+                <input type="submit" class="btn btn-success mt-4" value="Entrar">
+            </div>
+        </form>
+        
+        <a class="btn btn-success mt-4" href="/users/cadastro">Cadastre-se</a>
+    </div>
+    
+</div>

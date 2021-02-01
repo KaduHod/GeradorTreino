@@ -12,3 +12,6 @@
     // session e cookies
         npm install --save express-session
         npm install --save connect-flash
+
+    //Criptografia
+        npm install bcrypt

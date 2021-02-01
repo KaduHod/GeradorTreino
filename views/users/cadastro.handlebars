@@ -1,0 +1,31 @@
+<div class="card" >
+    <div class="card-body" >
+        <h4>CADASTRO</h4>
+        <form action="/users/verificaCadastro" method="POST" >
+            <div class="form-group" >
+                <label for="userName">Username</label>
+                <input type="text" class="form-control" id="userName" name="userName" required>
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+                <label for="email">Email</label>
+                <input type="Email" class="form-control" id="email" name="email" required>
+                <label for="sexo">Sexo</label>
+                <select class="form-select" id="sexo" name="sexo">
+                    <option value="M">Masculino</option>
+                    <option value="F">Feminino</option>
+                </select>
+                <label for="nascimento">Data de nascimento</label>
+                <input type="date" name="nascimento" id="nascimento" class="form-control" required>
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" name="senha" required>
+                <label for="confirmSenha">Confirme a sua senha</label>
+                <input type="password" class="form-control" id="confirmSenha" name="confirmSenha" required>
+                {{#each dados}}
+                        <p class="alert alert-danger mt-2">{{this}} !</p>
+                {{/each}}
+
+                <input type="submit" class="btn btn-success mt-4" value="Cadastrar">
+            </div>
+        </form>
+    </div>
+</div>
