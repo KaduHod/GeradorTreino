@@ -38,5 +38,5 @@ const NovoUser = mongoose.model('User')
 
 
 module.exports ={
-    NovoUser,
+    NovoUser
 }

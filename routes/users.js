@@ -7,6 +7,11 @@ const {verificaCadastro} = require('../funçõesAuxiliaresLoginCadastro/cadastro
 const {encriptografa} = require('../funçõesAuxiliaresLoginCadastro/bcrypt')
 const bcrypt = require('bcryptjs')
 
+//Pagina meus dados
+    router.get('/', (req, res)=>{
+        res.redirect('users/index')
+    })
+
 //Login
     router.get('/login', (req, res)=>{
         res.render('users/login')
@@ -16,9 +21,11 @@ const bcrypt = require('bcryptjs')
         
         async function queryDB(){
             query = await NovoUser.find({email: req.body.email})
+            //onsole.log(query[0])
             return query[0]
         }
         ComparaSenha = await queryDB().then((queryDB)=>{
+            //console.log(queryDB)
             return bcrypt.compareSync(req.body.Senha, queryDB.senha)
         }).catch((err)=>{
             console.log(err)
@@ -26,7 +33,12 @@ const bcrypt = require('bcryptjs')
         
         if(ComparaSenha == true){
             dados = await queryDB()
-            res.render('inicio', {dados: dados})
+            if(dados.EhAdmin == true){
+                res.render('admin/inicioAdmin', {dados: dados})
+            }else{
+                res.render('inicio', {dados: dados})
+            }
+            
         }else{
             error_msg = 'Senha invalida!'
             res.render('users/login', {dados: error_msg})
@@ -59,7 +71,8 @@ const bcrypt = require('bcryptjs')
                     email: req.body.email,
                     sexo: req.body.sexo,
                     nascimento: req.body.nascimento,
-                    senha: passHash
+                    senha: passHash,
+                    EhAdmin: false
                 }).save().then(()=>{
                     console.log(`User ${req.body.userName} salvo com sucesso`)  
                 }).catch((err)=>{

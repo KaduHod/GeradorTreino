@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/_css/AdminCss.css" media="screen" type="text/css">
+    <style>
+        .containerAdminMain{
+            height: 500px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            padding: 10px;
+        }
+        .containerAdmin{
+            width: 45%;
+            height: 220px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px rgb(226, 226, 226);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .containerAdmin:hover{
+            background-color: rgb(170, 170, 170);
+            transition: 0.7s;
+        }
+        a{
+            color: black;
+            text-decoration: none;
+        }
+        a:hover{
+            color: white;
+            transition: 0.7s;
+        }
+
+    </style>
+</head>
+<body>
+    {{#if dados}}
+        <h3 class="alert alert-success">Bem vindo admin {{dados.userName}}!</h3>
+        
+    {{/if}}   
+    <div class="containerAdminMain" >
+        <div class="containerAdmin" >
+           <h3><a href="admin/crudUsuarios">Vizualizar todos os usuarios</a></h3> 
+        </div>
+        <div class="containerAdmin" >
+            outra coisa
+        </div>
+        <div class="containerAdmin">
+            outra coisa
+        </div>
+        <div class="containerAdmin" >
+
+        </div>
+    </div>
+    
+</body>
+</html>

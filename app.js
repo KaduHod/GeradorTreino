@@ -5,7 +5,7 @@ const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
 const treinos = require('./routes/treinos')// rota para treinos
 const users = require('./routes/users')// rota para configurar os alunos
-const teste = require('./routes/teste')
+const admin = require('./routes/admin')
 const path = require('path')
 const session = require('express-session')
 const flash = require('connect-flash')
@@ -66,8 +66,8 @@ const flash = require('connect-flash')
         //Rota dos alunos
         app.use('/users', users)
 
-        //Rota TESTE
-        app.use('/teste', teste)
+        //Rota admin
+        app.use('/admin', admin)
 
    
 
