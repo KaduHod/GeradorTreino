@@ -1,0 +1,28 @@
+<div class="card" style="padding:10px;" >
+    <h1 class="card-title">{{dados.nome}}</h1>
+    <form action="update" method="POST" style="width:100%;padding:10px;">
+        <div class="card-body mt-2" >
+            <input type="hidden" name="id" value="{{dados._id}}">
+            <label for="nome">Nome</label>
+            <input class="form-control" type="text" name="nome" id="nome" value="{{dados.nome}}">
+            <label for="username">User-name</label>
+            <input class="form-control" type="text" name="username" id="username" value="{{dados.userName}}">
+            <label for="email">Email</label>
+            <input class="form-control" type="email" name="email" id="email" value="{{dados.email}}">
+            <label for="nascimento">Nascimento</label>
+            <input class="form-control" type="date" name="nascimento" id="nascimento" value="{{dados.nascimento}}">
+            <label for="sexo">Sexo</label>
+            <select class="form-control" name="sexo" id="sexo">
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+            </select>
+            <label for="admin">Admin</label>
+            <select class="form-control" name="admin" id="admin" value="{{dados.EhAdmin}}">
+                <option value="true">Verdadeiro</option>
+                <option value="false">Falso</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Atualizar</button>
+        </form>
+</div>
+

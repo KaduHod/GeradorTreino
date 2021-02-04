@@ -3,8 +3,8 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const { NovoUser } = require("../models/usuario")
 require('./../models/usuario')
-const {verificaCadastro} = require('../funçõesAuxiliaresLoginCadastro/cadastro')
-const {encriptografa} = require('../funçõesAuxiliaresLoginCadastro/bcrypt')
+const {verificaCadastro} = require('../funçõesAuxiliares/cadastro')
+const {encriptografa} = require('../funçõesAuxiliares/bcrypt')
 const bcrypt = require('bcryptjs')
 
 //Pagina meus dados
@@ -54,7 +54,7 @@ const bcrypt = require('bcryptjs')
     router.post('/verificaCadastro', (req,res)=>{
 
         async function verificaCad(){
-            verificaCadastro2 = await verificaCadastro(req.body)
+            verificaCadastro2 = await verificaCadastro(req.body, false)
             return verificaCadastro2
         }
 

@@ -1,0 +1,18 @@
+<div style="display: flex;justify-content:center; width:100%;"><h1>USUARIOS</h1></div>
+<div style="width: 100%;display:flex; justify-content:center;">
+    <div class="blocoUsersMain">
+    {{#each dados}}
+        <div class="blocoUSers mt-4">
+            <h4>{{this.nome}}</h4>
+            <input type="hidden" name="id" id="id" value="{{this._id}}">
+            <small>User name: {{this.userName}}</small>
+            <small>Sexo: {{this.sexo}}</small>    
+            <small>Nascimento: {{this.nascimento2}}</small>
+            <a class="btn btn-success mt-2" href="/admin/edit/{{this._id}}">Editar</a>
+            <a class="btn btn-danger mt-2" href="/admin/exclude/{{this._id}}">Excluir</a>
+        </div>
+    {{else}}
+        <p>erro!!</p>
+    {{/each}}
+</div>
+</div>
