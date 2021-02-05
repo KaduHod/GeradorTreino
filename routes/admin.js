@@ -37,19 +37,9 @@ router.get('/edit/:id', (req, res)=>{
 
 router.post('/edit/update', (req, res)=>{
     NovoUser.updateOne({_id: req.body.id}, {$set:{nome: req.body.nome, nascimento: req.body.nascimento,userName: req.body.username, sexo: req.body.sexo, EhAdmin: req.body.EhAdmin}}, {multi:true}).then(()=>{
-        verificaCadastro(req.body, true).then((errosDoCadastro)=>{
-            if((Object.keys(errosDoCadastro).length)>0){
-
-                //CONTINUAR DESTA PARTE. PELO QUE EU PENSEI PRECISO MONTAR UM SCRIPT DE VERIFICAÇÃO DE INPUST NA PAGINA DE VIEWS POIS , APARENTEMENTE NÃO É POSSIVEL RENDERIZAR A PAGINA COM AS INFORMAÇÕES DE ERRO QUE EU PRECISO
-                res.redirect(`/admin/edit/${req.body.id}`,{dados:errosDoCadastro})
-                console.log(errosDoCadastro)
-            }else{
-                console.log("Tudo certo ")
-                res.redirect('../crud')
-            }
-        })
         console.log('Sucesso ao salvar atualização de '+req.body.nome)
-        
+        success_msg = `User ${req.body.nome} atualizado com com sucesso! `
+        res.render('admin/crudOptions', {dados_atualiza:success_msg})
     }).catch((err)=>{
         console.log(err)
     })

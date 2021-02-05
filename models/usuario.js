@@ -29,6 +29,10 @@ const User = new Schema({
     EhAdmin: {
         type: Boolean,
         required: false
+    },
+    cadAluno: {
+        type: Object,
+        required: false
     }
     
 })

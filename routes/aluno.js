@@ -4,8 +4,9 @@ const mongoose = require('mongoose')
 
 
 
-router.get('/', (req, res)=>{
-    res.render('inicio')
+
+router.post('/', (req, res)=>{
+    res.render('alunos/alunosCad', {dados: req.body})
 })
 
 

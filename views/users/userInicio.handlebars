@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+        .userAlunoCad{
+            border: 1px solid black;
+            height: 300px;
+        }
+        
+    </style>
+</head>
+<body>
+    {{#if dados}}
+        <h3 class="alert alert-success">Bem vindo {{dados.userName}}!</h3>
+    {{else}}
+        <a class="btn btn-dark" href="/users/login">LOGIN</a>
+    {{/if}}   
+    <form action="/aluno/" method="POST">
+    {{#each session}}
+        <input type="hidden" name="{{@key}}" value="{{this}}">
+    {{/each}}
+    <div class="userAlunoCad" >
+        <button type="submit" class="btn btn-primary">Cadastrar como aluno</button>
+    </div>
+    </form>
+    <div class="teste" >
+
+    </div>
+    
+</body>
+</html>

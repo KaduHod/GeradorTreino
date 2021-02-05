@@ -42,10 +42,14 @@
     </style>
 </head>
 <body>
+    <h1>ADMIN CONTENT</h1>
     {{#if dados}}
         <h6 class="alert alert-dark">Bem vindo admin {{dados.userName}}!</h6>
         
-    {{/if}}   
+    {{/if}}  
+    {{#if dados_atualiza}}
+        <h6 class="alert alert-dark" >{{dados_atualiza}} </h6>
+    {{/if}} 
     <div class="containerAdminMain" >
         <div class="containerCrud" >
            <h3><a href="/admin/userCrud">Vizualizar todos os usuarios</a></h3> 

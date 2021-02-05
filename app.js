@@ -3,22 +3,28 @@ const app = express()
 const porta = 8080
 const handlebars = require('express-handlebars')
 const bodyParser = require('body-parser')
-const treinos = require('./routes/treinos')// rota para treinos
-const users = require('./routes/users')// rota para configurar os alunos
-const admin = require('./routes/admin')
+//ROTAS
+    const treinos = require('./routes/treinos')
+    const users = require('./routes/users')
+    const admin = require('./routes/admin')
+    const aluno = require('./routes/aluno')
+
 const path = require('path')
 const session = require('express-session')
 const flash = require('connect-flash')
 
-// Config
+// Config    
+
+    // Public (bootstrap)
+    app.use(express.static(path.join(__dirname, 'public')))
+
     //Session
-        app.use(session({
-            secret: "Aplicacao Gerador de treinos",
-            resave: true,
-            saveUnitialized: true
-        }))
-        app.use(flash())
-    
+    app.use(session({
+        secret: "secret-key",
+        resave: true,
+        saveUnitialized: true
+    }))
+    app.use(flash())
     //Middleware
         app.use((req, res, next)=>{
             res.locals.success_msg = req.flash('success_msg'),
@@ -49,8 +55,9 @@ const flash = require('connect-flash')
             console.log("Erro:" + err)
         })
 
-    // Public (bootstrap)
-        app.use(express.static(path.join(__dirname, 'public')))
+
+    
+    
 
 //Rotas
     // rota principal
@@ -68,6 +75,9 @@ const flash = require('connect-flash')
 
         //Rota admin
         app.use('/admin', admin)
+
+        //Rota Aluno
+        app.use('/aluno', aluno)
 
    
 

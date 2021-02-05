@@ -1,0 +1,44 @@
+<h1>ALUNOS CAD()</h1>
+
+<div class="conatiner geral" >
+    <form action="" method="POST">
+        <div class="dados_gerais card-body" >
+            <label for="nome">Nome</label>
+            <input class="form-control" type="text" name="nome" value="{{dados.nome}}">
+            <label for="email">Email</label>
+            <input class="form-control" type="text" name="email" value="{{dados.email}}">
+            <label for="sexo">Sexo</label>
+            <select class="form-control" type="text" name="sexo">
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+            </select>
+            <input type="hidden" name="nascimento" value="{{dados.nascimentoISO}}">
+            <label for="peso">Peso</label>
+            <input class="form-control" type="number" name="peso" value="Seu peso em KG">
+            <label for="nascimento">Nascimento</label>
+            <input class="form-control" type="text" name="nascimento" value="{{dados.nascimento}}">
+            <label for="altura">Altura</label>
+            <input class="form-control" type="text" name="altura" value="Sua altura em metros">
+        </div>
+        <div class="7dobras card-body">
+            <label for="tricipital">Tricipital</label>
+            <input type="number" class="form-control" name="tricipital" value="mm">
+            <label for="subescapular">Subescapular</label>
+            <input type="number" class="form-control" name="subescapular" value="mm">
+            <label for="tricipital">Tricipital</label>
+            <input type="number" class="form-control" name="tricipital" value="mm">
+            <label for="peitoral">Peitoral</label>
+            <input type="number" class="form-control" name="peitoral" value="mm">
+            <label for="axilar_media">Axilar-média</label>
+            <input type="number" class="form-control" name="axilar_media" value="mm">
+            <label for="abdominal">Abdominal</label>
+            <input type="number" class="form-control" name="abdominal" value="mm">
+            <label for="suprailiaca">Suprailiaca</label>
+            <input type="number" class="form-control" name="suprailiaca" value="mm">
+            <label for="coxa">Coxa</label>
+            <input type="number" class="form-control" name="coxa" value="mm">
+            <label for="tricipital">Tricipital</label>
+            <input type="number" class="form-control" name="tricipital" value="mm">
+        </div>
+    </form>
+</div>

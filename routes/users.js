@@ -6,6 +6,7 @@ require('./../models/usuario')
 const {verificaCadastro} = require('../funçõesAuxiliares/cadastro')
 const {encriptografa} = require('../funçõesAuxiliares/bcrypt')
 const bcrypt = require('bcryptjs')
+const {dataDDMMYY} = require('../funçõesAuxiliares/datas')
 
 //Pagina meus dados
     router.get('/', (req, res)=>{
@@ -30,20 +31,48 @@ const bcrypt = require('bcryptjs')
         }).catch((err)=>{
             console.log(err)
         })
-        
-        if(ComparaSenha == true){
             dados = await queryDB()
-            if(dados.EhAdmin == true){
-                res.render('admin/inicioAdmin', {dados: dados})
+            req.session.userName = dados.userName
+            req.session.email = dados.email
+            req.session.sexo = dados.sexo
+            req.session.nascimento = dataDDMMYY(dados.nascimento)
+            req.session.nascimentoISO = dados.nascimento
+            req.session.nome = dados.nome
+            req.session.idDB = dados._id
+            if(!req.session.idDB){
+                res.redirect('/')
             }else{
-                res.render('inicio', {dados: dados})
-            }
+                console.log('true')
+                if(ComparaSenha == true){
             
-        }else{
-            error_msg = 'Senha invalida!'
-            res.render('users/login', {dados: error_msg})
-        }
+                    if(dados.EhAdmin == true){
+                        if(!req.session.viewCoutn){
+                            req.session.viewCoutn =1
+                        }else{
+                            req.session.viewCoutn +=1
+                        }
+                        
+                        res.render('admin/inicioAdmin', {dados: dados, viewCount: req.session.viewCoutn, session: req.session})
+                    }else{
+                        //console.log(dados)
+                        if(!req.session.viewCoutn){
+                            req.session.viewCoutn =1
+                        }else{
+                            req.session.viewCoutn +=1
+                        }
+                       
+                        res.render('users/userInicio', {dados: dados, viewCount: req.session.viewCoutn,  session: req.session})
+                        
+                    }
+                    
+                }else{
+                    error_msg = 'Senha invalida!'
+                    res.render('users/login', {dados: error_msg})
+                }
+                
+            }
         
+       
         
     })
 
