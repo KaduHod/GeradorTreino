@@ -478,6 +478,6 @@ AlunoNovo.calcEstruturaOssea()
 AlunoNovo.analisaOssos()
 //console.log(AlunoNovo)
 
-model.exports = {
-    AlunoNovo
+module.exports = {
+    Aluno
 }

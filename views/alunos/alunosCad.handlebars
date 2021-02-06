@@ -1,7 +1,7 @@
 <h1>ALUNOS CAD</h1>
 
 <div class="conatiner geral" >
-    <form action="" method="POST">
+    <form action="/aluno/verificaCad" method="POST">
         <div class="card mt-4 padding" >
             <h3>Dados gerais</h3>
             <div class="dados_gerais card-body" >
@@ -16,7 +16,7 @@
                 </select>
                 <input type="hidden" name="nascimento" value="{{dados.nascimentoISO}}">
                 <label for="peso">Peso</label>
-                <input class="form-control" type="number" name="peso" value="Seu peso em KG">
+                <input class="form-control" type="text" name="peso" >
                 <label for="nascimento">Nascimento</label>
                 <input class="form-control" type="text" name="nascimento" value="{{dados.nascimento}}">
                 <label for="altura">Altura</label>
@@ -30,8 +30,6 @@
                 <input type="number" class="form-control" name="tricipital" value="mm">
                 <label for="subescapular">Subescapular</label>
                 <input type="number" class="form-control" name="subescapular" value="mm">
-                <label for="tricipital">Tricipital</label>
-                <input type="number" class="form-control" name="tricipital" value="mm">
                 <label for="peitoral">Peitoral</label>
                 <input type="number" class="form-control" name="peitoral" value="mm">
                 <label for="axilar_media">Axilar-média</label>
@@ -42,8 +40,6 @@
                 <input type="number" class="form-control" name="suprailiaca" value="mm">
                 <label for="coxa">Coxa</label>
                 <input type="number" class="form-control" name="coxa" value="mm">
-                <label for="tricipital">Tricipital</label>
-                <input type="number" class="form-control" name="tricipital" value="mm">
             </div>
         </div>
         <div class="card mt-4 padding" >
@@ -63,7 +59,7 @@
                 <label for="circunQuadril">Quadril</label>
                 <input type="number" class="form-control" name="circunQuadril">
                 <label for="circunCintura">Cintura</label>
-                <input type="number" class="form-control" name="circunQuadril">
+                <input type="number" class="form-control" name="circunCintura">
             </div>
         </div>
         <button class="btn btn-dark mt-4" type="submit" >Salvar</button>

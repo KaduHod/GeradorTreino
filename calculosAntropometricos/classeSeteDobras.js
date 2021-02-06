@@ -1,4 +1,5 @@
 class dadosAntropometricos{
+
     constructor(triciptal, subscapular , peitoral, axilar_media, abdominal, suprailiaca, coxa, DBRU, DBDF){
         this.triciptal = triciptal 
         this.subscapular = subscapular
@@ -12,8 +13,9 @@ class dadosAntropometricos{
         this.total7dobras = 0
     }
     Total7dobras (){
-        this.total7dobras = this.triciptal + this.subscapular +this.peitoral +this.axilar_media +this.abdominal +this.suprailiaca +this.coxa +this.subscapular 
+        this.total7dobras = parseFloat(this.triciptal) + parseFloat(this.subscapular) + parseFloat(this.peitoral) + parseFloat(this.axilar_media) + parseFloat(this.abdominal) + parseFloat(this.suprailiaca) + parseFloat(this.coxa) + parseFloat(this.subscapular) 
     }
+
 }
 
 
