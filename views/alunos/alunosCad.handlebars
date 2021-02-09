@@ -1,4 +1,7 @@
 <h1>ALUNOS CAD</h1>
+{{#if error}}
+    <p class="alert alert-danger" >Um ou mais campos não foram prenchidos :(</p>
+{{/if}}
 
 <div class="conatiner geral" >
     <form action="/aluno/verificaCad" method="POST">
@@ -14,13 +17,13 @@
                     <option value="M">Masculino</option>
                     <option value="F">Feminino</option>
                 </select>
-                <input type="hidden" name="nascimento" value="{{dados.nascimentoISO}}">
+                <input type="hidden" name="nascimentoHidden" value="{{dados.nascimentoISO}}">
                 <label for="peso">Peso</label>
                 <input class="form-control" type="text" name="peso" >
                 <label for="nascimento">Nascimento</label>
                 <input class="form-control" type="text" name="nascimento" value="{{dados.nascimento}}">
                 <label for="altura">Altura</label>
-                <input class="form-control" type="text" name="altura" value="Sua altura em metros">
+                <input class="form-control" type="text" name="altura">
             </div>
         </div>
         <div class="card mt-4 padding">
