@@ -4,16 +4,16 @@ const mongoose = require('mongoose')
 const {dadosAntropometricos} = require('../calculosAntropometricos/classeSeteDobras')
 const {Aluno} = require('../calculosAntropometricos/classeAluno')
 const {dataDDMMYY} = require('../funçõesAuxiliares/datas')
-
+const { NovoUser } = require("../models/usuario")
 
 
 
 router.post('/', (req, res)=>{
-
+    console.log(req.body.email)
     res.render('alunos/alunosCad', {dados: req.body})
 })
 router.post('/verificaCad', (req, res)=>{
-
+    console.log(req.body.email)
     // verificação de tamanho de string digitada no form
         arrErrosCadAluno = []
         for(chaves in req.body){
@@ -81,18 +81,15 @@ router.post('/verificaCad', (req, res)=>{
                         br: AlunoNovo.bone_Rate,
                         bf: AlunoNovo.Body_Fat_rate
                     }
-                    
-
-
+                    //Tenho que salvar os dados do alunos no db dentro de seu cadastro de aluno
+                    var filter = {email: req.body.email}
+                    var update = {cadAluno: AlunoNovo}
+                    NovoUser.findOneAndUpdate(filter, update, {new: true}).then((result)=>{
+                        console.log(result)
+                    })
 
             res.render('alunos/alunosInicio', {dadoGerais: geral, pesos : pesos, porcem: porcem, infoAdi: InfoAdcional, taixas: taixas })
         }
-
-   
-
-
-
-    
 })
 
 

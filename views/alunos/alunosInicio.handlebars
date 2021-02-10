@@ -1,8 +1,9 @@
-<h1>Pagina onde  o aluno terá as opções de treinos e visuaização de perfil</h1>
+
 <div class="containerFlexDivideDuasColunas">
+    <h1>Pagina onde  o aluno terá as opções de treinos e visuaização de perfil</h1>
     <div class="containerFLexDoisItens">
-        <div class="containerMenor">
-        <strong>Dados gerais</strong>
+        <div class="containerMenor borderRigth">
+        <h3>Dados gerais</h3>
         {{#if dadoGerais}}
             <strong>Nome</strong> <small>{{dadoGerais.nome}} </small>
             <strong>Sexo</strong> <small>{{dadoGerais.sexo}} </small>
@@ -15,6 +16,7 @@
         </div>
         <div class="containerMenor mt-4">
             {{#if pesos}}
+                <h3>Pesos</h3>
                 <strong>Peso Residual</strong> <small>{{pesos.Peso_Residual_KG}} Kg</small>
                 <strong>Peso Muscular</strong> <small>{{pesos.Peso_Muscular_KG}} kg</small>
                 <strong>Peso Osseo</strong> <small>{{pesos.Peso_Osseo_KG}} Kg</small>
@@ -24,34 +26,33 @@
     </div>
 
     <div class="containerFLexDoisItens">
-        <div class="containerMenor mt-4">
+        <div class="containerMenor borderRigth mt-4">
         {{#if porcem}}
-            <h3>Porcentagem</h3>
+            <h3>Porcentagens</h3>
             <strong>Musculo</strong> <small>{{porcem.Porcem_Musculo}} %</small>
             <strong>Residual</strong> <small>{{porcem.Porcem_Residual}} %</small>
             <strong>Osseo</strong> <small>{{porcem.Porcem_Osseo}} %</small>
             <strong>Gordura</strong> <small>{{porcem.Porcem_Gordura}} %</small>
         {{/if}}
-    </div>
-    <div class="containerMenor mt-4">
-        {{#if infoAdi}}
-    
-            <strong>Densidade corporal </strong> <small>{{infoAdi.dc}} </small>
-            <strong>IMC</strong> <small>{{infoAdi.imc}} </small>
-            <strong>Metabolsm basal</strong> <small>{{infoAdi.Mb}} </small>
-        {{/if}}
+        </div>
+        <div class="containerMenor mt-4">
+            {{#if infoAdi}}
+                <h3>Infos adicionais</h3>
+                <strong>Densidade corporal </strong> <small>{{infoAdi.dc}} </small>
+                <strong>IMC</strong> <small>{{infoAdi.imc}} </small>
+                <strong>Metabolismo basal</strong> <small>{{infoAdi.Mb}} </small>
+            {{/if}}
 
-    </div>
+        </div>
     </div>
     <div class="containerFLexDoisItens">
         <div class="containerMenor mt-4">
         {{#if taixas}}
-    
+            <h3>Estrutura corporal</h3>
             <strong>Estrutura muscular </strong> <small>{{taixas.mr}} </small>
             <strong>Estrutura ossea</strong> <small>{{taixas.br}} </small>
             <strong>Taixa de gordura</strong> <small>{{taixas.bf}} </small>
         {{/if}}
-
     </div>
     </div>
     

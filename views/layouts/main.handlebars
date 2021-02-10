@@ -16,7 +16,11 @@
             justify-content: center;
             box-shadow: 2px 2px 10px #e5e5e5;
             border-radius: 10px;
+            border: 2px solid grey;
             padding: 10px;
+        }
+        .borderRigth{
+            border-right: 5px solid #333333;
         }
         .containerFLexDoisItens{
             display: flex;
@@ -27,13 +31,20 @@
             border-radius: 15px;
             background-color: #f0f0f0;
             padding: 10px;
+            border: 2px solid #333333;
+            box-shadow: 3px 3px 8px #333333;
         }
         .containerMenor{
+            justify-content: center;
+            align-items: center;
             display: flex;
-            width: 50%;
+            flex: 1;
             height: fit-content;
             flex-direction: column;
             
+        }
+        .containerMenor small{
+            border-bottom: 4px solid #979797;
         }
         .blocoUsersMain{
             display: flex;
@@ -68,6 +79,9 @@
     </style>
 </head>
 <body>
+        {{#each session}}
+            <input type="hidden" name="session{{@key}}" value="{{this}}">
+        {{/each}}
     {{>_navbar}}
     
     <!--{{>_carousel}}-->

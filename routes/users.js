@@ -39,6 +39,7 @@ const {dataDDMMYY} = require('../funçõesAuxiliares/datas')
             req.session.nascimentoISO = dados.nascimento
             req.session.nome = dados.nome
             req.session.idDB = dados._id
+            req.session.logged = true
             if(!req.session.idDB){
                 res.redirect('/')
             }else{
@@ -54,7 +55,7 @@ const {dataDDMMYY} = require('../funçõesAuxiliares/datas')
                         
                         res.render('admin/inicioAdmin', {dados: dados, viewCount: req.session.viewCoutn, session: req.session})
                     }else{
-                        //console.log(dados)
+                        //console.log(req.session)
                         if(!req.session.viewCoutn){
                             req.session.viewCoutn =1
                         }else{

@@ -33,8 +33,11 @@ const User = new Schema({
     cadAluno: {
         type: Object,
         required: false
+    },
+    EhAluno: {
+        type: Boolean,
+        required: false
     }
-    
 })
 
 mongoose.model('User', User)
