@@ -13,6 +13,21 @@ router.get('/crud', (req, res)=>{
     res.render('admin/crudOptions')
 })
 
+router.get('/AlunoCrud', (req, res)=>{
+    oi =  [true]
+    filter = {
+        'EhAluno': true
+    }
+    //TENHO QUE CRIAR O CRUD DE ALUNOS ONDE VOU VIZUALIZAR INFOS BASICAS DE CADA ALUNO
+    NovoUser.find().where('EhAluno').in(oi).exec((err, records)=>{
+        records.filter((Aluno)=>{
+            console.log(Aluno)
+            console.log('-------------')
+        })
+    })
+        
+})
+
 router.get('/userCrud', async(req, res)=>{
     NovoUser.find().then((usuarios)=>{
         /*data = usuarios[0].nascimento.getFullYear();

@@ -84,11 +84,16 @@ router.post('/verificaCad', (req, res)=>{
                     //Tenho que salvar os dados do alunos no db dentro de seu cadastro de aluno
                     var filter = {email: req.body.email}
                     var update = {cadAluno: AlunoNovo}
-                    NovoUser.findOneAndUpdate(filter, update, {new: true}).then((result)=>{
-                        console.log(result)
-                    })
+                    NovoUser.findOneAndUpdate(filter, update, {new: true}).then(()=>{
+                        filter2 = {email: req.body.email}
+                        update2 = {EhAluno: true}
+                        NovoUser.findOneAndUpdate(filter2, update2, {new: true}).then((result)=>{
+                            console.log(result)
+                            res.render('alunos/alunosInicio', {dadoGerais: geral, pesos : pesos, porcem: porcem, infoAdi: InfoAdcional, taixas: taixas })
+                        }).catch((err)=>{console.log(err)})
+                    }).catch((err)=>{console.log(err)})
 
-            res.render('alunos/alunosInicio', {dadoGerais: geral, pesos : pesos, porcem: porcem, infoAdi: InfoAdcional, taixas: taixas })
+            
         }
 })
 

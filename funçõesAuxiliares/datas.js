@@ -15,7 +15,7 @@ function diaMenorQueDez(dia){
     }
 }
 function dataDDMMYY(data){
-    newData = diaMenorQueDez((data.getDate())) + "/"+mesMenorQueDez((data.getMonth()+1))+"/"+(data.getFullYear())
+    newData = diaMenorQueDez((data.getDate()+1)) + "/"+mesMenorQueDez((data.getMonth()+1))+"/"+(data.getFullYear())
     return newData
 }
 
