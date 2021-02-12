@@ -3,7 +3,13 @@
     <div class="blocoUsersMain">
         
     {{#each dados}}
-        oi
+        <p>{{this.email}}</p>
+        <p>{{this.nome}}</p>
+        <p>{{this.sexo}}</p>
+        <p>{{this.idade}}</p>
+        <input type="hidden" value="{{this._id}}">
+        <br>
+        
     {{else}}
         <p>erro!!</p>
     {{/each}}

@@ -14,16 +14,24 @@ router.get('/crud', (req, res)=>{
 })
 
 router.get('/AlunoCrud', (req, res)=>{
-    oi =  [true]
-    filter = {
-        'EhAluno': true
-    }
-    //TENHO QUE CRIAR O CRUD DE ALUNOS ONDE VOU VIZUALIZAR INFOS BASICAS DE CADA ALUNO
-    NovoUser.find().where('EhAluno').in(oi).exec((err, records)=>{
-        records.filter((Aluno)=>{
-            console.log(Aluno)
-            console.log('-------------')
-        })
+    NovoUser.find({EhAluno:true}).then((query)=>{
+        arrayDeAlunosFiltrado = []
+            query.map((Aluno)=>{
+                objDeAlunoFiltrado = {}
+                objDeAlunoFiltrado._id =Aluno._id
+                objDeAlunoFiltrado.nome = Aluno.nome
+                objDeAlunoFiltrado.email = Aluno.email
+                objDeAlunoFiltrado.sexo = Aluno.sexo
+                objDeAlunoFiltrado.idade = Aluno.cadAluno.idade
+                arrayDeAlunosFiltrado.push(objDeAlunoFiltrado)
+                
+            })
+            console.log(arrayDeAlunosFiltrado)
+
+            res.render('admin/crudAlunos', {dados: arrayDeAlunosFiltrado})
+        //console.log(query[0].cadAluno.objNSNIPA)
+    }).catch((err)=>{
+        console.log(err)
     })
         
 })
