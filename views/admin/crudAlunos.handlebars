@@ -1,17 +1,22 @@
-<div style="display: flex;justify-content:center; width:100%;"><h1>USUARIOS</h1></div>
+<div style="display: flex;justify-content:center; width:100%;"><h1>Alunos</h1></div>
 <div style="width: 100%;display:flex; justify-content:center;">
     <div class="blocoUsersMain">
         
     {{#each dados}}
-        <p>{{this.email}}</p>
-        <p>{{this.nome}}</p>
-        <p>{{this.sexo}}</p>
-        <p>{{this.idade}}</p>
+    <div class="blocoUSers">
+        <p>Nome: {{this.nome}}</p>
+        <p>Email {{this.email}}</p>
+        <p>Sexo: {{this.sexo}}</p>
+        <p>Idade: {{this.idade}}</p>
+        <p>Peso: {{this.peso}} kg</p>
         <input type="hidden" value="{{this._id}}">
-        <br>
-        
+               
     {{else}}
         <p>erro!!</p>
     {{/each}}
+    </div>
+        
 </div>
 </div>
+
+

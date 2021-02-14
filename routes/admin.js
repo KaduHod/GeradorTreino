@@ -23,6 +23,7 @@ router.get('/AlunoCrud', (req, res)=>{
                 objDeAlunoFiltrado.email = Aluno.email
                 objDeAlunoFiltrado.sexo = Aluno.sexo
                 objDeAlunoFiltrado.idade = Aluno.cadAluno.idade
+                objDeAlunoFiltrado.peso = Aluno.cadAluno.peso
                 arrayDeAlunosFiltrado.push(objDeAlunoFiltrado)
                 
             })

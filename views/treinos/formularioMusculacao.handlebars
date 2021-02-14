@@ -1,5 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../public/_css/AdminCss.css" media="screen" type="text/css">
+    <style>
+        .musculosForm{
+            background-image: url('/img/musculoFormSelecao.jpg');
+            background-position:20% 35%;
+            width: 100%;
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+    </style>
+</head>
 <h1>Seleção de musculos</h1>
-<form action="/treinos/geraTreino" method="post" class="form-control">
+<div class="musculosForm" >
+    <form action="/treinos/lesao" method="post" >
+        {{#each user}}
+            <input type="hidden" name="{{@key}}" value="{{this}}">
+        {{/each}}
     
         <select class="form-control" name="musculo" id="musculo">
             {{#each musculos}}
@@ -22,7 +44,9 @@
 
             {{/each}}
         </select> <br>
-    <button type="submit" class="btn btn-secondary">Gerar treino</button>
-</form>       
+        <button type="submit" class="btn btn-secondary">Escolher musculos</button>
+    </form>   
+</div>
+    
  
  
