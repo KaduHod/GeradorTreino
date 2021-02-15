@@ -89,11 +89,11 @@
                     <div class="containerFormLongoItem">
                         <input type="hidden" name="nascimentoHidden" value="{{dados.nascimentoISO}}">
                         <label for="peso">Peso</label>
-                        <input class="form-control" type="text" name="peso" >
+                        <input class="form-control" type="text" name="peso" value="{{dados.peso}}" >
                         <label for="nascimento">Nascimento</label>
                         <input class="form-control" type="text" name="nascimento" value="{{dados.nascimento}}">
                         <label for="altura">Altura</label>
-                        <input class="form-control" type="text" name="altura">
+                        <input class="form-control" type="text" name="altura" value="{{dados.altura}}">
                     </div>
                 </div>
             </div>
@@ -104,11 +104,10 @@
                     </div>
                     <div class="containerFormLongoCorpoItem">
                         <label for="dbru">Diâmetro bisetilóide radio ulnar</label>
-                        <input type="number" class="form-control" name="dbru">
+                        <input type="number" class="form-control" name="dbru" value="{{dados.DBRU}}">
                         <label for="dbdf">Diâmetro biepicondiliano do fêmur</label>
-                        <input type="number" class="form-control" name="dbdf">
+                        <input type="number" class="form-control" name="dbdf"value="{{dados.DBDF}}">
                     </div>
-                    
                 </div>
                 <div class="containerFormLongoSecond borderLeft" >
                     <div class="containerFormLongoTitle">
@@ -116,11 +115,11 @@
                     </div>
                     <div class="containerFormLongoCorpoItem">
                         <label for="circunPunho">Punho</label>
-                        <input type="number" class="form-control" name="circunPunho">
+                        <input type="number" class="form-control" name="circunPunho" value="{{dados.circunPunho}}">
                         <label for="circunQuadril">Quadril</label>
-                        <input type="number" class="form-control" name="circunQuadril">
+                        <input type="number" class="form-control" name="circunQuadril"value="{{dados.circunQuadril}}" >
                         <label for="circunCintura">Cintura</label>
-                        <input type="number" class="form-control" name="circunCintura">
+                        <input type="number" class="form-control" name="circunCintura" value="{{dados.circunCintura}}">
                     </div>
                 </div>
 
@@ -132,22 +131,22 @@
                 <div class="containerFormLongoCorpo">
                     <div class="containerFormLongoItem">
                         <label for="tricipital">Tricipital</label>
-                        <input type="number" class="form-control" name="tricipital" value="mm">
+                        <input type="number" class="form-control" name="tricipital" value="{{dados.triciptal}}">
                         <label for="subescapular">Subescapular</label>
-                        <input type="number" class="form-control" name="subescapular" value="mm">
+                        <input type="number" class="form-control" name="subescapular" value="{{dados.subscapular}}">
                         <label for="peitoral">Peitoral</label>
-                        <input type="number" class="form-control" name="peitoral" value="mm">
+                        <input type="number" class="form-control" name="peitoral" value="{{dados.peitoral}}">
                     
                     </div>
                     <div class="containerFormLongoItem">
                         <label for="axilar_media">Axilar-média</label>
-                        <input type="number" class="form-control" name="axilar_media" value="mm">
+                        <input type="number" class="form-control" name="axilar_media" value="{{dados.axilar_media}}">
                         <label for="abdominal">Abdominal</label>
-                        <input type="number" class="form-control" name="abdominal" value="mm">
+                        <input type="number" class="form-control" name="abdominal" value="{{dados.abdominal}}">
                         <label for="suprailiaca">Suprailiaca</label>
-                        <input type="number" class="form-control" name="suprailiaca" value="mm">
+                        <input type="number" class="form-control" name="suprailiaca" value="{{dados.suprailiaca}}">
                         <label for="coxa">Coxa</label>
-                        <input type="number" class="form-control" name="coxa" value="mm">
+                        <input type="number" class="form-control" name="coxa" value="{{dados.coxa}}">
                     </div>
                 </div>
             </div>

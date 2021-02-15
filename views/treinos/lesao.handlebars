@@ -1,34 +1,75 @@
+<head>
+    <style>
+        .ContainerLesaoMain{
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content:flex-end;
+            width: 100%px;
+            height: 400px;
+            box-shadow: 3px 3px 5px #cbc6aa ;
+            background-image: url('/img/lesao.jpg');
+            background-position:-150px -450px ;
+            border-radius: 10px;
+        }
+        .containerLesao{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            border-radius: 10px;
+            background-color:#c3ae93a6;
+            height: fit-content;
+            
+            
 
+        }
+        .ConteinerLesaoBotao{
+            margin-top: 10px;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        .ContainerLesaoNome{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .ContainerLesaoPorcoes{
+            display: flex;
+        }
+        
+
+
+    </style>
+</head>
 
 <h1> Marque as porções lesionadas do musculo escolhido</h1>
-<script src=></script>
-<div class="card" >
-    <div class="card-body" >
+<div class="ContainerLesaoMain">
+    
+    <div class="containerLesao" >
         <form action="/treinos/geraTreino" method="post">
-        {{#each array_Com_Musculos}}
-            <div class="form-control mt-2" >
-                <strong>{{this.nome}}</strong> <br>
-                <select class="form-control" name="{{this.nome}}" id="{{this.nome}}">
+        {{#each userData}} <input type="hidden" name="user{{@key}}" value="{{this}}" > {{/each}}
+        {{#each musculo}}
+        <div class="ContainerLesaoNome">
+            <strong>{{this.nome}}</strong>
+            <div class="ContainerLesaoPorcoes">
                 {{#each this.porcoes}}
-                    <option value="{{@key}}">{{@key}}</option>
-                    
-                {{/each}}
-                </select>
-                
-                <!--<label for="{{@key}}">{{@key}}</label> 
-                <input type="checkbox" id="{{@key}}" name="{{@key}}"><br>
-                <input type="hidden" value="{{@key}}">-->
-                
-                
-
-                
+                {{@key}}&nbsp; <input type="checkbox" name="{{@key}}" class="form-check-input">
+                {{/each}}   
+                &nbsp;
             </div>
+                    
+        </div>
+        {{/each}}     
+        <div class="ConteinerLesaoBotao" >
+            <button type="submit" class="btn btn-primary">Registrar lesões</button>
+        </div>
             
-        {{else}}
-        {{/each}}
-        
-        <input type="hidden" id="musculos_analisados" name="musculos_analisados" value={{array_Com_Musculos.porcoes}} > <br>
-        <button class="btn btn-success mt-2 " type="submit">Avançar</button>
         </form>
     </div>
 </div>
+

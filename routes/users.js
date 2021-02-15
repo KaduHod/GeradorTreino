@@ -35,11 +35,17 @@ const {dataDDMMYY} = require('../funçõesAuxiliares/datas')
             req.session.userName = dados.userName
             req.session.email = dados.email
             req.session.sexo = dados.sexo
-            req.session.nascimento = dataDDMMYY(dados.nascimento)
+            if(dados.EhAluno !== true){
+                req.session.nascimento = dataDDMMYY(dados.nascimento)
+            }
             req.session.nascimentoISO = dados.nascimento
             req.session.nome = dados.nome
             req.session.idDB = dados._id
             req.session.logged = true
+            if(dados.EhAluno == true){req.session.EhAluno = dados.EhAluno}
+            
+            
+            
             if(!req.session.idDB){
                 res.redirect('/')
             }else{
@@ -61,8 +67,18 @@ const {dataDDMMYY} = require('../funçõesAuxiliares/datas')
                         }else{
                             req.session.viewCoutn +=1
                         }
-                       
+                       if(dados.EhAluno == true){
+                           dadosCadAluno1 = dados.cadAluno.dobras
+                           dadosCadAluno2 = dados.cadAluno.objMedidas
+                           delete dadosCadAluno2.DBRU
+                           delete dadosCadAluno2.DBDF
+                           delete dados.cadAluno.objNSNIPA.nome
+                           dadosCadAluno3 = dados.cadAluno.objNSNIPA
+                        res.render('users/userInicioAluno', {dados: dados, viewCount: req.session.viewCoutn,  session: req.session, dadosCadAluno1: dadosCadAluno1, dadosCadAluno2: dadosCadAluno2, dadosCadAluno3: dadosCadAluno3})
+                       }else{
                         res.render('users/userInicio', {dados: dados, viewCount: req.session.viewCoutn,  session: req.session})
+                       }
+                        
                         
                     }
                     

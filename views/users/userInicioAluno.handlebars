@@ -95,7 +95,7 @@
     
     <div class="userAlunoDesc" >
         <div class="UserALunoCadBlockDesc" >
-            <h3>Cadastre-se como aluno e tenha</h3> 
+            <h3>Vizualizar dados de aluno</h3> 
             <p>- Peso muscular, osseo, adiposo e residual</p>
             <p>- IMC</p>
             <p>- Densidade corporal</p>
@@ -107,7 +107,22 @@
             {{#each session}}
                 <input type="hidden" name="{{@key}}" value="{{this}}">
             {{/each}}
-            <button type="submit" class="btn btn-primary">Cadastrar como aluno</button>
+            {{#each dadosCadAluno1}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+            {{/each}}
+            {{#each dadosCadAluno2}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+            {{/each}}
+            {{#each dadosCadAluno3}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+            {{/each}}
+            <button type="submit" class="btn btn-primary">Atualizar dados</button>
+            </form>
+            <form method="post" action="/aluno/visualizaCad">
+                {{#each session}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+                {{/each}}
+                <button type="submit" class="btn btn-primary mt-3">Vizualizar dados</button>
             </form>
         </div>
     </div>

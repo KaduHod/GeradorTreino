@@ -1,0 +1,68 @@
+<head>
+    <style>
+
+    </style>
+</head>
+<body>
+    <table class="table table-dark table-striped">
+        <tr>
+            {{#each nsnipa}}
+            <th>{{@key}}</th>
+            {{/each}}
+        </tr>
+        <tr>
+            {{#each nsnipa}}
+            <td>{{this}}</td>
+            {{/each}}
+        </tr>
+    </table>
+    <table class="table table-dark table-striped">
+        <tr>
+            {{#each pesosKG}}
+            <th>{{@key}} kg</th>
+            {{/each}}
+        </tr>
+        <tr>
+            {{#each pesosKG}}
+            <td>{{this}}</td>
+            {{/each}}
+        </tr>
+    </table>
+    <table class="table table-dark table-striped">
+        <tr>
+            {{#each porcem}}
+            <th>{{@key}} %</th>
+            {{/each}}
+        </tr>
+        <tr>
+            {{#each porcem}}
+            <td>{{this}}</td>
+            {{/each}}
+        </tr>
+    </table>
+    <table class="table table-dark table-striped">
+        <tr>
+            {{#each rate}}
+            <th>{{@key}}</th>
+            {{/each}}
+        </tr>
+        <tr>
+            {{#each rate}}
+            <td>{{this}}</td>
+            {{/each}}
+        </tr>
+    </table>
+    <table class="table table-dark table-striped">
+        <tr>
+            {{#each other}}
+            <th>{{@key}}</th>
+            {{/each}}
+        </tr>
+        <tr>
+            {{#each other}}
+            <td>{{this}}</td>
+            {{/each}}
+        </tr>
+    </table>
+    
+</body>

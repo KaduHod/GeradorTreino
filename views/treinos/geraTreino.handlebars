@@ -1,38 +1,45 @@
 
-<!--<div class="card">
-    <div class="card-body">
-        {{#each treino}}
-    <h3>{{nome}}</h3>
-    
-    <p>{{exercicios}}</p> <br><hr>
-    
+<head>
+  <style>
+
+  </style>
+</head>
+<table class="table table-dark">
+  <tr>
+    {{#each nomesMusculos}}
+    <th>
+      {{this}}
+    </th>
     {{/each}}
-    </div>
-</div>-->
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col" colspan="5"><h2>MUSCULAÇÃO</h2></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-        {{#each treino_arr_handlebars1}}
-      <td>{{this}}</td>
-      {{/each}}
-    </tr>
-    <tr>
-      {{#each treino_arr_handlebars2}}
-     
-      <td>{{this}}</td>
-      {{/each}}
-    </tr>
-    <tr>
-      {{#each treino_arr_handlebars3}}
-      <td>{{this}}</td>
-      {{/each}}
-    </tr>
-  </tbody>
+  </tr>
+  <tr>
+    {{#each linha1}}
+    <td>
+      {{this}}
+    </td>
+    {{/each}}
+  </tr>
+  <tr>
+    {{#each linha2}}
+    <td>
+      {{this}}
+    </td>
+    {{/each}}
+  </tr>
+  <tr>
+    {{#each linha3}}
+    <td>
+      {{this}}
+    </td>
+    {{/each}}
+  </tr>
+  <tr>
+    {{#each linha4}}
+    <td>
+      {{this}}
+    </td>
+    {{/each}}
+  </tr>
 </table>
 
 <a href="/treinos/Formulario"><button type="button" class="btn btn-outline-dark">Voltar</button></a>

@@ -9,11 +9,16 @@ const { NovoUser } = require("../models/usuario")
 
 
 router.post('/', (req, res)=>{
-    console.log(req.body.email)
-    res.render('alunos/alunosCad', {dados: req.body})
+    if(req.body.EhAluno == 'true'){
+        res.render('alunos/alunosAtualiza', {dados: req.body})
+    }else{
+        console.log('não ta indo pra pagina certa!!!')
+        res.render('alunos/alunosCad', {dados: req.body})
+    }
+    
+    
 })
 router.post('/verificaCad', (req, res)=>{
-    console.log(req.body.email)
     // verificação de tamanho de string digitada no form
         arrErrosCadAluno = []
         for(chaves in req.body){
@@ -95,6 +100,49 @@ router.post('/verificaCad', (req, res)=>{
 
             
         }
+})
+
+router.post('/visualizaCad', (req, res)=>{
+    NovoUser.findOne({_id: req.body.idDB}).then((query)=>{
+        nsnipa = {
+            'Nome': query.cadAluno.objNSNIPA.nome,
+            'Sexo': query.cadAluno.objNSNIPA.sexo,
+            'Nascimento': query.cadAluno.objNSNIPA.nascimento,
+            'Idade': query.cadAluno.objNSNIPA.idade,
+            'Peso': query.cadAluno.objNSNIPA.peso,
+            'Altura': query.cadAluno.objNSNIPA.altura,
+        }
+        pesosKG = {
+            'Peso residual' : query.cadAluno.objPesoKG_RMOG.Peso_Residual_KG,
+            'Peso muscular' : query.cadAluno.objPesoKG_RMOG.Peso_Muscular_KG,
+            'Peso osseo' : query.cadAluno.objPesoKG_RMOG.Peso_Osseo_KG,
+            'Peso adiposo' : query.cadAluno.objPesoKG_RMOG.Peso_Gordura_KG
+        }
+        
+        porcem = {
+            'Musculo': query.cadAluno.objPorcem.Porcem_Musculo,
+            'Residual' : query.cadAluno.objPorcem.Porcem_Residual,
+            'Osseo' : query.cadAluno.objPorcem.Porcem_Osseo,
+            'Gordura' : query.cadAluno.objPorcem.Porcem_Gordura
+        }
+        
+        rate = {
+            'Musculo': query.cadAluno.muscle_Rate,
+            'Gordura' : query.cadAluno.Body_Fat_rate,
+            'Osso' : query.cadAluno.bone_Rate
+        }
+
+        other = {
+            'IMC' : query.cadAluno.Imc,
+            'Densidade corporal': query.cadAluno.Densidade_Corporal,
+            'Metabolismo basal' : query.cadAluno.Metabolismo_Basal,
+
+        }
+
+
+        res.render('alunos/visualizaAlunoDados', {nsnipa: nsnipa, pesosKG: pesosKG, porcem: porcem, rate: rate, other: other})
+    })
+
 })
 
 
