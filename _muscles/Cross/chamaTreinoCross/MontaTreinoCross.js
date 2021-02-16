@@ -46,4 +46,10 @@ TreinoEstruturado = montaTreino(ExerciciosCroos)
 /*TreinoEstruturado.map(()=>{
 
 })*/
-console.log(TreinoEstruturado[1].Nome_exercicio)
+//console.log(TreinoEstruturado[1].Nome_exercicio)
+
+module.exports = {
+    pegaExerciciosCross,
+    montaTreino,
+    TreinoEstruturado
+}

@@ -1,0 +1,147 @@
+<head>
+    <style>
+        .corpoTabata{
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            border-radius: 10px;
+            box-shadow: 8px 8px 16px #010206;
+            background-image: url('/img/TabataDescanso.jpg');
+            background-position: 0px -50px;
+            background-size: cover;
+        }
+        .TabataTitle{
+            padding-top: 30px;
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #cfd6d9;
+        }
+        .TabataOptions{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            
+        }
+        .flex_start{
+            display: flex;
+            justify-self: flex-start;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .flex_end{
+            display: flex;
+            align-self: flex-end;
+            justify-content: flex-end;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+           
+        }
+        .TabataOptionsItem{
+            width: 65%;
+            background-color: #d1dad8;
+        }
+        .TabataOptionTitle{
+            color: #01050a;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+            flex: 0.6;
+        }
+        .TabataMiddleLeft{
+            display: flex;
+            flex: 0.4;
+            margin: 5px;
+            border-right: 3px solid #01050a;
+            flex-direction: column;
+        }
+        .TabataMiddleRight{
+            display: flex;
+            flex: 0.4;
+            margin: 5px;
+            border-left: 3px solid #01050a;
+            flex-direction: column;
+        }
+        .tracoHorinBottom{
+            height: 50%;
+            border-bottom: 2px solid #01050a;
+        }
+        .tracoHorinTop{
+            height: 50%;
+            border-top: 2px solid #01050a;
+        }
+        .TabataDesc{
+            flex: 1.5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .botao{
+            flex: 0.5;
+        }
+        .itemBotaoVoltar{
+            background-color: #212529;
+            width: 10%;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            border-top-right-radius: 10px;
+            
+        }
+        .itemBotaoVoltar :hover{
+            background-color: #212529;
+            transition: 0.4s;
+        }
+        .botao{
+            width: 170px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="corpoTabata" >
+        <div class="TabataTitle">
+            <h3>Escolha o seu tempo de execução dos exercicios e tempo de descanso</h3>
+        </div>
+        <div class="TabataOptions">
+            <div class="TabataOptionsItem flex_start">
+                <div class="TabataOptionTitle">
+                    <h2>30/10</h2>
+                </div>
+                <div class="TabataMiddleLeft">
+                    <div class="tracoHorinBottom" ></div>
+                    <div class="tracoHorinTop" ></div>
+                </div>
+                <div class="TabataDesc">
+                    <br>
+                    <p>- Este descanso consiste em 30 segundos de execução dos exercicios e 10 segundos de descanço entre eles</p>
+                </div>
+                <div class="botao" >
+                     <form action="/cross/GeraTreinoTabata" method="post">
+                        {{#each dados}}
+                        <input type="hidden" name="{{@key}}" value="{{this}}">
+                        {{/each}}
+                        <input type="submit" class="btn btn-dark" value="Gerar">
+                    </form>
+                </div>
+            </div>
+            <div class="TabataOptionsItem flex_end mt-4">
+                <div class="TabataOptionTitle">
+                    <h2>20/10</h2>
+                </div>
+                 <div class="TabataMiddleRight">
+                    <div class="tracoHorinBottom" ></div>
+                    <div class="tracoHorinTop" ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

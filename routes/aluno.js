@@ -12,11 +12,8 @@ router.post('/', (req, res)=>{
     if(req.body.EhAluno == 'true'){
         res.render('alunos/alunosAtualiza', {dados: req.body})
     }else{
-        console.log('não ta indo pra pagina certa!!!')
         res.render('alunos/alunosCad', {dados: req.body})
     }
-    
-    
 })
 router.post('/verificaCad', (req, res)=>{
     // verificação de tamanho de string digitada no form
@@ -139,8 +136,7 @@ router.post('/visualizaCad', (req, res)=>{
 
         }
 
-
-        res.render('alunos/visualizaAlunoDados', {nsnipa: nsnipa, pesosKG: pesosKG, porcem: porcem, rate: rate, other: other})
+        res.render('alunos/visualizaAlunoDados', {nsnipa: nsnipa, pesosKG: pesosKG, porcem: porcem, rate: rate, other: other, email: req.body.email})
     })
 
 })

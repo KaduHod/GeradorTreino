@@ -83,12 +83,11 @@
         {{#each session}}
             <input type="hidden" name="session{{@key}}" value="{{this}}">
         {{/each}}
-    {{>_navbar}}
-    
-    <!--{{>_carousel}} 0-->
+    {{>_navbar}} 
     <div class="container mt-4 " >
         {{{body}}}
     </div>
+    
     <script src="../../scriptsJS/scriptsFrontEnd.js"></script>
     
 </body>

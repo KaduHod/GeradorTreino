@@ -45,7 +45,14 @@
             {{/each}}
         </select> <br>
         <button type="submit" class="btn btn-secondary">Escolher musculos</button>
+       
     </form>   
+     <form action="/users/paginaInicial" method="post" class="mt-4">
+        {{#each user}}
+            <input type="hidden" name="{{@key}}" value="{{this}}">
+        {{/each}}
+        <button type="submit" class="btn btn-secondary">Voltar para a pagina inicial</button>
+     </form>
 </div>
     
  

@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
     const users = require('./routes/users')
     const admin = require('./routes/admin')
     const aluno = require('./routes/aluno')
+    const cross = require('./routes/cross')
 
 const path = require('path')
 const session = require('express-session')
@@ -78,6 +79,9 @@ const flash = require('connect-flash')
 
         //Rota Aluno
         app.use('/aluno', aluno)
+
+        //Rota para treino de Cross
+        app.use('/cross', cross)
 
    
 

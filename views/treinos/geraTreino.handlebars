@@ -1,10 +1,28 @@
 
 <head>
   <style>
-
+    .containerTreino{
+      display: flex;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 2px 15px 23px grey;
+      padding: 10px;
+      background-image: url('/img/Treino.jpg');
+      background-size:cover;
+      background-position: 0px -200px;
+      justify-content: center;
+      padding-bottom: 150px;
+    }
+    .containerTreinoItem{
+      width: 90%;
+    }
   </style>
 </head>
-<table class="table table-dark">
+<div class="containerTreino">
+  
+  
+  <div class="containerTreinoItem">
+    <table class="table table-dark">
   <tr>
     {{#each nomesMusculos}}
     <th>
@@ -40,6 +58,15 @@
     </td>
     {{/each}}
   </tr>
-</table>
+    </table>
+    <form action="/treinos/" method="post">
+        {{#each dados}}
+        <input type="hidden" name="{{@key}}" value="{{this}}">
+        {{/each}}
+        <input type="submit" class="btn btn-dark" value="Voltar">
+    </form>
+  </div>
 
-<a href="/treinos/Formulario"><button type="button" class="btn btn-outline-dark">Voltar</button></a>
+</div>
+
+

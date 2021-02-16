@@ -64,5 +64,11 @@
             {{/each}}
         </tr>
     </table>
+    {{#if email}}
+    <form action="/users/paginaInicial" method="post">
+        <input type="hidden" name="email" value="{{email}}">
+        <input type="submit" class="btn btn-dark" value="Pagina inicial">
+    </form>
+    {{/if}}
     
 </body>

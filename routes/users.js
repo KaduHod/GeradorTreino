@@ -93,6 +93,39 @@ const {dataDDMMYY} = require('../funçõesAuxiliares/datas')
         
     })
 
+//Volta pagina inicial
+    router.post('/paginaInicial' ,(req, res)=>{
+        NovoUser.findOne({email: req.body.email}).then((query)=>{
+            //ESta rota é usada para retornar a pagina principal de aluno
+            // nele uso o email passado como parametro para pesquisar o usuario na db e depois pegar os dados necessarios para a pagina inicial
+
+            dados = query
+            dadosCadAluno1 = dados.cadAluno.dobras
+            dadosCadAluno2 = dados.cadAluno.objMedidas
+            delete dadosCadAluno2.DBRU
+            delete dadosCadAluno2.DBDF
+            delete dados.cadAluno.objNSNIPA.nome
+            dadosCadAluno3 = dados.cadAluno.objNSNIPA
+
+
+            req.session.userName = dados.userName
+            req.session.email = dados.email
+            req.session.sexo = dados.sexo
+            req.session.nascimentoISO = dados.nascimento
+            if(dados.EhAluno !== true){
+                req.session.nascimento = dataDDMMYY(dados.nascimento)
+            }
+            req.session.nome = dados.nome
+            req.session.idDB = dados._id
+            req.session.logged = true
+            req.session.EhAluno = dados.EhAluno
+
+            res.render('users/userInicioAluno', {dados: dados, viewCount: req.session.viewCoutn,  session: req.session, dadosCadAluno1: dadosCadAluno1, dadosCadAluno2: dadosCadAluno2, dadosCadAluno3: dadosCadAluno3})
+        }).catch((err)=>{
+            console.log(err)
+        })
+    })
+
 // Cadastro
     router.get('/cadastro', (req, res)=>{
         res.render('users/cadastro')

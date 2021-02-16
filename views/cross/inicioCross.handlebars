@@ -1,0 +1,187 @@
+<head>
+    <style>
+        .main{
+            box-shadow: 8px 8px 16px #1b1714;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background-image: url('/img/CrossCorpo.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .header{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            
+            justify-content: center;
+        }
+        .header h3{
+            color: rgb(231, 231, 231);
+        }
+        .corpoTitle{
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+        }
+        .corpoItem{
+            background-color: #dfe1e0;
+            width: 80%;
+            height: fit-content;
+            display: flex;
+            padding: 10px;
+        }
+        .itemBotaoVoltar{
+            background-color: #212529;
+            width: 10%;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            border-top-right-radius: 10px;
+            
+        }
+        .itemBotaoVoltar :hover{
+            background-color: #212529;
+            transition: 0.4s;
+        }
+        .corpoItemleft{
+            background-color: #dfe1e0;
+            width: 80%;
+            height: fit-content;
+            display: flex;
+            padding: 10px;
+            align-self: flex-end;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        .corpoItemleft h3, p{
+            color: #110f10;
+        }
+        .corpoItem h3, p{
+            color: #110f10;
+        }
+        .corpoTitleBlock{
+            display: flex;
+            
+            width: 40%;
+            
+        }
+        .borderRight{
+            border-right: 5px solid  #343434;
+        }
+        .borderleft{
+            border-left: 5px solid  #343434;
+        }        
+        .corporTitleBlockTitle{
+            width: 60%;
+            display: flex;
+            justify-content: center;
+            align-self: center;
+        }
+        .corpoTracoHorizontal{
+            width: 40%;
+            border: 3px solid  #343434;
+            height: 3px;
+            align-self: center;
+        }
+        .corpoItemDescLeft{
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-right: 25px;
+            
+        }
+        .corpoItemDescRight{
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 25px;
+            
+        }
+        .borderTopRigthRadius{
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            
+        }
+        .marginBottom{
+            margin-bottom: 30px;
+        }
+        .botao{
+            width: 170px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<div class="main">
+    <div class="header">
+        <div class="corpoTitle ">
+            <h3>Escolha o seu cross trainning</h3>
+        </div>
+    </div>
+    <div class="corpoItem borderTopRigthRadius marginBottom" >
+        <div class="corpoTitleBlock borderRight">
+            <div class='corporTitleBlockTitle'>
+                <h3>Tabata</h3>
+            </div>
+            <div class="corpoTracoHorizontal"></div>
+        </div>
+        <div class="corpoItemDescRight">
+            <p>Exercicos de membros inferiores, superiores, <br> core e multi articulares</p>
+            <p>Escolha o tempo de execução e descanso</p>
+            <p>Treino de abdomen separado</p>
+            <p>Organização pronta</p>
+        </div>  
+        <div class="botao" >
+            <form action="/cross/Tabata" method="post">
+                {{#each dados}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+                {{/each}}
+                <input type="submit" class="btn btn-dark" value="Gerar">
+            </form>
+        </div>      
+    </div>
+    <div class="corpoItemleft marginBottom"  >
+        <div class="botao" >
+            <form action="/cross/crossPersonalizado" method="post">
+                {{#each dados}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+                {{/each}}
+                <input type="submit" class="btn btn-dark" value="Gerar">
+            </form>
+        </div>
+        <div class="corpoItemDescLeft">
+            <p>Exercicos de membros inferiores, superiores, <br> core e multi articulares na sua ordem </p>
+            <p>Escolha a ordem dos exercicios </p>
+            <p>Escolha o tempo de execução e descanso </p>
+            <p>Treino de abdomen separado </p>
+        </div>  
+        <div class="corpoTitleBlock borderleft">
+            <div class="corpoTracoHorizontal"></div>
+            <div class='corporTitleBlockTitle' style="padding-left: 10px;">
+                <h3 >Seu treino personalizado</h3>
+            </div>
+        </div>        
+    </div>
+    <div class="itemBotaoVoltar">
+        <form action="/users/paginaInicial" method="post">
+                {{#each dados}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+                {{/each}}
+                <input type="submit" class="btn btn-dark" value="Voltar">
+        </form>
+    </div>
+    
+</div>
