@@ -6,13 +6,14 @@
             height: 100%;
             flex-direction: column;
             border-radius: 10px;
+            padding-top: 20px;
             box-shadow: 8px 8px 16px #010206;
             background-image: url('/img/TabataDescanso.jpg');
             background-position: 0px -50px;
             background-size: cover;
         }
         .TabataTitle{
-            padding-top: 30px;
+            padding-bottom: 30px;
             width: 100%;
             height: fit-content;
             display: flex;
@@ -55,14 +56,14 @@
             display: flex;
             flex: 0.4;
             margin: 5px;
-            border-right: 3px solid #01050a;
+            border-right: 4px solid #01050a;
             flex-direction: column;
         }
         .TabataMiddleRight{
             display: flex;
             flex: 0.4;
             margin: 5px;
-            border-left: 3px solid #01050a;
+            border-left: 4px solid #01050a;
             flex-direction: column;
         }
         .tracoHorinBottom{
@@ -79,6 +80,12 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
+        }
+        .TabataDescRight{
+            flex: 1.5;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
         }
         .botao{
             flex: 0.5;
@@ -109,12 +116,12 @@
 <body>
     <div class="corpoTabata" >
         <div class="TabataTitle">
-            <h3>Escolha o seu tempo de execução dos exercicios e tempo de descanso</h3>
+            <h3>Escolha o seu tempo de execução e descanso</h3>
         </div>
         <div class="TabataOptions">
             <div class="TabataOptionsItem flex_start">
                 <div class="TabataOptionTitle">
-                    <h2>30/10</h2>
+                    <h2>30/10 </h2>
                 </div>
                 <div class="TabataMiddleLeft">
                     <div class="tracoHorinBottom" ></div>
@@ -122,25 +129,47 @@
                 </div>
                 <div class="TabataDesc">
                     <br>
-                    <p>- Este descanso consiste em 30 segundos de execução dos exercicios e 10 segundos de descanço entre eles</p>
+                    <p> Este descanso consiste em 30 segundos de execução dos exercicios e 10 segundos de descanço entre eles</p>
                 </div>
                 <div class="botao" >
                      <form action="/cross/GeraTreinoTabata" method="post">
                         {{#each dados}}
                         <input type="hidden" name="{{@key}}" value="{{this}}">
                         {{/each}}
+                        <input type="hidden" name="tempo" value="30/10">
                         <input type="submit" class="btn btn-dark" value="Gerar">
                     </form>
                 </div>
             </div>
             <div class="TabataOptionsItem flex_end mt-4">
-                <div class="TabataOptionTitle">
-                    <h2>20/10</h2>
+                <div class="botao" >
+                     <form action="/cross/GeraTreinoTabata" method="post">
+                        {{#each dados}}
+                        <input type="hidden" name="{{@key}}" value="{{this}}">
+                        {{/each}}
+                        <input type="hidden" name="tempo" value="20/10">
+                        <input type="submit" class="btn btn-dark" value="Gerar">
+                    </form>
                 </div>
-                 <div class="TabataMiddleRight">
+                <div class="TabataDescRight">
+                    <br>
+                    <p> Este descanso consiste em 20 segundos de execução dos exercicios e 10 segundos de descanço entre eles</p>
+                </div>
+                <div class="TabataMiddleRight">
                     <div class="tracoHorinBottom" ></div>
                     <div class="tracoHorinTop" ></div>
                 </div>
+                <div class="TabataOptionTitle">
+                    <h2>20/10</h2>
+                </div>                 
+            </div>
+            <div class="itemBotaoVoltar">
+                <form action="/users/paginaInicial" method="post">
+                        {{#each dados}}
+                        <input type="hidden" name="{{@key}}" value="{{this}}">
+                        {{/each}}
+                        <input type="submit" class="btn btn-dark" value="Voltar">
+                </form>
             </div>
         </div>
     </div>

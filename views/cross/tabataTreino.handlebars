@@ -1,0 +1,55 @@
+<head>
+    <style>
+        .itemBotaoVoltar{
+            background-color: #212529;
+            width: 10%;
+            height: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            border-top-right-radius: 10px;
+            
+        }
+        .itemBotaoVoltar :hover{
+            background-color: #212529;
+            transition: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="tabataTreino" >
+        <table class="table table-dark">
+            <tr>
+                 <th> Quantidade</th>
+                {{#each numExer}}
+                    <th>{{this}}</th>
+                {{/each}}
+                <td>Execução</td>
+            </tr>
+            <tr>
+                <td> <strong>Nome do exercício</strong> </td>
+                {{#each treino}}
+                <td>{{this.Nome_exercicio}}</td>
+                {{/each}}
+                <td>{{dados.tempo}}s</td>
+            </tr>
+            <tr>
+                <td> <strong>Equipamento</strong> </td>
+                {{#each treino}}
+                <td>{{this.Equipamento}}</td>
+                {{/each}}
+                <td>{{dados.tempo}}s</td>
+            </tr>
+        </table>
+        <div class="itemBotaoVoltar">
+            <form action="/users/paginaInicial" method="post">
+                {{#each dados}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+                {{/each}}
+                <input type="submit" class="btn btn-dark" value="Voltar">
+            </form>
+        </div>
+    </div>
+</body>

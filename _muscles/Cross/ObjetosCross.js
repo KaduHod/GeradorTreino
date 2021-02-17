@@ -11,12 +11,14 @@ const importaCrossExercicio = require("./crossTrainingClass")
         Remada = new importaCrossExercicio.exercicioCrossTrainning(
             'Potencia', 'Remada', 'Membro superior', 'Barra , halter'
         )
-        
         BarraFixa = new importaCrossExercicio.exercicioCrossTrainning(
             'Potencia', 'Barra fixa', 'Membro superior', 'Barra fixa'
         )
         RoscaBiceps = new importaCrossExercicio.exercicioCrossTrainning(
             'Potencia', 'Rosca Biceps', 'Membro superior', 'Halteres ou barra'
+        )
+        FaltanteBarraFIxa = new importaCrossExercicio.exercicioCrossTrainning(
+            'Potencia', 'Barra fixa','Membro superior','Peso corporal'
         )
     //Membros inferiores
         AirSaquat = new importaCrossExercicio.exercicioCrossTrainning(
@@ -89,6 +91,9 @@ const importaCrossExercicio = require("./crossTrainingClass")
         CrucifixoInverso = new importaCrossExercicio.exercicioCrossTrainning(
             'Resistencia','Crucifixo inverso', 'Membro superior', 'TRX'
         )
+        FaltanteBarraFixaResistencia = new importaCrossExercicio.exercicioCrossTrainning(
+            'Resistencia', 'Barra fixa', 'Membro superior', 'Peso corporal'
+        )
     //Membro inferior
         BoxJump = new importaCrossExercicio.exercicioCrossTrainning(
             'Resistencia', 'Box Jump', 'Membro inferior', 'Box'
@@ -158,10 +163,18 @@ const importaCrossExercicio = require("./crossTrainingClass")
     pranchaShoulderTouch = new importaCrossExercicio.exercicioCrossTrainning(
         'Isometria', 'Prancha shoulder touch', 'Core', 'Peso corporal'
     )
+    FaltanteCanoaCaneleira = new importaCrossExercicio.exercicioCrossTrainning(
+        'Isometria', 'Canoa', 'Core', 'Caneleira'
+    )
+    //Multi-articular
+    FaltanteCanoa = new importaCrossExercicio.exercicioCrossTrainning(
+        'Isometria', 'Canoa', 'Multi-articular', 'Peso corporal'
+    )
 
     crossExercicios = 
     [
         Dip,Remada,BarraFixa,RoscaBiceps,AirSaquat,BackSquat,FrontSquat,OverHeadSquat,Pistol,ToesToBar,Obliquo,AbdominalInvertido,AbdominalInvertido,Tesoura,Thruster,LevantamentoOLimpico,Terra,ShoulderPress,Flexão_de_braço, CordaNaval, KetBellSwing, FlexãoTRX, CrucifixoInverso, BoxJump, WalkingLounges, AgachamentoUnilateral, BoxHighKneeAlternado, Burpee, PularCorda, Bicicleta, SuperMan, Rotação, RotaçãoToncoComPeso, HoldPullUp, ElevacaoLateralIso, ElevacaoFrontalIso, Cadeira, prancha, pranchaShoulderTouch,CadeiraSemEquipamento, Mountain_climber
     ]   
+    Faltante = [FaltanteBarraFIxa, FaltanteBarraFixaResistencia, FaltanteCanoa, FaltanteCanoaCaneleira]
 
 

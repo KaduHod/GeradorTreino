@@ -1,7 +1,8 @@
 require('../../_muscles/Cross/ObjetosCross')
 require('../../_muscles/Cross/chamaTreinoCross/VariaveisAtalhoCross')
+const {ExerciciosCross} = require('../../models/models')
 
-const ModelCross = require('./models/models')
+const ModelCross = require('../../models/models')
 
 function AdicionaExerciciosCrossParteCorpoRecrutada(arrayexercicios){
     arrayexercicios.map((exercicios)=>{

@@ -1,0 +1,343 @@
+<head>
+    <style>
+        .corpo{
+            display:flex;
+            flex-direction: column;
+            width: 100%;
+            background-image: url('/img/TabataPersonalizadoFoto.jpg');
+            background-position: center;
+            background-size: cover;
+            border-radius: 10px;
+            box-shadow: 8px 8px 18px #534039;
+            padding-top: 30px;
+        }
+        .doisItens{
+            display: flex;
+            padding: 10px;
+        }
+        .doisItensItem{
+            flex: 0.8;
+            margin: 10px;
+        }
+        .borderRight{
+            border-right: 2px solid #343a40;
+            padding-right: 20px;
+        }
+        .corpoTitle{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: fit-content;
+            color: #d1c9c6;
+        }
+        .itemColunm{
+            display: flex;
+            height: fit-content;
+            align-items: center;
+            background-color: ;
+        }
+        .ColunmItemContent{
+            height: fit-content;
+            flex: 3;
+            display: flex; 
+            padding: 10px;
+            background-color: #cac1bf;           
+        }
+        .ContentBlock{
+            display: flex;
+            align-items: center;
+        }
+        .ContentBlockInputs{
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: fit-content;
+        }
+        .ContentBlockInputsReverse{
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: fit-content;
+            flex-direction: row-reverse;
+            padding-right: 20px;
+        }
+        .borderLeft{
+            border-left: 2px solid grey;
+            
+        }
+        .tracoVertical{
+            background-color: #313237;
+            width: 4px;
+            height: 100%;
+        }
+        .borderRight{
+            border-right: 2px solid grey;
+           
+        }
+        .flex1{
+            flex: 1;
+        }
+        .flex3{
+            flex: 3;
+        }
+        .rowReverse{
+            display: flex;
+            flex-direction: row-reverse;
+        }
+        .justifyCenter{
+            justify-content: center;
+            padding-top: 8px;
+        }
+        .input{
+            margin-left: 10px;
+            padding-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .traco{
+            background-color: #313237;
+            width: 100%;
+            height: 4px;
+        }
+        .BeginRight{
+            display: flex;
+            flex-direction: row-reverse; 
+        }
+        .BeginLeft{
+            display: flex;
+        }
+        .RadiusBorderRight{
+            border-top-right-radius: 55px;
+            border-bottom-right-radius: 55px; 
+        }
+        .RadiusBorderLeft{
+            border-top-left-radius: 55px;
+            border-bottom-left-radius: 55px;
+        }
+        .ColunmItemEmpty{
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <form action="/cross/filtraCross" method="post">
+        {{#each dados}}
+            <input type="hidden" name="{{@key}}" value="{{this}}">
+        {{/each}}
+        <div class="corpo">
+            <div class="corpoTitle">
+                <h1>Escolha os exercícios do treino</h1>
+            </div>
+            
+            <div class="itemColunm BeginLeft mt-5">
+                <div class="ColunmItemContent RadiusBorderRight">
+                    <div class="ContentBlock justifyCenter flex1">
+                        <h5>Exercícios 1 e 2</h5>
+                    </div>
+                    <div  class="ContentBlock flex1">
+                        <div class="traco">
+                            
+                        </div>
+                        <div class="tracoVertical">
+                            
+                        </div>
+                    </div>
+                    <div class="ContentBlockInputs flex3">
+                        <div class="input mt-4">
+                            <h6>Categoria</h6> 
+                            <div class="">
+                                <select class="form-control" name="Categoria" id="Categoria">
+                                    <option value="Resistencia">Resistência</option>
+                                    <option value="Isometria">Isometria</option>
+                                    <option value="Potencia">Potência</option>
+                                </select>
+                            </div>            
+                        </div>
+                        <div class="input mt-4">
+                            <h6>Parte do corpo recrutada</h6> 
+                            <div class="">
+                                <select class="form-control" name="Parte_do_corpo_recrutada" id="Parte_do_corpo_recrutada">
+                                    <option value="Membro superior">Membro superior</option>
+                                    <option value="Membro inferior">Membro inferior</option>
+                                    <option value="Core">Core</option>
+                                    <option value="Multi-articular">Multi-articular</option>
+                                </select>
+                            </div>            
+                        </div>
+                        <div class="input mt-4">
+                            <h6>Equipamento</h6> 
+                            <div class="">
+                                <select class="form-control" name="Equipamento" id="Equipamento">
+                                    <option value="Peso corporal">Peso corporal</option>
+                                    <option value="Com Equipamento">Com equipamento</option>
+                                </select>
+                            </div>            
+                        </div>
+                    </div>
+                </div>
+                <div class="ColunmItemEmpty ">
+
+                </div>
+            </div>
+
+            <div class="itemColunm BeginRight mt-5">
+                <div class="ColunmItemContent rowReverse RadiusBorderLeft">
+                    <div class="ContentBlock justifyCenter flex1">
+                        <h5>Exercícios 3 e 4</h5>
+                    </div>
+                    <div  class="ContentBlock flex1">
+                        <div class="tracoVertical">
+                            
+                        </div>
+                        <div class="traco">
+                            
+                        </div>
+                    </div>
+                    <div class="ContentBlockInputsReverse flex3">
+                         <div class="input mt-4">
+                            <h6>Categoria</h6> 
+                            <div class="">
+                                <select class="form-control" name="Categoria" id="Categoria">
+                                    <option value="Resistencia">Resistência</option>
+                                    <option value="Isometria">Isometria</option>
+                                    <option value="Potencia">Potência</option>
+                                </select>
+                            </div>            
+                        </div>
+                        <div class="input mt-4">
+                            <h6>Parte do corpo recrutada</h6> 
+                            <div class="">
+                                <select class="form-control" name="Parte_do_corpo_recrutada" id="Parte_do_corpo_recrutada">
+                                    <option value="Membro superior">Membro superior</option>
+                                    <option value="Membro inferior">Membro inferior</option>
+                                    <option value="Core">Core</option>
+                                    <option value="Multi-articular">Multi-articular</option>
+                                </select>
+                            </div>            
+                        </div>
+                        <div class="input mt-4">
+                            <h6>Equipamento</h6> 
+                            <div class="">
+                                <select class="form-control" name="Equipamento" id="Equipamento">
+                                    <option value="Peso corporal">Peso corporal</option>
+                                    <option value="Com Equipamento">Com equipamento</option>
+                                </select>
+                            </div>            
+                        </div>
+                    </div>
+                </div>
+                <div class="ColunmItemEmpty">
+
+                </div>
+            </div>
+            
+            <div class="itemColunm BeginLeft mt-5">
+                <div class="ColunmItemContent RadiusBorderRight">
+                    <div class="ContentBlock justifyCenter flex1">
+                        <h5>Exercícios 5 e 6</h5>
+                    </div>
+                    <div  class="ContentBlock flex1">
+                        <div class="traco">
+                            
+                        </div>
+                        <div class="tracoVertical">
+                            
+                        </div>
+                    </div>
+                    <div class="ContentBlock flex3">
+                        <div class="ContentBlockInputs flex">
+                        <div class="input mt-4">
+                            <h6>Categoria</h6> 
+                            <div class="">
+                                <select class="form-control" name="Categoria" id="Categoria">
+                                    <option value="Resistencia">Resistência</option>
+                                    <option value="Isometria">Isometria</option>
+                                    <option value="Potencia">Potência</option>
+                                </select>
+                            </div>            
+                        </div>
+                        <div class="input mt-4">
+                            <h6>Parte do corpo recrutada</h6> 
+                            <div class="">
+                                <select class="form-control" name="Parte_do_corpo_recrutada" id="Parte_do_corpo_recrutada">
+                                    <option value="Membro superior">Membro superior</option>
+                                    <option value="Membro inferior">Membro inferior</option>
+                                    <option value="Core">Core</option>
+                                    <option value="Multi-articular">Multi-articular</option>
+                                </select>
+                            </div>            
+                        </div>
+                        <div class="input mt-4">
+                            <h6>Equipamento</h6> 
+                            <div class="">
+                                <select class="form-control" name="Equipamento" id="Equipamento">
+                                    <option value="Peso corporal">Peso corporal</option>
+                                    <option value="Com Equipamento">Com equipamento</option>
+                                </select>
+                            </div>            
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="ColunmItemEmpty ">
+
+                </div>
+            </div>
+
+            <div class="itemColunm BeginRight mt-5">
+                <div class="ColunmItemContent rowReverse RadiusBorderLeft">
+                    <div class="ContentBlock justifyCenter flex1">
+                        <h5>Exercícios 7 e 8</h5>
+                    </div>
+                    <div  class="ContentBlock flex1">
+                        <div class="tracoVertical">
+                            
+                        </div>
+                        <div class="traco">
+                            
+                        </div>
+                    </div>
+                    <div class="ContentBlockInputsReverse flex3">
+                         <div class="input mt-4">
+                            <h6>Categoria</h6> 
+                            <div class="">
+                                <select class="form-control" name="Categoria" id="Categoria">
+                                    <option value="Resistencia">Resistência</option>
+                                    <option value="Isometria">Isometria</option>
+                                    <option value="Potencia">Potência</option>
+                                </select>
+                            </div>            
+                        </div>
+                        <div class="input mt-4">
+                            <h6>Parte do corpo recrutada</h6> 
+                            <div class="">
+                                <select class="form-control" name="Parte_do_corpo_recrutada" id="Parte_do_corpo_recrutada">
+                                    <option value="Membro superior">Membro superior</option>
+                                    <option value="Membro inferior">Membro inferior</option>
+                                    <option value="Core">Core</option>
+                                    <option value="Multi-articular">Multi-articular</option>
+                                </select>
+                            </div>            
+                        </div>
+                        <div class="input mt-4">
+                            <h6>Equipamento</h6> 
+                            <div class="">
+                                <select class="form-control" name="Equipamento" id="Equipamento">
+                                    <option value="Peso corporal">Peso corporal</option>
+                                    <option value="Com Equipamento">Com equipamento</option>
+                                </select>
+                            </div>            
+                        </div>
+                    </div>
+                </div>
+                <div class="ColunmItemEmpty">
+
+                </div>
+            </div>
+            <hr>
+        </div>
+        <input type="submit" class="btn btn-dark mt-4" value="Filtrar">
+    </form>
+</body>
