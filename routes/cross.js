@@ -30,95 +30,49 @@ router.post('/crossPersonalizado', (req, res)=>{
 
 router.post('/filtraCross', (req, res)=>{
     
-    function filtraExercicio(query, inputs){
-        arrExercicios = []
-        for(i=0; i<4; i++){
-            arrValoresDoExercicio = []
-            for(propriedade in inputs){                
-                if(propriedade == "Categoria"){
-                    arrValoresDoExercicio.push(inputs[propriedade][i])
-                }
-                if(propriedade == 'Parte_do_corpo_recrutada'){
-                    arrValoresDoExercicio.push(inputs[propriedade][i])
-                }
-                if(propriedade == 'Equipamento'){
-                    arrValoresDoExercicio.push(inputs[propriedade][i])
-                    
-                }
 
+    crossObjInputs = {Categoria :req.body.Categoria,Parte_do_corpo_ecrutada: req.body.Parte_do_corpo_recrutada,Equipamento :req.body.Equipamento}
 
-                
-
-                /*if(arrValoresDoExercicio.length == 2){
-                    console.log(arrValoresDoExercicio)
-                    Result = query.filter((el)=>{
-                        arrExerciciosAntesArray = []
-    
-                        if(arrValoresDoExercicio[2] == 'Peso corporal'){
-                            if(el.exercicio.Categoria == arrValoresDoExercicio[0] && el.exercicio.Parte_do_corpo_recrutada == arrValoresDoExercicio[1] && el.exercicio.Equipamento == 'Peso corporal'){
-                                console.log(el)
-                                arrExerciciosAntesLoop.push(el)
-                            }
-                        }else{
-                            if(arrValoresDoExercicio[2] !== 'Peso corporal'){
-                                if(el.exercicio.Categoria == arrValoresDoExercicio[0] && el.exercicio.Parte_do_corpo_recrutada == arrValoresDoExercicio[1] && el.exercicio.Equipamento !== 'Peso corporal'){
-                                    console.log(el)
-                                    arrExerciciosAntesLoop.push(el)
-                                }
-                            }
-                        }
-                    })
-                    arrExercicios.push(Result) 
-                }*/
-                
-                 
-            }
-            console.log(arrValoresDoExercicio.length)
-            if(arrValoresDoExercicio.length == 3){
-                console.log(arrValoresDoExercicio)
-            }
-            
-        }
-        //return arrExercicios
-
-
-
-
-
-
-
-        /*Result = query.filter((el)=>{
-            arrExerciciosAntesLoop = []
-            
-                if(inputs[i].Equipamento == 'Peso corporal'){
-                    if(el.exercicio.Categoria == inputs[i].Categoria && el.exercicio.Parte_do_corpo_recrutada == inputs[i].Parte_do_corpo_recrutada && el.exercicio.Equipamento == 'Peso corporal'){
-                        arrExerciciosAntesLoop.push(el)
-                    }
-                }else{
-                    if(inputs[i].Equipamento !== 'Peso corporal'){
-                        if(el.exercicio.Categoria == inputs[i].Categoria && el.exercicio.Parte_do_corpo_recrutada == inputs[i].Parte_do_corpo_recrutada && el.exercicio.Equipamento !== 'Peso corporal'){
-                            arrExerciciosAntesLoop.push(el)
-                        }
-                    }
-                }
-                console.log(i)
-            
-            return arrExerciciosAntesLoop
-        })
-        
-        return Result*/
-
+    arrayExercicio = [
+        dupla1 = [], dupla2 = [], dupla3 = [], dupla4 = []
+    ]
+    for(prop in crossObjInputs){
+        dupla1.push(crossObjInputs[prop][0])
+        dupla2.push(crossObjInputs[prop][1])
+        dupla3.push(crossObjInputs[prop][2])
+        dupla4.push(crossObjInputs[prop][3])
     }
+    //console.log(arrayExercicio)
 
-    crossObjInputs = {Categoria :req.body.Categoria,Parte_do_corpo_recrutada: req.body.Parte_do_corpo_recrutada,Equipamento :req.body.Equipamento}
+
+    
     
 
     ExerciciosCross.find().then((query)=>{
-        ExerciciosNaoFiltrados = filtraExercicio(query, crossObjInputs)
-        console.log(ExerciciosNaoFiltrados)
+        console.log('----')
+        arrayExercicio.reduce((valorAcumulador, valorArray)=>{
+            // tenho que comparar a query com o valorArray (descrição do exercicio)
+                //Separei a desc do exercicio
+                // agora tenho que comparar a cada valor do array query
+                console.log(valorArray)
+            query.map((el)=>{
+                if(valorArray[3] == 'Peso corporal'){
+                    if(el.Categoria = valorArray[0] && el.Parte_do_corpo_recrutada == valorArray[1]){
+                        console.log(el)
+                        console.log('Peso corporal')
+                    }
+                }else{
+                    if(el.Categoria = valorArray[0] && el.Parte_do_corpo_recrutada == valorArray[1]){
+                        console.log('n')
+                    }
+                }
+                
+            })
+            console.log('-----')
+        },{dupla1:[],dupla2:[],supla3:[],dupla4:[]})
         
          
-        res.render('cross/testeTabataPersonalizado',{dados:  req.body, treino: ExerciciosNaoFiltrados})
+        res.render('cross/testeTabataPersonalizado',{dados:  req.body})
     })
 })
 
