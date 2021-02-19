@@ -42,34 +42,36 @@ router.post('/filtraCross', (req, res)=>{
         dupla3.push(crossObjInputs[prop][2])
         dupla4.push(crossObjInputs[prop][3])
     }
-    //console.log(arrayExercicio)
+    
 
 
     
-    
+    console.log(arrayExercicio)
 
     ExerciciosCross.find().then((query)=>{
-        console.log('----')
-        arrayExercicio.reduce((valorAcumulador, valorArray)=>{
-            // tenho que comparar a query com o valorArray (descrição do exercicio)
-                //Separei a desc do exercicio
-                // agora tenho que comparar a cada valor do array query
-                console.log(valorArray)
-            query.map((el)=>{
-                if(valorArray[3] == 'Peso corporal'){
-                    if(el.Categoria = valorArray[0] && el.Parte_do_corpo_recrutada == valorArray[1]){
-                        console.log(el)
-                        console.log('Peso corporal')
+        exerciciosDentroDasCondições = []
+        query.map((el)=>{
+            arrayExercicio.map((elArrayExercicio)=>{
+                if(elArrayExercicio[2] == 'Peso corporal'){
+                    
+                    if(el.exercicio.Equipamento == 'Peso corporal' && el.exercicio.Categoria == elArrayExercicio[0] && el.exercicio.Parte_do_corpo_recrutada == elArrayExercicio[1]){
+                        exerciciosDentroDasCondições.push(el)
                     }
                 }else{
-                    if(el.Categoria = valorArray[0] && el.Parte_do_corpo_recrutada == valorArray[1]){
-                        console.log('n')
+                    if(el.exercicio.Equipamento !== 'Peso corporal'){
+                        if(el.exercicio.Equipamento !== 'Peso corporal' && el.exercicio.Categoria == elArrayExercicio[0] && el.exercicio.Parte_do_corpo_recrutada == elArrayExercicio[1]){
+                            exerciciosDentroDasCondições.push(el)
+                        }
                     }
                 }
-                
-            })
-            console.log('-----')
-        },{dupla1:[],dupla2:[],supla3:[],dupla4:[]})
+            })            
+        })
+
+        console.log(exerciciosDentroDasCondições)
+
+      
+        
+        
         
          
         res.render('cross/testeTabataPersonalizado',{dados:  req.body})
