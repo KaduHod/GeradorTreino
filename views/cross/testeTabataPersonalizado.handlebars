@@ -1,29 +1,29 @@
 {{#each dados}}
     <input type="hidden" name="{{@key}}" value="{{this}}">
 {{/each}}
-<table class="table" >
+<table class="table table-dark" >
     <tr>
         <th>Nome</th>
-    {{#each treino}}
-        <th>{{this.exercicio.Nome_exercicio}}</th>
+    {{#each nomes}}
+        <th>{{this}}</th>
     {{/each}}
     </tr>
     <tr>
         <td>Categoria</td>
-    {{#each treino}}
-        <td>{{this.exercicio.Categoria}}</td>
+    {{#each categorias}}
+        <td>{{this}}</td>
     {{/each}}
     </tr>
     <tr>
         <td>Região</td><!--Parte do corpo recrutada-->
-    {{#each treino}}
-        <td>{{this.exercicio.Parte_do_corpo_recrutada}}</td>
+    {{#each regioes}}
+        <td>{{this}}</td>
     {{/each}}
     </tr>
     <tr>
         <td>Equipamento</td>
-    {{#each treino}}
-        <td>{{this.exercicio.Equipamento}}</td>
+    {{#each equipamentos}}
+        <td>{{this}}</td>
     {{/each}}
     </tr>
 </table>
