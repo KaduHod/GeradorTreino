@@ -77,6 +77,9 @@ router.get('/exclude/:id', (req, res)=>{
     })
 })
 
+router.get('/CrudGeral', (req, res)=>{
+    res.render('admin/CrudGeralOptions')
+})
 
 
 

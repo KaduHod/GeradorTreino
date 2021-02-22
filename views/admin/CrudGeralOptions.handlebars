@@ -1,0 +1,73 @@
+<head>
+    <style>
+        body{
+            background-image: url('/img/CrudGeral.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .mesaContainer{
+            width: 100%;
+            height: 600px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px black;
+            display: flex;
+        }
+        .mesaOptions{
+            flex: 1;
+            border: 1px solid red;
+            display: flex;
+            flex-direction: column;
+        }
+        .Option{
+            border: 1px solid green;
+            width: 100%;
+            height: 100%;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .Option :hover{
+            transition: 0,5s;
+            background-color: grey;
+            box-shadow: 2px 2px 2px black;
+            width: 100%;
+            height: 100%;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        
+        .mesaContentContainer{
+            flex: 4;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="mesaContainer">
+        <div class='mesaOptions'>
+            <div class="Option" >
+                <h3>Alunos</h3>
+            </div>
+            <div class="Option" >
+                <h3>User</h3>
+            </div>
+            <div class="Option" >
+                <h3>Musculação</h3>
+            </div>
+            <div class="Option" >
+                <h3>Cross</h3>
+            </div>
+
+        </div>
+        <div class="mesaContentContainer">
+
+        </div>
+
+    </div>
+</body>

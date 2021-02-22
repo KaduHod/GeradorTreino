@@ -31,7 +31,7 @@ router.post('/crossPersonalizado', (req, res)=>{
 
 router.post('/filtraCross', async (req, res)=>{
     
-
+    console.log(req.body)
     crossObjInputs = {Categoria :req.body.Categoria,Parte_do_corpo_ecrutada: req.body.Parte_do_corpo_recrutada,Equipamento :req.body.Equipamento}
 
     //console.log(req.body)
@@ -157,6 +157,14 @@ router.post('/filtraCross', async (req, res)=>{
         treino.map((el)=>{
             el.map((el2)=>{
                 arrNomesExer.push(el2.exercicio.Nome_exercicio)
+                if(el2.exercicio.Categoria == 'Potencia'){
+                    el2.exercicio.Categoria = 'Potência'
+                }
+                if(el2.exercicio.Categoria == 'Resistencia'){
+                    el2.exercicio.Categoria = 'Resistência'
+                }
+                
+
                 arrCatExer.push(el2.exercicio.Categoria)
                 arrRegiaoExer.push(el2.exercicio.Parte_do_corpo_recrutada)
                 arrEquipExer.push(el2.exercicio.Equipamento)
@@ -185,10 +193,10 @@ router.post('/filtraCross', async (req, res)=>{
             }
         }*/
 
-        
+        user = {userName: req.body.userName, email: req.body.email, sexo: req.body.sexo, nascimentoISO: req.body.nascimentoISO, nome: req.body.nome, idDB: req.body.idDB, logged: true, EhAluno: req.body.EhAluno}
         //console.log(treino)
          
-        res.render('cross/testeTabataPersonalizado',{dados:  req.body, treino:treino, nomes: arrNomesExer, categorias: arrCatExer, regioes: arrRegiaoExer, equipamentos: arrEquipExer})
+        res.render('cross/testeTabataPersonalizado',{dados:  req.body, treino:treino, nomes: arrNomesExer, categorias: arrCatExer, regioes: arrRegiaoExer, equipamentos: arrEquipExer, Descanso: req.body.descanso, user: user})
 
     })
     

@@ -1,29 +1,68 @@
-{{#each dados}}
+<head>
+    <style>
+        body{
+            height: 100%;
+            background-image: url('/img/FotoCP.jpg');
+            background-position: center;
+            background-size: cover;
+            
+        }
+        .corpo{
+            background-color: rgba(255, 235, 205, 0);
+        }
+    </style>
+
+</head>
+<body>
+    {{#each dados}}
     <input type="hidden" name="{{@key}}" value="{{this}}">
 {{/each}}
-<table class="table table-dark" >
-    <tr>
-        <th>Nome</th>
-    {{#each nomes}}
-        <th>{{this}}</th>
-    {{/each}}
-    </tr>
-    <tr>
-        <td>Categoria</td>
-    {{#each categorias}}
-        <td>{{this}}</td>
-    {{/each}}
-    </tr>
-    <tr>
-        <td>Região</td><!--Parte do corpo recrutada-->
-    {{#each regioes}}
-        <td>{{this}}</td>
-    {{/each}}
-    </tr>
-    <tr>
-        <td>Equipamento</td>
-    {{#each equipamentos}}
-        <td>{{this}}</td>
-    {{/each}}
-    </tr>
-</table>
+<div class="corpo" >
+    <div class="" >
+        <div class="" >
+        <h1 style="color: white;">Seu treino personalizado</h1>
+        </div>
+        <table class="table table-dark  " >
+            <tr>
+                <th>Nome</th>
+            {{#each nomes}}
+                <th>{{this}}</th>
+            {{/each}}
+            </tr>
+            <tr>
+                <td>Categoria</td>
+            {{#each categorias}}
+                <td>{{this}}</td>
+            {{/each}}
+            </tr>
+            <tr>
+                <td>Região</td><!--Parte do corpo recrutada-->
+            {{#each regioes}}
+                <td>{{this}}</td>
+            {{/each}}
+            </tr>
+            <tr>
+                <td>Equipamento</td>
+            {{#each equipamentos}}
+                <td>{{this}}</td>
+            {{/each}}
+            </tr>
+            <tr>
+                <td>Descanso</td>
+                <td colspan="8" >{{Descanso}}</td>
+            </tr>
+        </table>
+        <form action="/users/paginaInicial" method="post" class="mt-4">
+        {{#each dados}}
+            <input type="hidden" name="{{@key}}" value="{{this}}">
+        {{/each}}
+        <button type="submit" class="btn btn-secondary">Voltar para a pagina inicial</button>
+     </form>
+
+    </div>
+
+</div>
+
+
+
+</body>

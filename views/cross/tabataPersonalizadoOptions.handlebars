@@ -1,14 +1,16 @@
 <head>
     <style>
+        body{
+            background-image: url('/img/TabataPersonalizadoFoto.jpg');
+            background-position: center;
+            background-size: cover;
+        }
         .corpo{
             display:flex;
             flex-direction: column;
             width: 100%;
-            background-image: url('/img/TabataPersonalizadoFoto.jpg');
-            background-position: center;
-            background-size: cover;
             border-radius: 10px;
-            box-shadow: 8px 8px 18px #534039;
+            border: 4px solid #cac1bf;
             padding-top: 30px;
         }
         .doisItens{
@@ -59,6 +61,14 @@
             justify-content: flex-start;
             height: fit-content;
             flex-direction: row-reverse;
+            padding-right: 20px;
+        }
+        .ContentBlockInputsDescanso{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: fit-content;
+            width: 100%;
             padding-right: 20px;
         }
         .borderLeft{
@@ -336,8 +346,49 @@
 
                 </div>
             </div>
-            <hr>
+            <div class="itemColunm BeginLeft mt-5">
+                <div class="ColunmItemContent RadiusBorderRight">
+                    <div class="ContentBlock justifyCenter flex1">
+                        <h5>Descanso</h5>
+                    </div>
+                    <div  class="ContentBlock flex1">
+                        <div class="traco">
+                            
+                        </div>
+                        <div class="tracoVertical">
+                            
+                        </div>
+                    </div>
+                    <div class="ContentBlock flex3">
+                        <div class="ContentBlockInputsDescanso flex">
+                        <div class="input mt-4" style="justify-self: center;">
+                            <div class="">
+                                <select name="descanso" class="form-select" aria-label="Default select example">
+                                    <option value="30/10">30/10</option>
+                                    <option value="20/10">20/10</option>
+                                </select>          
+                        
+
+                            </div>            
+                        </div>
+                        
+                    </div>
+                    </div>
+                </div>
+                <div class="ColunmItemEmpty ">
+
+                </div>
+            </div>
+
+            
+        <input type="submit" class="btn btn-dark mt-4" value="Filtrar" style="margin: 10px;">
+        
         </div>
-        <input type="submit" class="btn btn-dark mt-4" value="Filtrar">
     </form>
+    <form action="/users/paginaInicial" method="post" class="mt-4">
+        {{#each dados}}
+            <input type="hidden" name="{{@key}}" value="{{this}}">
+        {{/each}}
+        <button type="submit" class="btn btn-secondary">Voltar para a pagina inicial</button>
+     </form>
 </body>
