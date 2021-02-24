@@ -21,51 +21,82 @@
             flex-direction: column;
         }
         .Option{
-            border: 1px solid green;
-            width: 100%;
-            height: 100%;
             flex: 1;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
         }
-        .Option :hover{
-            transition: 0,5s;
+        .Option:hover{
             background-color: grey;
-            box-shadow: 2px 2px 2px black;
-            width: 100%;
-            height: 100%;
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            
+            transition: 0.7s;
         }
         
         .mesaContentContainer{
+            margin-left: 20px;
             flex: 4;
             border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+        }
+        .OptionOptions{
+            flex:1;
+            border: 1px solid green;
+            display: flex;
+        }
+        .OptionsResults{
+            flex: 8;
         }
     </style>
 </head>
-<body>
+
+<body >
+    <script>
+    function teste(){
+        
+        var newu = document.querySelector('.OptionOptions')
+        if(newu.children.length < 2){
+            elemento1 = document.createElement('novo')
+            elemento1.style.flex = '1'
+            elemento1.innerText = 'idade'
+
+
+            elemento2 = document.createElement('novo1')
+            elemento2.style.flex = '1'
+            elemento2.innerText = 'Nome'
+
+            elements = [elemento1,elemento2]
+            elements.forEach(el => el.style.justifyContent = 'center')
+            elements.forEach(el => newu.append(el))
+        }else{
+            elements.forEach(el => el.style.boxShadow = '2px 2px 5px red')
+        }
+        
+        
+    }
+</script>
     <div class="mesaContainer">
         <div class='mesaOptions'>
-            <div class="Option" >
-                <h3>Alunos</h3>
+            <div class="Option" onclick="teste()">
+                Users
             </div>
-            <div class="Option" >
-                <h3>User</h3>
+            <div class="Option">
+                Alunos
             </div>
-            <div class="Option" >
-                <h3>Musculação</h3>
+            <div class="Option">
+                Musculação
             </div>
-            <div class="Option" >
-                <h3>Cross</h3>
+            <div class="Option">
+                Cross
             </div>
 
         </div>
         <div class="mesaContentContainer">
+            <div class="OptionOptions">
+                
+            </div>
+            <div class="OptionsResults">
+
+            </div>
 
         </div>
 
