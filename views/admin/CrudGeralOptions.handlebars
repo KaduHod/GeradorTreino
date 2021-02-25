@@ -1,5 +1,6 @@
 <head>
     <style>
+
         body{
             background-image: url('/img/CrudGeral.jpg');
             background-position: center;
@@ -52,23 +53,85 @@
 <body >
     <script>
     function teste(){
-        
+        // preciso aprender a criar inputs dinamicamente
         var newu = document.querySelector('.OptionOptions')
         if(newu.children.length < 2){
-            elemento1 = document.createElement('novo')
-            elemento1.style.flex = '1'
-            elemento1.innerText = 'idade'
+            // div para pesquisa por idade
+            var pesqIdade = document.createElement('div')
+            pesqIdade.style.display = 'flex'
+            pesqIdade.style.flex = '1'
+            pesqIdade.style.padding = '15px'
+            pesqIdade.style.alingItems = 'center'
+            pesqIdade.style.justifyContent = 'center'
+            newu.appendChild(pesqIdade)
+            
+                //Campo de pesquisa por nome
+                var titulo = document.createElement('h6')
+                var tituloNome = document.createTextNode('Pesquisa por idade')
+                titulo.appendChild(tituloNome)
+
+                var campoIdadePesq = document.createElement('input')
+                campoIdadePesq.style.width = '200px'
+                campoIdadePesq.style.height = '50px'
+                campoIdadePesq.style.flex = '1'
+                campoIdadePesq.setAttribute('type','number')
+                campoIdadePesq.setAttribute('name','pesqIdade')
+                pesqIdade.appendChild(titulo)
+                pesqIdade.appendChild(campoIdadePesq)
+                
+                
+
+            // div para pesquisa por nome
+            var pesqNome = document.createElement('div')
+            pesqNome.style.display = 'flex'
+            pesqNome.style.flex = '1'
+            pesqNome.style.padding = '15px'
+            pesqNome.style.alingItems = 'center'
+            pesqNome.style.justifyContent = 'center'
+            newu.appendChild(pesqNome)
+                // campo para pesquisa por nome
+                var tituloNome = document.createElement('h6')
+                var tituloNomeNode = document.createTextNode('Pesquisa por nome')
+                tituloNome.appendChild(tituloNomeNode)
+
+                var campoNomePes = document.createElement('input')
+                campoNomePes.style.flex = '1'
+                campoNomePes.style.width = '200px'
+                campoNomePes.style.height = '50px'
+                campoNomePes.setAttribute('type','text')
+                campoNomePes.setAttribute('name','pesqNome')
+                pesqNome.appendChild(tituloNome)
+                pesqNome.appendChild(campoNomePes)
 
 
-            elemento2 = document.createElement('novo1')
-            elemento2.style.flex = '1'
-            elemento2.innerText = 'Nome'
 
-            elements = [elemento1,elemento2]
-            elements.forEach(el => el.style.justifyContent = 'center')
-            elements.forEach(el => newu.append(el))
+            // div para pesquisa por email
+            var pesqEmail = document.createElement('div')
+            pesqEmail.style.display = 'flex'
+            pesqEmail.style.flex = '1'
+            pesqEmail.style.padding = '15px'
+            pesqEmail.style.alingItems = 'center'
+            pesqEmail.style.justifyContent = 'center'
+            newu.appendChild(pesqEmail)
+                //campo de pesquisa por email
+                var tituloEmail = document.createElement('h6')
+                var tituloEmailNode = document.createTextNode('Pesquisa por email')
+                tituloEmail.appendChild(tituloEmailNode)
+                
+                var campoEmailPesq = document.createElement('input')
+                campoEmailPesq.style.width = '200px'
+                campoEmailPesq.style.height = '50px'
+                campoEmailPesq.style.flex = '1'
+                campoEmailPesq.setAttribute('type','text')
+                campoEmailPesq.setAttribute('name','pesqEmail')
+                pesqEmail.appendChild(tituloEmail)
+                pesqEmail.appendChild(campoEmailPesq)
+
+            
+            
+            
         }else{
-            elements.forEach(el => el.style.boxShadow = '2px 2px 5px red')
+            alert('Opção ja selecionada CARALHO')
         }
         
         
@@ -97,7 +160,7 @@
             <div class="OptionsResults">
 
             </div>
-
+ 
         </div>
 
     </div>

@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require("mongoose")
 const { NovoUser } = require("../models/usuario")
+const models = require('../models/models')
 const {dataDDMMYY} = require('../funçõesAuxiliares/datas')
 const {verificaCadastro} = require('../funçõesAuxiliares/cadastro')
 
@@ -78,6 +79,12 @@ router.get('/exclude/:id', (req, res)=>{
 })
 
 router.get('/CrudGeral', (req, res)=>{
+    NovoUser.find().then((queryUser)=>{
+        console.log(queryUser)
+    }).catch((err)=>{
+        console.log(err + 'Erro ao consultar dados de users')
+    })
+
     res.render('admin/CrudGeralOptions')
 })
 
