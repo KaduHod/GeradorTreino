@@ -80,7 +80,7 @@ router.get('/exclude/:id', (req, res)=>{
 
 router.get('/CrudGeral', (req, res)=>{
     NovoUser.find().then((queryUser)=>{
-        console.log(queryUser)
+        //console.log(queryUser)
     }).catch((err)=>{
         console.log(err + 'Erro ao consultar dados de users')
     })

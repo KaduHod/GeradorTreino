@@ -33,7 +33,7 @@
         }
         
         .mesaContentContainer{
-            margin-left: 20px;
+            margin-left: 10px;
             flex: 4;
             border: 1px solid black;
             display: flex;
@@ -46,6 +46,20 @@
         }
         .OptionsResults{
             flex: 8;
+            display: flex;
+            flex-direction: column;
+        }
+        .OptionsResultsResponse{
+            flex: 4;
+        }
+        .OptionsResults{
+            align-self: flex-end;
+            margin: 5px;
+        }
+        
+        .Pesquise{
+            display: flex;
+            align-items: center;
         }
     </style>
 </head>
@@ -56,76 +70,54 @@
         // preciso aprender a criar inputs dinamicamente
         var newu = document.querySelector('.OptionOptions')
         if(newu.children.length < 2){
-            // div para pesquisa por idade
-            var pesqIdade = document.createElement('div')
-            pesqIdade.style.display = 'flex'
-            pesqIdade.style.flex = '1'
-            pesqIdade.style.padding = '15px'
-            pesqIdade.style.alingItems = 'center'
-            pesqIdade.style.justifyContent = 'center'
-            newu.appendChild(pesqIdade)
-            
-                //Campo de pesquisa por nome
-                var titulo = document.createElement('h6')
-                var tituloNome = document.createTextNode('Pesquisa por idade')
-                titulo.appendChild(tituloNome)
+            arr_titlos = ['Nome', 'Idade', 'Email']
+            arr_titlos.forEach((titulo)=>{
+                console.log(titulo)
+                if(titulo == 'Idade'){
+                    div = document.createElement('div')
+                    div.style.display = 'flex'
+                    div.style.alignItems = 'center'
+                    div.style.justifyContent = 'center'
+                    div.style.border = '1px solid red'
+                    div.style.padding = '5px'
+                    div.setAttribute('name',`divUser${titulo}`)
+                    newu.appendChild(div)
 
-                var campoIdadePesq = document.createElement('input')
-                campoIdadePesq.style.width = '200px'
-                campoIdadePesq.style.height = '50px'
-                campoIdadePesq.style.flex = '1'
-                campoIdadePesq.setAttribute('type','number')
-                campoIdadePesq.setAttribute('name','pesqIdade')
-                pesqIdade.appendChild(titulo)
-                pesqIdade.appendChild(campoIdadePesq)
-                
-                
+                    idadeTitle = document.createElement('h6')
+                    titulo_ = document.createTextNode(titulo)
+                    idadeTitle.appendChild(titulo_)
+                    div.appendChild(idadeTitle)
 
-            // div para pesquisa por nome
-            var pesqNome = document.createElement('div')
-            pesqNome.style.display = 'flex'
-            pesqNome.style.flex = '1'
-            pesqNome.style.padding = '15px'
-            pesqNome.style.alingItems = 'center'
-            pesqNome.style.justifyContent = 'center'
-            newu.appendChild(pesqNome)
-                // campo para pesquisa por nome
-                var tituloNome = document.createElement('h6')
-                var tituloNomeNode = document.createTextNode('Pesquisa por nome')
-                tituloNome.appendChild(tituloNomeNode)
+                    input = document.createElement('INPUT')
+                    input.setAttribute('type','number')
+                    input.setAttribute('name',`UsersCampo${titulo}`)
+                    input.setAttribute('id',`Campo${titulo}`)
+                    input.setAttribute('class',`form-control`)
+                    input.style.flex = '1'
+                    div.appendChild(input)
+                    console.log(div.childNodes)
+                }else{
+                    
+                    div = document.createElement('div')
+                    div.setAttribute('name',`divUser${titulo}`)
+                    div.style.display = 'flex'
+                    div.style.alignItems = 'center'
+                    div.style.border = '1px solid red'
+                    div.style.padding = '5px'
+                    newu.appendChild(div)
 
-                var campoNomePes = document.createElement('input')
-                campoNomePes.style.flex = '1'
-                campoNomePes.style.width = '200px'
-                campoNomePes.style.height = '50px'
-                campoNomePes.setAttribute('type','text')
-                campoNomePes.setAttribute('name','pesqNome')
-                pesqNome.appendChild(tituloNome)
-                pesqNome.appendChild(campoNomePes)
+                    input = document.createElement('INPUT')
+                    input.setAttribute('type','text')
+                    input.setAttribute('id',`UsersCampo${titulo}`)
+                    input.setAttribute('placeholder',titulo)
+                    input.setAttribute('class',`form-control`)
+                    div.appendChild(input)
 
+                    console.log(div.childNodes)
 
-
-            // div para pesquisa por email
-            var pesqEmail = document.createElement('div')
-            pesqEmail.style.display = 'flex'
-            pesqEmail.style.flex = '1'
-            pesqEmail.style.padding = '15px'
-            pesqEmail.style.alingItems = 'center'
-            pesqEmail.style.justifyContent = 'center'
-            newu.appendChild(pesqEmail)
-                //campo de pesquisa por email
-                var tituloEmail = document.createElement('h6')
-                var tituloEmailNode = document.createTextNode('Pesquisa por email')
-                tituloEmail.appendChild(tituloEmailNode)
-                
-                var campoEmailPesq = document.createElement('input')
-                campoEmailPesq.style.width = '200px'
-                campoEmailPesq.style.height = '50px'
-                campoEmailPesq.style.flex = '1'
-                campoEmailPesq.setAttribute('type','text')
-                campoEmailPesq.setAttribute('name','pesqEmail')
-                pesqEmail.appendChild(tituloEmail)
-                pesqEmail.appendChild(campoEmailPesq)
+                }
+            })
+            console.log(newu.childNodes)
 
             
             
@@ -134,6 +126,14 @@
             alert('Opção ja selecionada CARALHO')
         }
         
+        
+    }
+    function filtraQuery(){
+        var divResultado = document.getElementsByClassName('OptionResultsResponse')
+        inputNome = document.getElementsByName('UsersCampoNome')
+        inputIdade = document.getElementById('CampoIdade')
+
+        console.log(inputIdade.value)
         
     }
 </script>
@@ -155,10 +155,18 @@
         </div>
         <div class="mesaContentContainer">
             <div class="OptionOptions">
+                <div class="Pesquise">
+                    <h6>Pesquise por:</h6>
+                </div>
                 
             </div>
             <div class="OptionsResults">
-
+                <div class="OptionsResultsResponse">
+                    oi
+                </div>
+                <div class="botaoResults">
+                    <button class="btn btn-success" onclick="filtraQuery()" >pesquisar</button>
+                </div>
             </div>
  
         </div>
