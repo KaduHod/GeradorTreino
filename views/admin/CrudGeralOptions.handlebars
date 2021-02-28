@@ -12,20 +12,21 @@
             height: 600px;
             background-color: white;
             border-radius: 10px;
-            box-shadow: 2px 2px 5px black;
             display: flex;
         }
         .mesaOptions{
             flex: 1;
-            border: 1px solid red;
             display: flex;
             flex-direction: column;
+            box-shadow: 5px 0px 4px rgb(110, 110, 110);
         }
         .Option{
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            border-bottom: 1px solid grey;
+            border-right: 1px solid grey;
         }
         .Option:hover{
             background-color: grey;
@@ -33,44 +34,53 @@
         }
         
         .mesaContentContainer{
-            margin-left: 10px;
+            
             flex: 4;
-            border: 1px solid black;
             display: flex;
             flex-direction: column;
         }
         .OptionOptions{
             flex:1;
-            border: 1px solid green;
             display: flex;
+            padding-left: 10px;
+            box-shadow: 0px 5px 4px rgb(110, 110, 110);
         }
         .OptionsResults{
-            flex: 8;
+            
+            flex: 7;
+            display:flex;
+            flex-direction: column;
+            padding-left: 10px;
+        }
+        .OptionsResultsResponse{
+            height: 90%;
             display: flex;
             flex-direction: column;
         }
-        .OptionsResultsResponse{
-            flex: 4;
-        }
-        .OptionsResults{
-            align-self: flex-end;
-            margin: 5px;
-        }
-        
         .Pesquise{
             display: flex;
+            justify-content: center;
             align-items: center;
+        }
+        #OptionUltimo:hover{
+            border-bottom-left-radius: 10px;
+        }
+        #OptionUM:hover{
+            border-top-left-radius: 10px;
         }
     </style>
 </head>
 
 <body >
     <script>
-    function teste(){
+    function criaInputs(){
+
+        var botao = document.getElementById('botao_')
+        botao.setAttribute('onclick','filtraQuery()')
         // preciso aprender a criar inputs dinamicamente
         var newu = document.querySelector('.OptionOptions')
         if(newu.children.length < 2){
-            arr_titlos = ['Nome', 'Idade', 'Email']
+            arr_titlos = ['Nome']
             arr_titlos.forEach((titulo)=>{
                 console.log(titulo)
                 if(titulo == 'Idade'){
@@ -78,7 +88,6 @@
                     div.style.display = 'flex'
                     div.style.alignItems = 'center'
                     div.style.justifyContent = 'center'
-                    div.style.border = '1px solid red'
                     div.style.padding = '5px'
                     div.setAttribute('name',`divUser${titulo}`)
                     newu.appendChild(div)
@@ -102,7 +111,6 @@
                     div.setAttribute('name',`divUser${titulo}`)
                     div.style.display = 'flex'
                     div.style.alignItems = 'center'
-                    div.style.border = '1px solid red'
                     div.style.padding = '5px'
                     newu.appendChild(div)
 
@@ -122,33 +130,149 @@
             
             
             
-        }else{
-            alert('Opção ja selecionada CARALHO')
         }
         
         
     }
     function filtraQuery(){
-        var divResultado = document.getElementsByClassName('OptionResultsResponse')
-        inputNome = document.getElementsByName('UsersCampoNome')
-        inputIdade = document.getElementById('CampoIdade')
+        var divResutado = document.getElementById('Resultado')
+        divResutado.style.padding = '10px'
+        var verificaFilhosResultado = divResutado.childNodes
 
-        console.log(inputIdade.value)
+        if(verificaFilhosResultado.length > 0){
+            while(verificaFilhosResultado.length > 0){
+                verificaFilhosResultado.forEach((el)=>{
+                divResutado.removeChild(el)
+                })
+            }
+            
+        }
+        
+        
+        var Nome = document.getElementById('UsersCampoNome')
+
+        var queryResultform = document.getElementById(`${Nome.value}`)
+        
+        var filhos = queryResultform.childNodes
+        console.log(filhos)
+
+
+        // aqui eu tiro os elementos #text da lista de childs do form escolhido pelo nome no input
+        filhos_sem_text = []//dados da pesquisa
+        for(i=0;i<filhos.length;i++){
+            if(i%2 !==0){
+                filhos_sem_text.push(filhos[i])
+            }
+        }
+        
+        // ja tenho os dados separados para mostrar na divresult 
+        // agora tenho que criar o tamplate para mostrar cada elemento
+
+        nomes_campo_result=['User name','Nome','Nascimento','Email','Sexo','É admin']
+        cont = 0
+        nomes_campo_result.forEach((el)=>{
+            var div_campo_result = document.createElement('div')
+            div_campo_result.style.width = '100%'
+            div_campo_result.style.paddingBottom = '5px'
+            var p = document.createElement('p')
+            var conteudo = document.createTextNode(`${el}: ${filhos_sem_text[cont].value}`)
+            p.appendChild(conteudo)
+            div_campo_result.appendChild(p)
+            console.log(div_campo_result)
+            cont++
+            divResutado.appendChild(div_campo_result)
+        })
+      
+        
+    }
+
+     function criaInputsAluno(){// preciso aprender a criar inputs dinamicamente
+        var botao = document.getElementById('botao_')
+        console.log(botao.getAttribute('onclick'))
+        if(botao.getAttribute('onclick') == 'string' || botao.getAttribute('onclick') == null ){
+            botao.removeAttributeNode('onclick')
+            botao.setAttribute('onclick','filtraQueryAluno()')
+        }
+
+        var newu = document.querySelector('.OptionOptions')
+        if(newu.children.length < 2){
+            arr_titlos = ['Nome']
+            arr_titlos.forEach((titulo)=>{
+                console.log(titulo)
+                if(titulo == 'Idade'){
+                    div = document.createElement('div')
+                    div.style.display = 'flex'
+                    div.style.alignItems = 'center'
+                    div.style.justifyContent = 'center'
+                    div.style.padding = '5px'
+                    div.setAttribute('name',`divUser${titulo}`)
+                    newu.appendChild(div)
+
+                    idadeTitle = document.createElement('h6')
+                    titulo_ = document.createTextNode(titulo)
+                    idadeTitle.appendChild(titulo_)
+                    div.appendChild(idadeTitle)
+
+                    input = document.createElement('INPUT')
+                    input.setAttribute('type','number')
+                    input.setAttribute('name',`UsersCampo${titulo}`)
+                    input.setAttribute('id',`Campo${titulo}`)
+                    input.setAttribute('class',`form-control`)
+                    input.style.flex = '1'
+                    div.appendChild(input)
+                    console.log(div.childNodes)
+                }else{
+                    
+                    div = document.createElement('div')
+                    div.setAttribute('name',`divUser${titulo}`)
+                    div.style.display = 'flex'
+                    div.style.alignItems = 'center'
+                    div.style.padding = '5px'
+                    newu.appendChild(div)
+
+                    input = document.createElement('INPUT')
+                    input.setAttribute('type','text')
+                    input.setAttribute('id',`UsersCampo${titulo}`)
+                    input.setAttribute('placeholder',titulo)
+                    input.setAttribute('class',`form-control`)
+                    div.appendChild(input)
+
+                    console.log(div.childNodes)
+
+                }
+            })
+            console.log(newu.childNodes)
+
+            
+            
+            
+        }
+        
         
     }
 </script>
+    {{#each User}}
+        <form action="" id="{{this.nome}}">
+            <input type="hidden" id="'userName{{this.nome}}" value="{{this.userName}}">
+            <input type="hidden" id="nome{{this.nome}}" value="{{this.nome}}">
+            <input type="hidden" id="nascimento{{this.nome}}" value="{{this.nascimento2}}">
+            <input type="hidden" id="email{{this.nome}}" value="{{this.email}}">
+            <input type="hidden" id="sexo{{this.nome}}" value="{{this.sexo}}">
+            <input type="hidden" id="admin{{this.nome}}" value="{{this.EhAdmin}}">
+        </form>
+    {{/each}}
     <div class="mesaContainer">
         <div class='mesaOptions'>
-            <div class="Option" onclick="teste()">
+            <div class="Option" id="OptionUM" onclick="criaInputs()">
                 Users
             </div>
-            <div class="Option">
+            <div class="Option" onclick="criaInputsAluno()" >
                 Alunos
             </div>
             <div class="Option">
                 Musculação
             </div>
-            <div class="Option">
+            <div class="Option" id="OptionUltimo">
                 Cross
             </div>
 
@@ -158,18 +282,22 @@
                 <div class="Pesquise">
                     <h6>Pesquise por:</h6>
                 </div>
-                
+                <!-- Aqui vão as divs adicionadas pelo js -->
             </div>
             <div class="OptionsResults">
-                <div class="OptionsResultsResponse">
-                    oi
+                <div class="OptionsResultsResponse" id="Resultado">
+                    
                 </div>
-                <div class="botaoResults">
-                    <button class="btn btn-success" onclick="filtraQuery()" >pesquisar</button>
+                <div class="Pesquise">
+                    <button class="btn btn-success"  id="botao_">pesquisar</button>
                 </div>
+                
             </div>
  
         </div>
 
     </div>
 </body>
+
+
+

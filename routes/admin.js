@@ -6,6 +6,7 @@ const models = require('../models/models')
 const {dataDDMMYY} = require('../funçõesAuxiliares/datas')
 const {verificaCadastro} = require('../funçõesAuxiliares/cadastro')
 
+
 router.get('/', (req, res)=>{
     res.render('/inicioAdmin')
 })
@@ -80,12 +81,16 @@ router.get('/exclude/:id', (req, res)=>{
 
 router.get('/CrudGeral', (req, res)=>{
     NovoUser.find().then((queryUser)=>{
-        //console.log(queryUser)
+        queryUser.forEach((user)=>{
+            user.nascimento2 = dataDDMMYY(user.nascimento)
+            console.log(user.nascimento2)
+        })
+       res.render('admin/CrudGeralOptions', {User:queryUser})
     }).catch((err)=>{
         console.log(err + 'Erro ao consultar dados de users')
     })
 
-    res.render('admin/CrudGeralOptions')
+    
 })
 
 
