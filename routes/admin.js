@@ -83,9 +83,24 @@ router.get('/CrudGeral', (req, res)=>{
     NovoUser.find().then((queryUser)=>{
         queryUser.forEach((user)=>{
             user.nascimento2 = dataDDMMYY(user.nascimento)
-            console.log(user.nascimento2)
+            
         })
-       res.render('admin/CrudGeralOptions', {User:queryUser})
+        return queryUser
+       
+    }).then((queryUser)=>{
+        arrQuerys = [queryUser]
+        models.NovoAluno.find().then(queryAlunos => {
+            arrQuerys.push(queryAlunos)
+            return arrQuerys
+            
+        }).then((arrQuerys)=>{
+            models.NovoMusculo.find().then((queryMusculos)=>{
+                console.log(queryMusculos[0])
+                arrQuerys.push(queryMusculos)
+                res.render('admin/CrudGeralOptions', {User:arrQuerys[0], Alunos: arrQuerys[1], Musculos: arrQuerys[2]})
+            })
+        }).catch(err=>console.log(err))
+        
     }).catch((err)=>{
         console.log(err + 'Erro ao consultar dados de users')
     })

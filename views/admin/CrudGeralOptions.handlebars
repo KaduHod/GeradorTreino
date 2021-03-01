@@ -1,4 +1,6 @@
+
 <head>
+    
     <style>
 
         body{
@@ -18,7 +20,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            box-shadow: 5px 0px 4px rgb(110, 110, 110);
+            border-right: 1px solid grey;
         }
         .Option{
             flex: 1;
@@ -43,24 +45,35 @@
             flex:1;
             display: flex;
             padding-left: 10px;
-            box-shadow: 0px 5px 4px rgb(110, 110, 110);
+            border-bottom: 1px solid grey;
+            padding: 10px;
         }
         .OptionsResults{
             
             flex: 7;
             display:flex;
             flex-direction: column;
-            padding-left: 10px;
+            
+            
         }
         .OptionsResultsResponse{
             height: 90%;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            padding-left: 30px;            
+            
         }
         .Pesquise{
+            padding-left: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
+            
+        }
+        .border-top{
+            border-top: 1px solid rgb(63, 63, 63);
+            padding-top: 10px;
         }
         #OptionUltimo:hover{
             border-bottom-left-radius: 10px;
@@ -72,204 +85,316 @@
 </head>
 
 <body >
-    <script>
-    function criaInputs(){
-
-        var botao = document.getElementById('botao_')
-        botao.setAttribute('onclick','filtraQuery()')
-        // preciso aprender a criar inputs dinamicamente
-        var newu = document.querySelector('.OptionOptions')
-        if(newu.children.length < 2){
-            arr_titlos = ['Nome']
-            arr_titlos.forEach((titulo)=>{
-                console.log(titulo)
-                if(titulo == 'Idade'){
-                    div = document.createElement('div')
-                    div.style.display = 'flex'
-                    div.style.alignItems = 'center'
-                    div.style.justifyContent = 'center'
-                    div.style.padding = '5px'
-                    div.setAttribute('name',`divUser${titulo}`)
-                    newu.appendChild(div)
-
-                    idadeTitle = document.createElement('h6')
-                    titulo_ = document.createTextNode(titulo)
-                    idadeTitle.appendChild(titulo_)
-                    div.appendChild(idadeTitle)
-
-                    input = document.createElement('INPUT')
-                    input.setAttribute('type','number')
-                    input.setAttribute('name',`UsersCampo${titulo}`)
-                    input.setAttribute('id',`Campo${titulo}`)
-                    input.setAttribute('class',`form-control`)
-                    input.style.flex = '1'
-                    div.appendChild(input)
-                    console.log(div.childNodes)
-                }else{
-                    
-                    div = document.createElement('div')
-                    div.setAttribute('name',`divUser${titulo}`)
-                    div.style.display = 'flex'
-                    div.style.alignItems = 'center'
-                    div.style.padding = '5px'
-                    newu.appendChild(div)
-
-                    input = document.createElement('INPUT')
-                    input.setAttribute('type','text')
-                    input.setAttribute('id',`UsersCampo${titulo}`)
-                    input.setAttribute('placeholder',titulo)
-                    input.setAttribute('class',`form-control`)
-                    div.appendChild(input)
-
-                    console.log(div.childNodes)
-
+    
+   <script>
+       function tiraText(nodeList){
+                    filhosFiltrados = []
+                    cont = 0
+                    nodeList.forEach((el)=>{
+                        if(cont%2!=0){
+                            filhosFiltrados.push(el)
+                        }
+                        cont++
+                    })
+                    return filhosFiltrados
                 }
-            })
-            console.log(newu.childNodes)
+        
+        function criaInputUser(){
+            var campo = document.querySelector('.OptionOptions')
+            
+            while(campo.childElementCount != 1){
+                campo.removeChild(campo.lastChild)
+            }
 
-            
-            
+            var inputNome = document.createElement('input')
+            inputNome.setAttribute('id','UsersCampoNome')
+            inputNome.setAttribute('class','form-control')
+            inputNome.setAttribute('placeholder','Nome completo do usúario')
+            campo.appendChild(inputNome)
+
+            var botao = document.getElementById('botao_')
+            botao.removeAttribute('onclick')
+            botao.setAttribute('onclick','filtraQueryUser()')
             
         }
-        
-        
-    }
-    function filtraQuery(){
-        var divResutado = document.getElementById('Resultado')
-        divResutado.style.padding = '10px'
-        var verificaFilhosResultado = divResutado.childNodes
 
-        if(verificaFilhosResultado.length > 0){
-            while(verificaFilhosResultado.length > 0){
-                verificaFilhosResultado.forEach((el)=>{
-                divResutado.removeChild(el)
+        function filtraQueryUser(){
+            var resultado = document.getElementById('Resultado')
+
+            var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
+                
+                resultado.style.overflowY = 'none'
+                OptionsResultsResponse.style.paddingTop = '10px'
+                OptionsResultsResponse.style.maxHeight = '100%'
+
+            // removo filhos de pesquisa anterior
+            filhosResultado = resultado.childNodes
+            while(resultado.childElementCount > 0){
+                filhosResultado.forEach((filho)=>{
+                resultado.removeChild(filho)
                 })
             }
             
-        }
-        
-        
-        var Nome = document.getElementById('UsersCampoNome')
 
-        var queryResultform = document.getElementById(`${Nome.value}`)
-        
-        var filhos = queryResultform.childNodes
-        console.log(filhos)
+            var inputNome = document.getElementById('UsersCampoNome')
+            var NomeUserData = document.getElementById(`User-${inputNome.value}`)
 
+            // agora vou remover os text com indice par
 
-        // aqui eu tiro os elementos #text da lista de childs do form escolhido pelo nome no input
-        filhos_sem_text = []//dados da pesquisa
-        for(i=0;i<filhos.length;i++){
-            if(i%2 !==0){
-                filhos_sem_text.push(filhos[i])
+            var filhosNomeUserData = NomeUserData.childNodes
+            console.log(filhosNomeUserData[0])
+            filhosFiltrados = []
+            for(i=0;i<filhosNomeUserData.length;i++){
+                if(i%2!==0){
+                    filhosFiltrados.push(filhosNomeUserData[i])
+                }
             }
+
+            filhosFiltrados.forEach((filho)=>{
+                var para = document.createElement('p')
+
+                para.innerHTML = '<strong>'+filho.getAttribute('id')+'</strong>'+` ${filho.value}`
+                resultado.appendChild(para)
+
+            })
+            
+
+
         }
         
-        // ja tenho os dados separados para mostrar na divresult 
-        // agora tenho que criar o tamplate para mostrar cada elemento
+        function criaInputAluno(){
+            var campo = document.querySelector('.OptionOptions')
+            
+            while(campo.childElementCount != 1){
+                campo.removeChild(campo.lastChild)
+            }
 
-        nomes_campo_result=['User name','Nome','Nascimento','Email','Sexo','É admin']
-        cont = 0
-        nomes_campo_result.forEach((el)=>{
-            var div_campo_result = document.createElement('div')
-            div_campo_result.style.width = '100%'
-            div_campo_result.style.paddingBottom = '5px'
-            var p = document.createElement('p')
-            var conteudo = document.createTextNode(`${el}: ${filhos_sem_text[cont].value}`)
-            p.appendChild(conteudo)
-            div_campo_result.appendChild(p)
-            console.log(div_campo_result)
-            cont++
-            divResutado.appendChild(div_campo_result)
-        })
-      
-        
-    }
+            var inputNome = document.createElement('input')
+            inputNome.setAttribute('id','UsersCampoNome')
+            inputNome.setAttribute('class','form-control')
+            inputNome.setAttribute('placeholder','Primeiro nome do aluno')
+            campo.appendChild(inputNome)
 
-     function criaInputsAluno(){// preciso aprender a criar inputs dinamicamente
-        var botao = document.getElementById('botao_')
-        console.log(botao.getAttribute('onclick'))
-        if(botao.getAttribute('onclick') == 'string' || botao.getAttribute('onclick') == null ){
-            botao.removeAttributeNode('onclick')
+            var botao = document.getElementById('botao_')
+            botao.removeAttribute('onclick')
             botao.setAttribute('onclick','filtraQueryAluno()')
         }
+        
+        function filtraQueryAluno(){
+            var resultado = document.getElementById('Resultado')
 
-        var newu = document.querySelector('.OptionOptions')
-        if(newu.children.length < 2){
-            arr_titlos = ['Nome']
-            arr_titlos.forEach((titulo)=>{
-                console.log(titulo)
-                if(titulo == 'Idade'){
-                    div = document.createElement('div')
-                    div.style.display = 'flex'
-                    div.style.alignItems = 'center'
-                    div.style.justifyContent = 'center'
-                    div.style.padding = '5px'
-                    div.setAttribute('name',`divUser${titulo}`)
-                    newu.appendChild(div)
+            // removo filhos de pesquisa anterior
+            filhosResultado = resultado.childNodes
+            while(resultado.childElementCount > 0){
+                filhosResultado.forEach((filho)=>{
+                resultado.removeChild(filho)
+                })
+            }
 
-                    idadeTitle = document.createElement('h6')
-                    titulo_ = document.createTextNode(titulo)
-                    idadeTitle.appendChild(titulo_)
-                    div.appendChild(idadeTitle)
+            var inputNome = document.getElementById('UsersCampoNome')
+            var formNomeAluno = document.getElementById(`Aluno-${inputNome.value}`)
+            var filhosFormNomeAluno = formNomeAluno.childNodes
 
-                    input = document.createElement('INPUT')
-                    input.setAttribute('type','number')
-                    input.setAttribute('name',`UsersCampo${titulo}`)
-                    input.setAttribute('id',`Campo${titulo}`)
-                    input.setAttribute('class',`form-control`)
-                    input.style.flex = '1'
-                    div.appendChild(input)
-                    console.log(div.childNodes)
-                }else{
-                    
-                    div = document.createElement('div')
-                    div.setAttribute('name',`divUser${titulo}`)
-                    div.style.display = 'flex'
-                    div.style.alignItems = 'center'
-                    div.style.padding = '5px'
-                    newu.appendChild(div)
-
-                    input = document.createElement('INPUT')
-                    input.setAttribute('type','text')
-                    input.setAttribute('id',`UsersCampo${titulo}`)
-                    input.setAttribute('placeholder',titulo)
-                    input.setAttribute('class',`form-control`)
-                    div.appendChild(input)
-
-                    console.log(div.childNodes)
-
+            // removo filhos text com indice par
+            filhosFiltradosFormNomeAluno = []
+            for(i=0;i<filhosFormNomeAluno.length;i++){
+                if(i % 2 !== 0){
+                    filhosFiltradosFormNomeAluno.push(filhosFormNomeAluno[i])
                 }
-            })
-            console.log(newu.childNodes)
+            }   
+            console.log(filhosFiltradosFormNomeAluno)
 
+            // CONFIG DE SCROLL BAR PARA DIV RESULTADO
+                var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
+                //OptionsResultsResponse.style.height = none
+                resultado.style.overflowY = 'scroll'
+                OptionsResultsResponse.style.paddingTop = '370px'
+                OptionsResultsResponse.style.maxHeight = '38%'
+
+            filhosFiltradosFormNomeAluno.forEach(filhoData=>{
+                if(filhoData.getAttribute('name') !== 'nascimento'){//prop nascimento printa [object - object]
+                    var para = document.createElement('p')
+                    para.setAttribute('text-transform','capitalize')
+                    para.innerHTML = `<strong>${(filhoData.getAttribute('name'))}</strong>: ${filhoData.value} `
+                    
+                    resultado.appendChild(para)
+                }
+                
+            })
+        }
+
+        function criaInputMusculos(){
+            //apago inputs caso ja tenha sido selecionado alguma opção
+            var campo = document.querySelector('.OptionOptions')
             
-            
+            while(campo.childElementCount != 1){
+                campo.removeChild(campo.lastChild)
+            }
+
+            //Crio o elemento select
+            var selectMusc = document.createElement('select')
+            selectMusc.setAttribute('id','SelectMusc')
+            selectMusc.setAttribute('class','form-control')
+
+            //pego os valores do select
+            var musculos = document.getElementsByClassName('musculo')
+            for(i=0;i<musculos.length;i++){
+                var opt = document.createElement('option')
+                var conteudoOpt = document.createElement('small')
+                conteudoOpt.innerHTML = `${musculos[i].getAttribute('id')}`
+                opt.appendChild(conteudoOpt)
+
+                opt.value = musculos[i].getAttribute('id')
+                selectMusc.appendChild(opt)
+
+            }
+            campo.appendChild(selectMusc)
+
+            var botao = document.getElementById('botao_')
+            botao.removeAttribute('onclick')
+            botao.setAttribute('onclick','filtraMusculo()')
             
         }
         
+        function filtraMusculo(){
+            var resultado = document.getElementById('Resultado')
+
+            // seto configs da div resultado para o padrao
+            resultado.style.overflowY = 'none'
+            resultado.style.paddingTop = '10px'
+            resultado.style.maxHeight = '100%'
+
+            // removo filhos de pesquisa anterior
+            filhosResultado = resultado.childNodes
+            while(resultado.childElementCount > 0){
+                filhosResultado.forEach((filho)=>{
+                resultado.removeChild(filho)
+                })
+            }
+
+            //Mostrar tudo sobre o musculo escolhido
+            var muscEscolhido = document.getElementById('SelectMusc')// var que armazena musculo escolhido
+                // conjunto de musculos
+                var musculos = document.getElementsByClassName('musculo')
+
+                //crio uma função que retorna o form do musculo esquelhido no select
+                function retornaFormMusculoEscolhido(arrMusculos,MuscEscolhido){
+                    for(i=0;i<arrMusculos.length;i++){
+                        if(arrMusculos[i].getAttribute('id')== MuscEscolhido.value){
+                            return arrMusculos[i]
+                        }
+                    }
+                }
+
+                formMuscEscolhido = retornaFormMusculoEscolhido(musculos,muscEscolhido)
+
+                filhosFormMuscEscolhido = formMuscEscolhido.childNodes
+
+                filhosForm_sem_text = tiraText(filhosFormMuscEscolhido)
+
+                console.log(filhosForm_sem_text[0])
+
+            //Agora vou mostrar na tela o conteudo dos forms
+            cont = 0
+            filhosForm_sem_text.forEach((el)=>{
+                if(cont<2){
+                    var para = document.createElement('p')
+                    para.innerHTML = `<strong>${el.getAttribute('name')} </strong>: ${el.value}`
+                    resultado.appendChild(para)
+                }else{
+                    filhosEl = el.childNodes
+                    filhosEl_sem_text = tiraText(filhosEl)
+                    var paragraph = document.createElement('p')
+                    paragraph.innerHTML = `<strong>Porções</strong>:`
+                    filhosEl_sem_text.forEach((el)=>{
+                        if(el.getAttribute('name')!='areaAdicional'){
+                            paragraph.innerHTML += ` ${el.getAttribute('name')} |`
+                        }
+                        
+                        
+                    })
+                    resultado.appendChild(paragraph)
+
+                    filhosEl_sem_text.forEach((porcao)=>{
+                        exercicios = porcao.value
+                        exercicios_separados =  exercicios.split(',')
+                        console.log(exercicios_separados)
+                        
+                        exercicios_separados.forEach((exercicio)=>{
+                            var paraExercicios = document.createElement('p')
+                            paraExercicios.innerHTML += ` ${exercicio}`
+                            resultado.appendChild(paraExercicios)
+                        })
+                    })
+                    
+                    
+                }
+                cont++
+            })
+            var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
+                //OptionsResultsResponse.style.height = none
+                resultado.style.overflowY = 'scroll'
+                OptionsResultsResponse.style.paddingTop = '200px'
+                OptionsResultsResponse.style.maxHeight = '55%'
+
+
+
+                
+        }
         
-    }
-</script>
+    </script>
+    
+    <!--Users-->
     {{#each User}}
-        <form action="" id="{{this.nome}}">
-            <input type="hidden" id="'userName{{this.nome}}" value="{{this.userName}}">
-            <input type="hidden" id="nome{{this.nome}}" value="{{this.nome}}">
-            <input type="hidden" id="nascimento{{this.nome}}" value="{{this.nascimento2}}">
-            <input type="hidden" id="email{{this.nome}}" value="{{this.email}}">
-            <input type="hidden" id="sexo{{this.nome}}" value="{{this.sexo}}">
-            <input type="hidden" id="admin{{this.nome}}" value="{{this.EhAdmin}}">
+        <form action="" id="User-{{this.nome}}">
+            <input type="hidden" id="User name:" value="{{this.userName}}">
+            <input type="hidden" id="Nome:" value="{{this.nome}}">
+            <input type="hidden" id="Nascimento:" value="{{this.nascimento2}}">
+            <input type="hidden" id="Email:" value="{{this.email}}">
+            <input type="hidden" id="Sexo:" value="{{this.sexo}}">
+            <input type="hidden" id="É Admin:" value="{{this.EhAdmin}}">
         </form>
     {{/each}}
+    <!--Alunos-->
+    {{#each Alunos}}
+        <form action="" id="Aluno-{{this.objNSNIPA.nome}}">
+            {{#each this.objNSNIPA}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+            {{/each}}
+            {{#each this.objMedidas}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+            {{/each}}
+            {{#each this.objPesoKG_RMOG}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+            {{/each}}
+            {{#each this.objPorcem}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+            {{/each}}
+        </form>
+    {{/each}}
+    <!--MUSCULOS-->
+    {{#each Musculos}}
+        <form action="" class="musculo" id="{{this.nome}}" >
+            <input type="hidden" name="Nome" value="{{this.nome}}">
+            
+            <input type="hidden" name="Região" value="{{this.regiao}}">
+            <div id='Porções'>
+            {{#each porcoes}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+            {{/each}}
+            </div>
+            
+        </form>
+    {{/each }}
     <div class="mesaContainer">
         <div class='mesaOptions'>
-            <div class="Option" id="OptionUM" onclick="criaInputs()">
+            <div class="Option" id="OptionUM" onclick="criaInputUser()">
                 Users
             </div>
-            <div class="Option" onclick="criaInputsAluno()" >
+            <div class="Option" onclick="criaInputAluno()" >
                 Alunos
             </div>
-            <div class="Option">
+            <div class="Option" onclick="criaInputMusculos()">
                 Musculação
             </div>
             <div class="Option" id="OptionUltimo">
@@ -279,16 +404,22 @@
         </div>
         <div class="mesaContentContainer">
             <div class="OptionOptions">
-                <div class="Pesquise">
+                <div class="Pesquise" style="padding-right: 10px;">
                     <h6>Pesquise por:</h6>
                 </div>
-                <!-- Aqui vão as divs adicionadas pelo js -->
+                <div>
+
+                </div>
+                <div>
+
+                </div>
             </div>
             <div class="OptionsResults">
+                
                 <div class="OptionsResultsResponse" id="Resultado">
                     
                 </div>
-                <div class="Pesquise">
+                <div class="Pesquise border-top">
                     <button class="btn btn-success"  id="botao_">pesquisar</button>
                 </div>
                 
