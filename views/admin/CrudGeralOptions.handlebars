@@ -288,11 +288,12 @@
 
                 formMuscEscolhido = retornaFormMusculoEscolhido(musculos,muscEscolhido)
 
-                filhosFormMuscEscolhido = formMuscEscolhido.childNodes
+                filhosFormMuscEscolhido = formMuscEscolhido.childNodes 
 
                 filhosForm_sem_text = tiraText(filhosFormMuscEscolhido)
+                //console.log(filhosForm_sem_text)
 
-                console.log(filhosForm_sem_text[0])
+                
 
             //Agora vou mostrar na tela o conteudo dos forms
             cont = 0
@@ -314,17 +315,15 @@
                         
                     })
                     resultado.appendChild(paragraph)
-
+                    
                     filhosEl_sem_text.forEach((porcao)=>{
-                        exercicios = porcao.value
-                        exercicios_separados =  exercicios.split(',')
-                        console.log(exercicios_separados)
+                        var para = document.createElement('p')
+                        if(porcao.getAttribute('name')=='areaAdicional'){
+                            porcao.setAttribute('name','Exercícios adicionais') 
+                        }
+                        para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${porcao.value}`
+                        resultado.appendChild(para)
                         
-                        exercicios_separados.forEach((exercicio)=>{
-                            var paraExercicios = document.createElement('p')
-                            paraExercicios.innerHTML += ` ${exercicio}`
-                            resultado.appendChild(paraExercicios)
-                        })
                     })
                     
                     
