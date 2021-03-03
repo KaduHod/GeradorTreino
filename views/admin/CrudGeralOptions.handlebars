@@ -202,7 +202,7 @@
                     filhosFiltradosFormNomeAluno.push(filhosFormNomeAluno[i])
                 }
             }   
-            console.log(filhosFiltradosFormNomeAluno)
+            //console.log(filhosFiltradosFormNomeAluno)
 
             // CONFIG DE SCROLL BAR PARA DIV RESULTADO
                 var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
@@ -298,6 +298,7 @@
             //Agora vou mostrar na tela o conteudo dos forms
             cont = 0
             filhosForm_sem_text.forEach((el)=>{
+                //console.log(el)
                 if(cont<2){
                     var para = document.createElement('p')
                     para.innerHTML = `<strong>${el.getAttribute('name')} </strong>: ${el.value}`
@@ -315,18 +316,39 @@
                         
                     })
                     resultado.appendChild(paragraph)
-                    
+                    console.log(filhosEl_sem_text)
                     filhosEl_sem_text.forEach((porcao)=>{
+                        console.log()
                         var para = document.createElement('p')
                         if(porcao.getAttribute('name')=='areaAdicional'){
                             porcao.setAttribute('name','Exercícios adicionais') 
                         }
-                        para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${porcao.value}`
-                        resultado.appendChild(para)
-                        
+                        //if(porcao.getAttribute('name')=='maior')
+                        if(porcao.parentNode.parentNode.getAttribute('id')=='Peitoral'){
+                            if(porcao.getAttribute('name')=='Maior'){
+                                var exerciciosPM = document.getElementById('PeitoralMaior')
+                                para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${exerciciosPM.value}`
+                                resultado.appendChild(para)
+                            }else{
+                                para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${porcao.value}`
+                                resultado.appendChild(para)
+                            }
+                        }else{
+                            if(porcao.parentNode.parentNode.getAttribute('id')=='Abdomen'){
+                                if(porcao.getAttribute('name')=='Obliquo'){
+                                    var exerciciosAO = document.getElementById('AbdomenObliquo')
+                                    para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${exerciciosAO.value}`
+                                    resultado.appendChild(para)
+                                }else{
+                                    para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${porcao.value}`
+                                    resultado.appendChild(para)
+                                }
+                            }else{
+                                para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${porcao.value}`
+                                resultado.appendChild(para)
+                            }
+                        }
                     })
-                    
-                    
                 }
                 cont++
             })
@@ -335,10 +357,6 @@
                 resultado.style.overflowY = 'scroll'
                 OptionsResultsResponse.style.paddingTop = '200px'
                 OptionsResultsResponse.style.maxHeight = '55%'
-
-
-
-                
         }
         
     </script>
@@ -385,6 +403,12 @@
             
         </form>
     {{/each }}
+    {{#if PeitoralMaior}}
+        <input type="hidden" id="PeitoralMaior" value="{{PeitoralMaior}}">
+    {{/if}}
+    {{#if AbdomenObliquo}}
+        <input type="hidden" id="AbdomenObliquo" value="{{AbdomenObliquo}}">
+    {{/if}}
     <div class="mesaContainer">
         <div class='mesaOptions'>
             <div class="Option" id="OptionUM" onclick="criaInputUser()">

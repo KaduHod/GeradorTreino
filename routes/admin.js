@@ -95,9 +95,28 @@ router.get('/CrudGeral', (req, res)=>{
             
         }).then((arrQuerys)=>{
             models.NovoMusculo.find().then((queryMusculos)=>{
-                console.log(queryMusculos[0])
+                // indice 6 = abdomen
+                // indice 14 = poeitoral
+                //vou separar os exercicios de peitoral
+                PeitoralMaior = queryMusculos[14].porcoes.Maior
+                exerciciosPM = []
+                for(porcao in PeitoralMaior){
+                    PeitoralMaior[porcao].forEach((exercicio)=>{
+                        exerciciosPM.push(exercicio)
+                    })
+                }
+                //console.log(exerciciosPM)
+
+                AbdomenObliquo = queryMusculos[6].porcoes.Obliquo
+                exerciciosAO = []
+                for(porcao in AbdomenObliquo){
+                    AbdomenObliquo[porcao].forEach((exercicio)=>{
+                        exerciciosAO.push(exercicio)
+                    })
+                }
+                //console.log(exerciciosAO)
                 arrQuerys.push(queryMusculos)
-                res.render('admin/CrudGeralOptions', {User:arrQuerys[0], Alunos: arrQuerys[1], Musculos: arrQuerys[2]})
+                res.render('admin/CrudGeralOptions', {User:arrQuerys[0], Alunos: arrQuerys[1], Musculos: arrQuerys[2], PeitoralMaior: exerciciosPM, AbdomenObliquo:exerciciosAO})
             })
         }).catch(err=>console.log(err))
         
