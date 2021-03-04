@@ -116,7 +116,17 @@ router.get('/CrudGeral', (req, res)=>{
                 }
                 //console.log(exerciciosAO)
                 arrQuerys.push(queryMusculos)
-                res.render('admin/CrudGeralOptions', {User:arrQuerys[0], Alunos: arrQuerys[1], Musculos: arrQuerys[2], PeitoralMaior: exerciciosPM, AbdomenObliquo:exerciciosAO})
+                arrNecessario = [arrQuerys, exerciciosPM, exerciciosAO]
+                return arrNecessario
+                
+            }).then((arrNecessario)=>{
+                models.ExerciciosCross.find().then((queryCross)=>{
+                    //console.log(queryCross)
+                    arrQuerys.push(queryCross)
+                    res.render('admin/CrudGeralOptions', {User:arrNecessario[0][0], Alunos: arrNecessario[0][1], Musculos: arrNecessario[0][2], Cross: arrNecessario[0][3], PeitoralMaior: arrNecessario[1], AbdomenObliquo:arrNecessario[2]})
+                })
+
+                
             })
         }).catch(err=>console.log(err))
         

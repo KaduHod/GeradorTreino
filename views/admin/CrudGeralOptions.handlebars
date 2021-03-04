@@ -65,7 +65,6 @@
             
         }
         .Pesquise{
-            padding-left: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -74,6 +73,13 @@
         .border-top{
             border-top: 1px solid rgb(63, 63, 63);
             padding-top: 10px;
+            margin-bottom: 10px;
+        }
+        .aling{
+            justify-content: center;
+            align-self: center;
+            justify-self: center;
+            display: flex;
         }
         #OptionUltimo:hover{
             border-bottom-left-radius: 10px;
@@ -101,7 +107,7 @@
         
         function criaInputUser(){
             var campo = document.querySelector('.OptionOptions')
-            
+            campo.style.flex = '1'
             while(campo.childElementCount != 1){
                 campo.removeChild(campo.lastChild)
             }
@@ -115,6 +121,8 @@
             var botao = document.getElementById('botao_')
             botao.removeAttribute('onclick')
             botao.setAttribute('onclick','filtraQueryUser()')
+            botao.removeAttribute('disabled')
+            botao.setAttribute('class','btn btn-success')
             
         }
 
@@ -164,6 +172,7 @@
         
         function criaInputAluno(){
             var campo = document.querySelector('.OptionOptions')
+            campo.style.flex = '1'
             
             while(campo.childElementCount != 1){
                 campo.removeChild(campo.lastChild)
@@ -178,6 +187,8 @@
             var botao = document.getElementById('botao_')
             botao.removeAttribute('onclick')
             botao.setAttribute('onclick','filtraQueryAluno()')
+            botao.removeAttribute('disabled')
+            botao.setAttribute('class','btn btn-success')
         }
         
         function filtraQueryAluno(){
@@ -226,7 +237,7 @@
         function criaInputMusculos(){
             //apago inputs caso ja tenha sido selecionado alguma opção
             var campo = document.querySelector('.OptionOptions')
-            
+            campo.style.flex = '1'
             while(campo.childElementCount != 1){
                 campo.removeChild(campo.lastChild)
             }
@@ -253,6 +264,8 @@
             var botao = document.getElementById('botao_')
             botao.removeAttribute('onclick')
             botao.setAttribute('onclick','filtraMusculo()')
+            botao.removeAttribute('disabled')
+            botao.setAttribute('class','btn btn-success')
             
         }
         
@@ -355,10 +368,150 @@
             var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
                 //OptionsResultsResponse.style.height = none
                 resultado.style.overflowY = 'scroll'
-                OptionsResultsResponse.style.paddingTop = '200px'
-                OptionsResultsResponse.style.maxHeight = '55%'
+                OptionsResultsResponse.style.paddingTop = '50px'
+                OptionsResultsResponse.style.maxHeight = '80%'
         }
         
+        function criaInputCross(){
+            //limpar area onde aparecem inputs
+
+            var area_de_pesquisa = document.querySelector('.OptionOptions')
+            while(area_de_pesquisa.childElementCount != 1){
+                area_de_pesquisa.removeChild(area_de_pesquisa.lastElementChild)
+            }
+            // criar inputs para pesquisa do cross
+                //criar input que seleciona modo de pesquisa selecionar todos os exercicios, categoria, parte do corpo recrutada, uso de equipamento,nome do exercício ,ou exercicio com 4 condições expecificas!
+                var divOpcoesCross = document.createElement('div')// div que irá guardaros inputs iniciais
+                divOpcoesCross.setAttribute('id','opções de pesquisa Cross')
+                divOpcoesCross.style.display = 'flex'
+                divOpcoesCross.style.flex = '2.5'
+                //divOpcoesCross.style.border = '1px dashed green'
+                divOpcoesCross.style.marginRight = '5px'
+                area_de_pesquisa.style.flex = '2'
+
+                var divInput1 = document.createElement('div')// div para abrigar inputs
+                divInput1.setAttribute('id','CrossInputs1')
+                divInput1.style.display = 'flex'
+                divInput1.style.flex = '1'
+                divInput1.style.flexDirection = 'column'
+                divInput1.style.alignItems = 'center'
+                divInput1.style.justifyContent = 'center'
+                
+
+                var selectOption1 = document.createElement('select')// select com opções mostrar todos os musculos, categoria, parte do corpo, equipament, nome do exercicio, exercicio específico
+                selectOption1.setAttribute('id','input_primeira_opcao_geral')
+                selectOption1.setAttribute('class','form-control')
+
+                arrOptionsSelectOption1 = ['Mostrar todos os exercicios','Categoria','Parte do corpo','Equipamento','Nome do exercício','Exercicio específico']
+                arrOptionsSelectOption1.forEach((opcao)=>{
+                    var optionSelectOption1 = document.createElement('option')
+                    var conteudoOptionSelectOption1 = document.createElement('p')
+                    var contedo = document.createTextNode(`${opcao}`)
+                    conteudoOptionSelectOption1.appendChild(contedo)
+                    optionSelectOption1.appendChild(conteudoOptionSelectOption1)
+                    
+                    optionSelectOption1.setAttribute('id',`${opcao}`)
+                    optionSelectOption1.setAttribute('value',`${opcao}`)
+                    selectOption1.appendChild(optionSelectOption1)
+                })
+                divInput1.appendChild(selectOption1)
+
+
+                divOpcoesCross.appendChild(divInput1)
+                
+
+
+                var botaoProssiga = document.createElement('div')// Botão prossiga
+                botaoProssiga.setAttribute('id','botaoProssiga')
+                botaoProssiga.style.flex = '0.3'
+                botaoProssiga.setAttribute('class','btn btn-success')
+                botaoProssiga.setAttribute('onclick','verificaOption1Cross()')
+                botaoProssiga.innerHTML = 'Prox'
+                botaoProssiga.style.display = 'flex'
+                botaoProssiga.style.alignItems = 'center'
+                botaoProssiga.style.justifyContent = 'center'
+
+                
+                area_de_pesquisa.appendChild(divOpcoesCross)
+                area_de_pesquisa.appendChild(botaoProssiga)
+
+                var divNaoRemover = document.querySelector('.Pesquise')
+                divNaoRemover.style.flex = '0.2'
+
+            // mudar função do botao
+            var botao = document.getElementById('botao_')
+            botao.removeAttribute('onclick')
+            botao.setAttribute('onclick','funcaoMasterCross()')
+            botao.disabled = true
+            
+        }
+        function verificaOption1Cross(){
+            var botao = document.getElementById('botao_')
+            var valorInput1 = document.getElementById('input_primeira_opcao_geral')
+            var valorInput1Value = valorInput1.value
+            if(valorInput1Value == 'Mostrar todos os exercicios'){
+                botao.disabled = false
+                botao.setAttribute('onclick','mostraTodosOsExerciciosCross()')
+            }
+
+        }
+        function mostraTodosOsExerciciosCross(){
+            console.log('mostra geral')
+            var resultado = document.getElementById('Resultado')
+
+            // seto configs da div resultado para o padrao
+            resultado.style.overflowY = 'none'
+            resultado.style.paddingTop = '10px'
+            resultado.style.maxHeight = '100%'
+
+            filhosResultado = resultado.childNodes
+            while(resultado.childElementCount > 0){
+                filhosResultado.forEach((filho)=>{
+                resultado.removeChild(filho)
+                })
+            }
+            var exerCross = document.getElementById('Cross')
+            exerciciosCross = tiraText(exerCross.childNodes)
+            exerciciosCross.forEach((el)=>{
+                var divMainCrossExer = document.createElement('div')// div maior para mostrar exercicios cross
+                divMainCrossExer.setAttribute('id',`Main${el.getAttribute('id')}`)
+                divMainCrossExer.style.display = 'flex'
+                divMainCrossExer.style.border = '1px solid black'
+
+                var div1_2Main = document.createElement('div')// div que contera nome do exercicio
+                div1_2Main.setAttribute('id',`1_2${el.getAttribute('id')}`)
+                div1_2Main.style.flex = '1'
+                div1_2Main.style.display = 'flex'
+                div1_2Main.style.justifyContent = 'center'
+                div1_2Main.style.alignItems = 'center'
+                div1_2Main.innerHTML = `${el.getAttribute('id')}`
+
+                var div2_2Main = document.createElement('div')
+                div2_2Main.setAttribute('id',`2_2${el.getAttribute('id')}`)
+                div2_2Main.style.display = 'flex'
+                div2_2Main.style.flexDirection = 'column'
+                div2_2Main.style.flex = '3'
+                div2_2Main.style.justifyContent = 'center'
+                div2_2Main.style.alignItems = 'center'
+
+
+                //FALTA CRIAR AS DIVS QUE VÃO APARECER A CATEGORIA, PARTE DO CORPO E EQUIPAMENTO DO EXERCICIO
+
+                
+
+                divMainCrossExer.appendChild(div1_2Main)
+                divMainCrossExer.appendChild(div2_2Main)
+
+
+
+                resultado.appendChild(divMainCrossExer)
+            })
+            var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
+                //OptionsResultsResponse.style.height = none
+                resultado.style.overflowY = 'scroll'
+                OptionsResultsResponse.style.paddingTop = '930px'
+                OptionsResultsResponse.style.maxHeight = '12%'
+        }
     </script>
     
     <!--Users-->
@@ -409,6 +562,15 @@
     {{#if AbdomenObliquo}}
         <input type="hidden" id="AbdomenObliquo" value="{{AbdomenObliquo}}">
     {{/if}}
+    <div type='hidden' id='Cross' >
+        {{#each Cross}}
+            <div type="hidden" id='{{this.exercicio.Nome_exercicio}}' name="{{this._id}}">
+            {{#each exercicio}}
+                <input type="hidden" name="{{@key}}" value="{{this}}">
+            {{/each}}
+            </div>
+        {{/each}}
+    </div>
     <div class="mesaContainer">
         <div class='mesaOptions'>
             <div class="Option" id="OptionUM" onclick="criaInputUser()">
@@ -420,7 +582,7 @@
             <div class="Option" onclick="criaInputMusculos()">
                 Musculação
             </div>
-            <div class="Option" id="OptionUltimo">
+            <div class="Option" onclick="criaInputCross()">
                 Cross
             </div>
 
@@ -442,8 +604,8 @@
                 <div class="OptionsResultsResponse" id="Resultado">
                     
                 </div>
-                <div class="Pesquise border-top">
-                    <button class="btn btn-success"  id="botao_">pesquisar</button>
+                <div class="Pesquise border-top ">
+                    <button class="btn btn-success aling"  id="botao_">pesquisar</button>
                 </div>
                 
             </div>
