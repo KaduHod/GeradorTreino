@@ -473,6 +473,7 @@
             var exerCross = document.getElementById('Cross')
             exerciciosCross = tiraText(exerCross.childNodes)
             exerciciosCross.forEach((el)=>{
+                console.log(el)
                 var divMainCrossExer = document.createElement('div')// div maior para mostrar exercicios cross
                 divMainCrossExer.setAttribute('id',`Main${el.getAttribute('id')}`)
                 divMainCrossExer.style.display = 'flex'
@@ -496,8 +497,19 @@
 
 
                 //FALTA CRIAR AS DIVS QUE VÃO APARECER A CATEGORIA, PARTE DO CORPO E EQUIPAMENTO DO EXERCICIO
-
+                //el é a dic pai de todas
+                var filhos_el2_2 = tiraText(el.childNodes)
                 
+                console.log(filhos_el2_2)
+                //div sup 
+                    var div_221 = document.createElement('div')// div que contera categoria
+                    //pegar valor do nome e value do indice 0
+                //div med
+                    var div_222 = document.createElement('div')// div que contera parte do corpo
+                    //pegar valor do nome e value do indice 2
+                //div inf
+                    var div_223 = document.createElement('div')//div que contera equipamento
+                    //pegar valor do nome e value do indice 3
 
                 divMainCrossExer.appendChild(div1_2Main)
                 divMainCrossExer.appendChild(div2_2Main)
@@ -509,8 +521,8 @@
             var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
                 //OptionsResultsResponse.style.height = none
                 resultado.style.overflowY = 'scroll'
-                OptionsResultsResponse.style.paddingTop = '930px'
-                OptionsResultsResponse.style.maxHeight = '12%'
+                OptionsResultsResponse.style.paddingTop = '630px'
+                OptionsResultsResponse.style.maxHeight = '4%'
         }
     </script>
     
