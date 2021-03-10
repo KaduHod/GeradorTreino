@@ -93,7 +93,15 @@
 <body >
     
    <script>
-       function tiraText(nodeList){
+        function removeTodosOsFilhos(div){
+           while(div.childElementCount > 0){
+               div.childNodes.forEach((filho)=>{
+                   div.removeChild(filho)
+               })
+           }
+       }
+       
+        function tiraText(nodeList){
                     filhosFiltrados = []
                     cont = 0
                     nodeList.forEach((el)=>{
@@ -219,8 +227,9 @@
                 var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
                 //OptionsResultsResponse.style.height = none
                 resultado.style.overflowY = 'scroll'
-                OptionsResultsResponse.style.paddingTop = '370px'
-                OptionsResultsResponse.style.maxHeight = '38%'
+                OptionsResultsResponse.style.justifyContent= 'flex-start'
+                OptionsResultsResponse.style.maxHeight = '391px'
+
 
             filhosFiltradosFormNomeAluno.forEach(filhoData=>{
                 if(filhoData.getAttribute('name') !== 'nascimento'){//prop nascimento printa [object - object]
@@ -445,6 +454,7 @@
             botao.disabled = true
             
         }
+        
         function verificaOption1Cross(){
             var botao = document.getElementById('botao_')
             var valorInput1 = document.getElementById('input_primeira_opcao_geral')
@@ -452,9 +462,42 @@
             if(valorInput1Value == 'Mostrar todos os exercicios'){
                 botao.disabled = false
                 botao.setAttribute('onclick','mostraTodosOsExerciciosCross()')
-            }
+            }else{
+                var CrossInputs1 = document.getElementById('CrossInputs1')
+                if(valorInput1Value == 'Categoria'){
+                    console.log('Mostra por cat')
+                    // tenho que formatar o input para que tenha categorias Resistencia, Potencia e isometria
+                    console.log(CrossInputs1.childNodes)
+                    if(CrossInputs1.childElementCount != null){
 
+                        CrossInputs1.childNodes.forEach((filho)=>{
+                        CrossInputs1.removeChild(filho)
+                        })
+
+                        var selectCategorias = document.createElement('select')
+                        selectCategorias.setAttribute('id','select_para_categorias')
+                        selectCategorias.setAttribute('class','form-control')
+                        var arrCats = ['Resistencia','Potencia','Isometria']
+                        arrCats.forEach((categoria)=>{
+                            var optionCat = document.createElement('option')
+                            optionCat.setAttribute('id',`${categoria}OPT`)
+                            optionCat.setAttribute('value',`${categoria}`)
+                            optionCat.innerHTML = `${categoria}`
+                            selectCategorias.appendChild(optionCat)
+
+                        })
+                        CrossInputs1.appendChild(selectCategorias)
+                    }else{
+                        console.log('todos os filhos ja removidos')
+                    }
+                    botao.setAttribute('onclick','mostra_por_categoria()')
+                    botao.disabled = false;
+                    var div_prossiga = document.getElementById('botaoProssiga')
+                    div_prossiga.setAttribute('onclick','mostra_por_categoria()')
+                }
+            }
         }
+        
         function mostraTodosOsExerciciosCross(){
             console.log('mostra geral')
             var resultado = document.getElementById('Resultado')
@@ -471,13 +514,15 @@
                 })
             }
             var exerCross = document.getElementById('Cross')
+            
             exerciciosCross = tiraText(exerCross.childNodes)
             exerciciosCross.forEach((el)=>{
                 console.log(el)
                 var divMainCrossExer = document.createElement('div')// div maior para mostrar exercicios cross
                 divMainCrossExer.setAttribute('id',`Main${el.getAttribute('id')}`)
                 divMainCrossExer.style.display = 'flex'
-                divMainCrossExer.style.border = '1px solid black'
+                divMainCrossExer.style.borderBottom = '1px solid grey'
+                divMainCrossExer.style.margimBottom = '5px'
 
                 var div1_2Main = document.createElement('div')// div que contera nome do exercicio
                 div1_2Main.setAttribute('id',`1_2${el.getAttribute('id')}`)
@@ -485,7 +530,7 @@
                 div1_2Main.style.display = 'flex'
                 div1_2Main.style.justifyContent = 'center'
                 div1_2Main.style.alignItems = 'center'
-                div1_2Main.innerHTML = `${el.getAttribute('id')}`
+                div1_2Main.innerHTML = `<strong>${el.getAttribute('id')}</strong>`
 
                 var div2_2Main = document.createElement('div')
                 div2_2Main.setAttribute('id',`2_2${el.getAttribute('id')}`)
@@ -499,17 +544,25 @@
                 //FALTA CRIAR AS DIVS QUE VÃO APARECER A CATEGORIA, PARTE DO CORPO E EQUIPAMENTO DO EXERCICIO
                 //el é a dic pai de todas
                 var filhos_el2_2 = tiraText(el.childNodes)
+                var filhos_el2_2sem_nome = filhos_el2_2.splice(1,1)
                 
-                console.log(filhos_el2_2)
+                
                 //div sup 
                     var div_221 = document.createElement('div')// div que contera categoria
-                    //pegar valor do nome e value do indice 0
+                    //pegar valor do nome e value do indice
+                    
+                    div_221.innerHTML = `Categoria: ${filhos_el2_2[0].value}`
+                    div2_2Main.appendChild(div_221)
                 //div med
                     var div_222 = document.createElement('div')// div que contera parte do corpo
                     //pegar valor do nome e value do indice 2
+                    div_222.innerHTML = `Parte do corpo: ${filhos_el2_2[1].value}`
+                    div2_2Main.appendChild(div_222)
                 //div inf
                     var div_223 = document.createElement('div')//div que contera equipamento
-                    //pegar valor do nome e value do indice 3
+                    //pegar valor do nome e value do indice 
+                    div_223.innerHTML = `Equipamento: ${filhos_el2_2[2].value}`
+                    div2_2Main.appendChild(div_223)
 
                 divMainCrossExer.appendChild(div1_2Main)
                 divMainCrossExer.appendChild(div2_2Main)
@@ -519,10 +572,62 @@
                 resultado.appendChild(divMainCrossExer)
             })
             var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
-                //OptionsResultsResponse.style.height = none
-                resultado.style.overflowY = 'scroll'
-                OptionsResultsResponse.style.paddingTop = '630px'
-                OptionsResultsResponse.style.maxHeight = '4%'
+            OptionsResultsResponse.style.overflowY = 'Auto'
+            OptionsResultsResponse.style.display ='flex'
+            OptionsResultsResponse.style.flexDirection = 'column'
+            OptionsResultsResponse.style.maxHeight ='391px'
+            OptionsResultsResponse.style.alignItems = 'flex-stat'
+            OptionsResultsResponse.style.justifyContent = 'flex-start'
+        }
+
+        function mostra_por_categoria(){
+            var valor_categoria = document.getElementById('select_para_categorias')//seleciono input de seleção de categoria
+            valor_cat = valor_categoria.value //pego o valor da categoria
+            var Cross_exercicios = document.getElementById('Cross')//seleciono a div que contem os exericios
+            Cross_exercicios_sem_txt = tiraText(Cross_exercicios.childNodes)// pego os filhos desta div
+            var resultado = document.getElementById('Resultado')// div que contera o resultado
+            removeTodosOsFilhos(resultado)
+            console.log(resultado.clientHeight)
+            Cross_exercicios_sem_txt.forEach((exercicio_div)=>{//percorro os filhos da div CRoss
+                exercicio_div_sem_txt = tiraText(exercicio_div.childNodes)// tiro elementos text dos filhos da div
+                if(valor_cat == exercicio_div_sem_txt[0].value){//se o exercicio for da categoria selecionada
+
+                    resultado.style.paddingTop = '40px'
+                    resultado.style.overflowY = 'auto'
+                    resultado.style.height = '391px'
+                    resultado.style.justifyContent = 'flex-start'
+
+                    var resultado_div_main = document.createElement('div')
+                    resultado_div_main.setAttribute('id',`body_${exercicio_div_sem_txt[1].value}`) 
+                    resultado_div_main.style.display = 'flex'
+                    resultado_div_main.style.width = '100%'
+                    resultado_div_main.style.height = 'fit-content'
+                    resultado_div_main.style.borderBottom = '1px solid black'
+                    resultado_div_main.style.marginBottom = '5px'
+                    resultado_div_main.style.padding = '5px'
+                        var resultado_div_left_nome = document.createElement('div')
+                        resultado_div_left_nome.setAttribute('id',`left_${exercicio_div_sem_txt[1].value}`)
+                        resultado_div_left_nome.style.flex = '1'
+                        resultado_div_left_nome.style.display = 'flex'
+                        resultado_div_left_nome.style.alignItems = 'center'
+                        resultado_div_left_nome.innerHTML = `<strong>${exercicio_div_sem_txt[1].value}</strong>`
+                        resultado_div_left_nome.style.borderRight = '1px solid grey'
+                        resultado_div_main.append(resultado_div_left_nome)
+
+                        var resultado_div_right_pcr_equip = document.createElement('div')
+                        resultado_div_right_pcr_equip.setAttribute('id',`right-${exercicio_div_sem_txt[1].value}`)
+                        resultado_div_right_pcr_equip.style.display = 'flex'
+                        resultado_div_right_pcr_equip.style.flex = '2'
+                        resultado_div_right_pcr_equip.style.paddingLeft = '5px'
+                        resultado_div_right_pcr_equip.style.flexDirection = 'column'
+                        resultado_div_right_pcr_equip.innerHTML = `Recruta: ${exercicio_div_sem_txt[2].value}<br>Equipamento: ${exercicio_div_sem_txt[3].value}`
+                        resultado_div_main.appendChild(resultado_div_right_pcr_equip)
+                        resultado.appendChild(resultado_div_main)
+
+
+                }
+            })
+            
         }
     </script>
     
