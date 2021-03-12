@@ -518,6 +518,28 @@
                     var div_prossiga = document.getElementById('botaoProssiga')
                     div_prossiga.setAttribute('onclick','mostra_por_PCR()')
                 }
+            
+                if(valorInput1Value == 'Equipamento'){
+                    var crossInput = document.querySelector('#input_primeira_opcao_geral')
+                    while(crossInput.childElementCount > 0){
+                        crossInput.childNodes.forEach((filho)=>{
+                            crossInput.removeChild(filho)
+                        })
+                    }
+                    arrOptEquip = ['Peso corporal','Com equipamento']
+                    arrOptEquip.forEach((el)=>{
+                        var optionEquip = document.createElement('option')
+                        optionEquip.setAttribute('class','form-control')
+                        optionEquip.setAttribute('value',`${el}`)
+                        optionEquip.setAttribute('id',`optionEquip-${el}`)
+                        optionEquip.innerHTML = `${el}`
+                        crossInput.appendChild(optionEquip)
+                    })
+                    botao.setAttribute('onclick','mostra_por_Equip()')
+                    botao.disabled = false;
+                    var div_prossiga = document.getElementById('botaoProssiga')
+                    div_prossiga.setAttribute('onclick','mostra_por_Equip()')
+                }
             }
         }
         
@@ -696,6 +718,82 @@
                     exercicioDivMain_content.setAttribute('id',`div_content${filhoSemText[1].value}`)
                     exercicioDivMain.appendChild(exercicioDivMain_content)
 
+                }
+            })
+        }
+   
+        function mostra_por_Equip(){
+            var resultado = document.getElementById('Resultado')
+            removeTodosOsFilhos(resultado)
+
+            var opcao_escolhida_equip = document.getElementById('input_primeira_opcao_geral')
+
+            var crossExer = document.getElementById('Cross')
+            var crossExer_semText = tiraText(crossExer.childNodes)
+            resultado.style.paddingTop = '40px'
+            resultado.style.overflowY = 'auto'
+            resultado.style.height = '391px'
+            resultado.style.justifyContent = 'flex-start'
+            crossExer_semText.forEach((exercicio)=>{
+                filho_exer = tiraText(exercicio.childNodes)
+                if(opcao_escolhida_equip.value == 'Peso corporal'){ 
+                    if(filho_exer[3].value == 'Peso corporal'){
+                    var exercicioDivMain = document.createElement('div')
+                    exercicioDivMain.setAttribute('id',`div${filho_exer[1].value}`)
+                    exercicioDivMain.style.display = 'flex'
+                    exercicioDivMain.style.borderBottom = '1px solid grey'
+                    exercicioDivMain.style.margimBottom = '5px'
+                    exercicioDivMain.style.width = '100%'
+                    exercicioDivMain.style.height = 'fit-content'
+                    resultado.appendChild(exercicioDivMain)
+
+                    var exercicioDivMain_nome = document.createElement('div')
+                    exercicioDivMain_nome.style.display = 'flex'
+                    exercicioDivMain_nome.style.flex = '1'
+                    exercicioDivMain_nome.style.justifyContent = 'center'
+                    exercicioDivMain_nome.style.alignItems = 'center'
+                    exercicioDivMain_nome.innerHTML = `<strong>${filho_exer[1].value}</strong>`
+                    exercicioDivMain_nome.setAttribute('id',`div_nome${filho_exer[1].value}`)
+                    exercicioDivMain.appendChild(exercicioDivMain_nome)
+
+                    var exercicioDivMain_content = document.createElement('div')
+                    exercicioDivMain_content.style.display = 'flex'
+                    exercicioDivMain_content.style.flex = '3'
+                    exercicioDivMain_content.style.justifyContent = 'center'
+                    exercicioDivMain_content.style.alignItems = 'center'
+                    exercicioDivMain_content.innerHTML = `Categoria: ${filho_exer[0].value}<br> Parte do corpo recrutada: ${filho_exer[2].value} `
+                    exercicioDivMain_content.setAttribute('id',`div_content${filho_exer[1].value}`)
+                    exercicioDivMain.appendChild(exercicioDivMain_content)
+                    }
+                }else{
+                    if(filho_exer[3].value != 'Peso corporal'){
+                        var exercicioDivMain = document.createElement('div')
+                    exercicioDivMain.setAttribute('id',`div${filho_exer[1].value}`)
+                    exercicioDivMain.style.display = 'flex'
+                    exercicioDivMain.style.borderBottom = '1px solid grey'
+                    exercicioDivMain.style.margimBottom = '5px'
+                    exercicioDivMain.style.width = '100%'
+                    exercicioDivMain.style.height = 'fit-content'
+                    resultado.appendChild(exercicioDivMain)
+
+                    var exercicioDivMain_nome = document.createElement('div')
+                    exercicioDivMain_nome.style.display = 'flex'
+                    exercicioDivMain_nome.style.flex = '1'
+                    exercicioDivMain_nome.style.justifyContent = 'center'
+                    exercicioDivMain_nome.style.alignItems = 'center'
+                    exercicioDivMain_nome.innerHTML = `<strong>${filho_exer[1].value}</strong>`
+                    exercicioDivMain_nome.setAttribute('id',`div_nome${filho_exer[1].value}`)
+                    exercicioDivMain.appendChild(exercicioDivMain_nome)
+
+                    var exercicioDivMain_content = document.createElement('div')
+                    exercicioDivMain_content.style.display = 'flex'
+                    exercicioDivMain_content.style.flex = '3'
+                    exercicioDivMain_content.style.justifyContent = 'center'
+                    exercicioDivMain_content.style.alignItems = 'center'
+                    exercicioDivMain_content.innerHTML = `Categoria: ${filho_exer[0].value}<br> Parte do corpo recrutada: ${filho_exer[2].value} `
+                    exercicioDivMain_content.setAttribute('id',`div_content${filho_exer[1].value}`)
+                    exercicioDivMain.appendChild(exercicioDivMain_content)
+                    }
                 }
             })
         }
