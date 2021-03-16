@@ -1,28 +1,29 @@
-
 <head>
-    
-    <style>
 
-        body{
+    <style>
+        body {
             background-image: url('/img/CrudGeral.jpg');
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
         }
-        .mesaContainer{
+
+        .mesaContainer {
             width: 100%;
             height: 600px;
             background-color: white;
             border-radius: 10px;
             display: flex;
         }
-        .mesaOptions{
+
+        .mesaOptions {
             flex: 1;
             display: flex;
             flex-direction: column;
             border-right: 1px solid grey;
         }
-        .Option{
+
+        .Option {
             flex: 1;
             display: flex;
             justify-content: center;
@@ -30,127 +31,136 @@
             border-bottom: 1px solid grey;
             border-right: 1px solid grey;
         }
-        .Option:hover{
+
+        .Option:hover {
             background-color: grey;
             transition: 0.7s;
         }
-        
-        .mesaContentContainer{
-            
+
+        .mesaContentContainer {
+
             flex: 4;
             display: flex;
             flex-direction: column;
         }
-        .OptionOptions{
-            flex:1;
+
+        .OptionOptions {
+            flex: 1;
             display: flex;
             padding-left: 10px;
             border-bottom: 1px solid grey;
             padding: 10px;
         }
-        .OptionsResults{
-            
+
+        .OptionsResults {
+
             flex: 7;
-            display:flex;
+            display: flex;
             flex-direction: column;
-            
-            
+
+
         }
-        .OptionsResultsResponse{
+
+        .OptionsResultsResponse {
             height: 90%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-left: 30px;            
-            
+            padding-left: 30px;
+
         }
-        .Pesquise{
+
+        .Pesquise {
             display: flex;
             justify-content: center;
             align-items: center;
-            
+
         }
-        .border-top{
+
+        .border-top {
             border-top: 1px solid rgb(63, 63, 63);
             padding-top: 10px;
             margin-bottom: 10px;
         }
-        .aling{
+
+        .aling {
             justify-content: center;
             align-self: center;
             justify-self: center;
             display: flex;
         }
-        #OptionUltimo:hover{
+
+        #OptionUltimo:hover {
             border-bottom-left-radius: 10px;
         }
-        #OptionUM:hover{
+
+        #OptionUM:hover {
             border-top-left-radius: 10px;
         }
     </style>
 </head>
 
-<body >
-    
-   <script>
-        function removeTodosOsFilhos(div){
-           while(div.childElementCount > 0){
-               div.childNodes.forEach((filho)=>{
-                   div.removeChild(filho)
-               })
-           }
-       }
-       
-        function tiraText(nodeList){
-                    filhosFiltrados = []
-                    cont = 0
-                    nodeList.forEach((el)=>{
-                        if(cont%2!=0){
-                            filhosFiltrados.push(el)
-                        }
-                        cont++
-                    })
-                    return filhosFiltrados
+<body>
+
+    <script>
+        function removeTodosOsFilhos(div) {
+            while (div.childElementCount > 0) {
+                div.childNodes.forEach((filho) => {
+                    div.removeChild(filho)
+                })
+            }
+        }
+
+        function tiraText(nodeList) {
+            filhosFiltrados = []
+            cont = 0
+            nodeList.forEach((el) => {
+                if (cont % 2 != 0) {
+                    filhosFiltrados.push(el)
                 }
-        
-        function criaInputUser(){
+                cont++
+            })
+            return filhosFiltrados
+        }
+
+        function criaInputUser() {
             var campo = document.querySelector('.OptionOptions')
             campo.style.flex = '1'
-            while(campo.childElementCount != 1){
+            while (campo.childElementCount != 1) {
                 campo.removeChild(campo.lastChild)
             }
 
             var inputNome = document.createElement('input')
-            inputNome.setAttribute('id','UsersCampoNome')
-            inputNome.setAttribute('class','form-control')
-            inputNome.setAttribute('placeholder','Nome completo do usúario')
+            inputNome.setAttribute('id', 'UsersCampoNome')
+            inputNome.setAttribute('class', 'form-control')
+            inputNome.setAttribute('placeholder', 'Nome completo do usúario')
             campo.appendChild(inputNome)
 
             var botao = document.getElementById('botao_')
             botao.removeAttribute('onclick')
-            botao.setAttribute('onclick','filtraQueryUser()')
+            botao.setAttribute('onclick', 'filtraQueryUser()')
             botao.removeAttribute('disabled')
-            botao.setAttribute('class','btn btn-success')
-            
+            botao.setAttribute('class', 'btn btn-success')
+
         }
 
-        function filtraQueryUser(){
+        function filtraQueryUser() {
             var resultado = document.getElementById('Resultado')
 
             var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
-                
-                resultado.style.overflowY = 'none'
-                OptionsResultsResponse.style.paddingTop = '10px'
-                OptionsResultsResponse.style.maxHeight = '100%'
+
+            resultado.style.overflowY = 'none'
+            OptionsResultsResponse.style.paddingTop = '10px'
+            OptionsResultsResponse.style.maxHeight = '100%'
 
             // removo filhos de pesquisa anterior
             filhosResultado = resultado.childNodes
-            while(resultado.childElementCount > 0){
-                filhosResultado.forEach((filho)=>{
-                resultado.removeChild(filho)
+            while (resultado.childElementCount > 0) {
+                filhosResultado.forEach((filho) => {
+                    resultado.removeChild(filho)
                 })
             }
-            
+
 
             var inputNome = document.getElementById('UsersCampoNome')
             var NomeUserData = document.getElementById(`User-${inputNome.value}`)
@@ -160,53 +170,53 @@
             var filhosNomeUserData = NomeUserData.childNodes
             console.log(filhosNomeUserData[0])
             filhosFiltrados = []
-            for(i=0;i<filhosNomeUserData.length;i++){
-                if(i%2!==0){
+            for (i = 0; i < filhosNomeUserData.length; i++) {
+                if (i % 2 !== 0) {
                     filhosFiltrados.push(filhosNomeUserData[i])
                 }
             }
 
-            filhosFiltrados.forEach((filho)=>{
+            filhosFiltrados.forEach((filho) => {
                 var para = document.createElement('p')
 
-                para.innerHTML = '<strong>'+filho.getAttribute('id')+'</strong>'+` ${filho.value}`
+                para.innerHTML = '<strong>' + filho.getAttribute('id') + '</strong>' + ` ${filho.value}`
                 resultado.appendChild(para)
 
             })
-            
+
 
 
         }
-        
-        function criaInputAluno(){
+
+        function criaInputAluno() {
             var campo = document.querySelector('.OptionOptions')
             campo.style.flex = '1'
-            
-            while(campo.childElementCount != 1){
+
+            while (campo.childElementCount != 1) {
                 campo.removeChild(campo.lastChild)
             }
 
             var inputNome = document.createElement('input')
-            inputNome.setAttribute('id','UsersCampoNome')
-            inputNome.setAttribute('class','form-control')
-            inputNome.setAttribute('placeholder','Primeiro nome do aluno')
+            inputNome.setAttribute('id', 'UsersCampoNome')
+            inputNome.setAttribute('class', 'form-control')
+            inputNome.setAttribute('placeholder', 'Primeiro nome do aluno')
             campo.appendChild(inputNome)
 
             var botao = document.getElementById('botao_')
             botao.removeAttribute('onclick')
-            botao.setAttribute('onclick','filtraQueryAluno()')
+            botao.setAttribute('onclick', 'filtraQueryAluno()')
             botao.removeAttribute('disabled')
-            botao.setAttribute('class','btn btn-success')
+            botao.setAttribute('class', 'btn btn-success')
         }
-        
-        function filtraQueryAluno(){
+
+        function filtraQueryAluno() {
             var resultado = document.getElementById('Resultado')
 
             // removo filhos de pesquisa anterior
             filhosResultado = resultado.childNodes
-            while(resultado.childElementCount > 0){
-                filhosResultado.forEach((filho)=>{
-                resultado.removeChild(filho)
+            while (resultado.childElementCount > 0) {
+                filhosResultado.forEach((filho) => {
+                    resultado.removeChild(filho)
                 })
             }
 
@@ -216,49 +226,49 @@
 
             // removo filhos text com indice par
             filhosFiltradosFormNomeAluno = []
-            for(i=0;i<filhosFormNomeAluno.length;i++){
-                if(i % 2 !== 0){
+            for (i = 0; i < filhosFormNomeAluno.length; i++) {
+                if (i % 2 !== 0) {
                     filhosFiltradosFormNomeAluno.push(filhosFormNomeAluno[i])
                 }
-            }   
+            }
             //console.log(filhosFiltradosFormNomeAluno)
 
             // CONFIG DE SCROLL BAR PARA DIV RESULTADO
-                var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
-                //OptionsResultsResponse.style.height = none
-                resultado.style.overflowY = 'scroll'
-                OptionsResultsResponse.style.justifyContent= 'flex-start'
-                OptionsResultsResponse.style.maxHeight = '391px'
+            var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
+            //OptionsResultsResponse.style.height = none
+            resultado.style.overflowY = 'scroll'
+            OptionsResultsResponse.style.justifyContent = 'flex-start'
+            OptionsResultsResponse.style.maxHeight = '391px'
 
 
-            filhosFiltradosFormNomeAluno.forEach(filhoData=>{
-                if(filhoData.getAttribute('name') !== 'nascimento'){//prop nascimento printa [object - object]
+            filhosFiltradosFormNomeAluno.forEach(filhoData => {
+                if (filhoData.getAttribute('name') !== 'nascimento') {//prop nascimento printa [object - object]
                     var para = document.createElement('p')
-                    para.setAttribute('text-transform','capitalize')
+                    para.setAttribute('text-transform', 'capitalize')
                     para.innerHTML = `<strong>${(filhoData.getAttribute('name'))}</strong>: ${filhoData.value} `
-                    
+
                     resultado.appendChild(para)
                 }
-                
+
             })
         }
 
-        function criaInputMusculos(){
+        function criaInputMusculos() {
             //apago inputs caso ja tenha sido selecionado alguma opção
             var campo = document.querySelector('.OptionOptions')
             campo.style.flex = '1'
-            while(campo.childElementCount != 1){
+            while (campo.childElementCount != 1) {
                 campo.removeChild(campo.lastChild)
             }
 
             //Crio o elemento select
             var selectMusc = document.createElement('select')
-            selectMusc.setAttribute('id','SelectMusc')
-            selectMusc.setAttribute('class','form-control')
+            selectMusc.setAttribute('id', 'SelectMusc')
+            selectMusc.setAttribute('class', 'form-control')
 
             //pego os valores do select
             var musculos = document.getElementsByClassName('musculo')
-            for(i=0;i<musculos.length;i++){
+            for (i = 0; i < musculos.length; i++) {
                 var opt = document.createElement('option')
                 var conteudoOpt = document.createElement('small')
                 conteudoOpt.innerHTML = `${musculos[i].getAttribute('id')}`
@@ -272,13 +282,13 @@
 
             var botao = document.getElementById('botao_')
             botao.removeAttribute('onclick')
-            botao.setAttribute('onclick','filtraMusculo()')
+            botao.setAttribute('onclick', 'filtraMusculo()')
             botao.removeAttribute('disabled')
-            botao.setAttribute('class','btn btn-success')
-            
+            botao.setAttribute('class', 'btn btn-success')
+
         }
-        
-        function filtraMusculo(){
+
+        function filtraMusculo() {
             var resultado = document.getElementById('Resultado')
 
             // seto configs da div resultado para o padrao
@@ -288,84 +298,84 @@
 
             // removo filhos de pesquisa anterior
             filhosResultado = resultado.childNodes
-            while(resultado.childElementCount > 0){
-                filhosResultado.forEach((filho)=>{
-                resultado.removeChild(filho)
+            while (resultado.childElementCount > 0) {
+                filhosResultado.forEach((filho) => {
+                    resultado.removeChild(filho)
                 })
             }
 
             //Mostrar tudo sobre o musculo escolhido
             var muscEscolhido = document.getElementById('SelectMusc')// var que armazena musculo escolhido
-                // conjunto de musculos
-                var musculos = document.getElementsByClassName('musculo')
+            // conjunto de musculos
+            var musculos = document.getElementsByClassName('musculo')
 
-                //crio uma função que retorna o form do musculo esquelhido no select
-                function retornaFormMusculoEscolhido(arrMusculos,MuscEscolhido){
-                    for(i=0;i<arrMusculos.length;i++){
-                        if(arrMusculos[i].getAttribute('id')== MuscEscolhido.value){
-                            return arrMusculos[i]
-                        }
+            //crio uma função que retorna o form do musculo esquelhido no select
+            function retornaFormMusculoEscolhido(arrMusculos, MuscEscolhido) {
+                for (i = 0; i < arrMusculos.length; i++) {
+                    if (arrMusculos[i].getAttribute('id') == MuscEscolhido.value) {
+                        return arrMusculos[i]
                     }
                 }
+            }
 
-                formMuscEscolhido = retornaFormMusculoEscolhido(musculos,muscEscolhido)
+            formMuscEscolhido = retornaFormMusculoEscolhido(musculos, muscEscolhido)
 
-                filhosFormMuscEscolhido = formMuscEscolhido.childNodes 
+            filhosFormMuscEscolhido = formMuscEscolhido.childNodes
 
-                filhosForm_sem_text = tiraText(filhosFormMuscEscolhido)
-                //console.log(filhosForm_sem_text)
+            filhosForm_sem_text = tiraText(filhosFormMuscEscolhido)
+            //console.log(filhosForm_sem_text)
 
-                
+
 
             //Agora vou mostrar na tela o conteudo dos forms
             cont = 0
-            filhosForm_sem_text.forEach((el)=>{
+            filhosForm_sem_text.forEach((el) => {
                 //console.log(el)
-                if(cont<2){
+                if (cont < 2) {
                     var para = document.createElement('p')
                     para.innerHTML = `<strong>${el.getAttribute('name')} </strong>: ${el.value}`
                     resultado.appendChild(para)
-                }else{
+                } else {
                     filhosEl = el.childNodes
                     filhosEl_sem_text = tiraText(filhosEl)
                     var paragraph = document.createElement('p')
                     paragraph.innerHTML = `<strong>Porções</strong>:`
-                    filhosEl_sem_text.forEach((el)=>{
-                        if(el.getAttribute('name')!='areaAdicional'){
+                    filhosEl_sem_text.forEach((el) => {
+                        if (el.getAttribute('name') != 'areaAdicional') {
                             paragraph.innerHTML += ` ${el.getAttribute('name')} |`
                         }
-                        
-                        
+
+
                     })
                     resultado.appendChild(paragraph)
                     console.log(filhosEl_sem_text)
-                    filhosEl_sem_text.forEach((porcao)=>{
+                    filhosEl_sem_text.forEach((porcao) => {
                         console.log()
                         var para = document.createElement('p')
-                        if(porcao.getAttribute('name')=='areaAdicional'){
-                            porcao.setAttribute('name','Exercícios adicionais') 
+                        if (porcao.getAttribute('name') == 'areaAdicional') {
+                            porcao.setAttribute('name', 'Exercícios adicionais')
                         }
                         //if(porcao.getAttribute('name')=='maior')
-                        if(porcao.parentNode.parentNode.getAttribute('id')=='Peitoral'){
-                            if(porcao.getAttribute('name')=='Maior'){
+                        if (porcao.parentNode.parentNode.getAttribute('id') == 'Peitoral') {
+                            if (porcao.getAttribute('name') == 'Maior') {
                                 var exerciciosPM = document.getElementById('PeitoralMaior')
                                 para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${exerciciosPM.value}`
                                 resultado.appendChild(para)
-                            }else{
+                            } else {
                                 para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${porcao.value}`
                                 resultado.appendChild(para)
                             }
-                        }else{
-                            if(porcao.parentNode.parentNode.getAttribute('id')=='Abdomen'){
-                                if(porcao.getAttribute('name')=='Obliquo'){
+                        } else {
+                            if (porcao.parentNode.parentNode.getAttribute('id') == 'Abdomen') {
+                                if (porcao.getAttribute('name') == 'Obliquo') {
                                     var exerciciosAO = document.getElementById('AbdomenObliquo')
                                     para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${exerciciosAO.value}`
                                     resultado.appendChild(para)
-                                }else{
+                                } else {
                                     para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${porcao.value}`
                                     resultado.appendChild(para)
                                 }
-                            }else{
+                            } else {
                                 para.innerHTML = `<strong>${porcao.getAttribute('name')} </strong>: ${porcao.value}`
                                 resultado.appendChild(para)
                             }
@@ -375,175 +385,289 @@
                 cont++
             })
             var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
-                //OptionsResultsResponse.style.height = none
-                resultado.style.overflowY = 'scroll'
-                OptionsResultsResponse.style.paddingTop = '50px'
-                OptionsResultsResponse.style.maxHeight = '80%'
+            //OptionsResultsResponse.style.height = none
+            resultado.style.overflowY = 'scroll'
+            OptionsResultsResponse.style.paddingTop = '50px'
+            OptionsResultsResponse.style.maxHeight = '80%'
         }
-        
-        function criaInputCross(){
+
+        function criaInputCross() {
             //limpar area onde aparecem inputs
 
             var area_de_pesquisa = document.querySelector('.OptionOptions')
-            while(area_de_pesquisa.childElementCount != 1){
+            while (area_de_pesquisa.childElementCount != 1) {
                 area_de_pesquisa.removeChild(area_de_pesquisa.lastElementChild)
             }
             // criar inputs para pesquisa do cross
-                //criar input que seleciona modo de pesquisa selecionar todos os exercicios, categoria, parte do corpo recrutada, uso de equipamento,nome do exercício ,ou exercicio com 4 condições expecificas!
-                var divOpcoesCross = document.createElement('div')// div que irá guardaros inputs iniciais
-                divOpcoesCross.setAttribute('id','opções de pesquisa Cross')
-                divOpcoesCross.style.display = 'flex'
-                divOpcoesCross.style.flex = '2.5'
-                //divOpcoesCross.style.border = '1px dashed green'
-                divOpcoesCross.style.marginRight = '5px'
-                area_de_pesquisa.style.flex = '2'
+            //criar input que seleciona modo de pesquisa selecionar todos os exercicios, categoria, parte do corpo recrutada, uso de equipamento,nome do exercício ,ou exercicio com 4 condições expecificas!
+            var divOpcoesCross = document.createElement('div')// div que irá guardaros inputs iniciais
+            divOpcoesCross.setAttribute('id', 'opções de pesquisa Cross')
+            divOpcoesCross.style.display = 'flex'
+            divOpcoesCross.style.flex = '2.5'
+            //divOpcoesCross.style.border = '1px dashed green'
+            divOpcoesCross.style.marginRight = '5px'
+            area_de_pesquisa.style.flex = '2'
 
-                var divInput1 = document.createElement('div')// div para abrigar inputs
-                divInput1.setAttribute('id','CrossInputs1')
-                divInput1.style.display = 'flex'
-                divInput1.style.flex = '1'
-                divInput1.style.flexDirection = 'column'
-                divInput1.style.alignItems = 'center'
-                divInput1.style.justifyContent = 'center'
-                
-
-                var selectOption1 = document.createElement('select')// select com opções mostrar todos os musculos, categoria, parte do corpo, equipament, nome do exercicio, exercicio específico
-                selectOption1.setAttribute('id','input_primeira_opcao_geral')
-                selectOption1.setAttribute('class','form-control')
-
-                arrOptionsSelectOption1 = ['Mostrar todos os exercicios','Categoria','Parte do corpo','Equipamento','Nome do exercício','Exercicio específico']
-                arrOptionsSelectOption1.forEach((opcao)=>{
-                    var optionSelectOption1 = document.createElement('option')
-                    var conteudoOptionSelectOption1 = document.createElement('p')
-                    var contedo = document.createTextNode(`${opcao}`)
-                    conteudoOptionSelectOption1.appendChild(contedo)
-                    optionSelectOption1.appendChild(conteudoOptionSelectOption1)
-                    
-                    optionSelectOption1.setAttribute('id',`${opcao}`)
-                    optionSelectOption1.setAttribute('value',`${opcao}`)
-                    selectOption1.appendChild(optionSelectOption1)
-                })
-                divInput1.appendChild(selectOption1)
+            var divInput1 = document.createElement('div')// div para abrigar inputs
+            divInput1.setAttribute('id', 'CrossInputs1')
+            divInput1.style.display = 'flex'
+            divInput1.style.flex = '1'
+            divInput1.style.flexDirection = 'column'
+            divInput1.style.alignItems = 'center'
+            divInput1.style.justifyContent = 'center'
 
 
-                divOpcoesCross.appendChild(divInput1)
-                
+            var selectOption1 = document.createElement('select')// select com opções mostrar todos os musculos, categoria, parte do corpo, equipament, nome do exercicio, exercicio específico
+            selectOption1.setAttribute('id', 'input_primeira_opcao_geral')
+            selectOption1.setAttribute('class', 'form-control')
+
+            arrOptionsSelectOption1 = ['Mostrar todos os exercicios', 'Categoria', 'Parte do corpo', 'Equipamento', 'Nome do exercício', 'Exercicio específico']
+            arrOptionsSelectOption1.forEach((opcao) => {
+                var optionSelectOption1 = document.createElement('option')
+                var conteudoOptionSelectOption1 = document.createElement('p')
+                var contedo = document.createTextNode(`${opcao}`)
+                conteudoOptionSelectOption1.appendChild(contedo)
+                optionSelectOption1.appendChild(conteudoOptionSelectOption1)
+
+                optionSelectOption1.setAttribute('id', `${opcao}`)
+                optionSelectOption1.setAttribute('value', `${opcao}`)
+                selectOption1.appendChild(optionSelectOption1)
+            })
+            divInput1.appendChild(selectOption1)
 
 
-                var botaoProssiga = document.createElement('div')// Botão prossiga
-                botaoProssiga.setAttribute('id','botaoProssiga')
-                botaoProssiga.style.flex = '0.3'
-                botaoProssiga.setAttribute('class','btn btn-success')
-                botaoProssiga.setAttribute('onclick','verificaOption1Cross()')
-                botaoProssiga.innerHTML = 'Prox'
-                botaoProssiga.style.display = 'flex'
-                botaoProssiga.style.alignItems = 'center'
-                botaoProssiga.style.justifyContent = 'center'
+            divOpcoesCross.appendChild(divInput1)
 
-                
-                area_de_pesquisa.appendChild(divOpcoesCross)
-                area_de_pesquisa.appendChild(botaoProssiga)
 
-                var divNaoRemover = document.querySelector('.Pesquise')
-                divNaoRemover.style.flex = '0.2'
+
+            var botaoProssiga = document.createElement('div')// Botão prossiga
+            botaoProssiga.setAttribute('id', 'botaoProssiga')
+            botaoProssiga.style.flex = '0.3'
+            botaoProssiga.setAttribute('class', 'btn btn-success')
+            botaoProssiga.setAttribute('onclick', 'verificaOption1Cross()')
+            botaoProssiga.innerHTML = 'Prox'
+            botaoProssiga.style.display = 'flex'
+            botaoProssiga.style.alignItems = 'center'
+            botaoProssiga.style.justifyContent = 'center'
+
+
+            area_de_pesquisa.appendChild(divOpcoesCross)
+            area_de_pesquisa.appendChild(botaoProssiga)
+
+            var divNaoRemover = document.querySelector('.Pesquise')
+            divNaoRemover.style.flex = '0.2'
 
             // mudar função do botao
             var botao = document.getElementById('botao_')
             botao.removeAttribute('onclick')
-            botao.setAttribute('onclick','funcaoMasterCross()')
+            botao.setAttribute('onclick', 'funcaoMasterCross()')
             botao.disabled = true
-            
+
         }
-        
-        function verificaOption1Cross(){
+
+        function verificaOption1Cross() {
             var botao = document.getElementById('botao_')
             var valorInput1 = document.getElementById('input_primeira_opcao_geral')
             var valorInput1Value = valorInput1.value
-            if(valorInput1Value == 'Mostrar todos os exercicios'){
+            if (valorInput1Value == 'Mostrar todos os exercicios') {
                 botao.disabled = false
-                botao.setAttribute('onclick','mostraTodosOsExerciciosCross()')
-            }else{
+                botao.setAttribute('onclick', 'mostraTodosOsExerciciosCross()')
+            } else {
                 var CrossInputs1 = document.getElementById('CrossInputs1')
-                if(valorInput1Value == 'Categoria'){
+                if (valorInput1Value == 'Categoria') {
                     console.log('Mostra por cat')
                     // tenho que formatar o input para que tenha categorias Resistencia, Potencia e isometria
                     console.log(CrossInputs1.childNodes)
-                    if(CrossInputs1.childElementCount != null){
+                    if (CrossInputs1.childElementCount != null) {
 
-                        CrossInputs1.childNodes.forEach((filho)=>{
-                        CrossInputs1.removeChild(filho)
+                        CrossInputs1.childNodes.forEach((filho) => {
+                            CrossInputs1.removeChild(filho)
                         })
 
                         var selectCategorias = document.createElement('select')
-                        selectCategorias.setAttribute('id','select_para_categorias')
-                        selectCategorias.setAttribute('class','form-control')
-                        var arrCats = ['Resistencia','Potencia','Isometria']
-                        arrCats.forEach((categoria)=>{
+                        selectCategorias.setAttribute('id', 'select_para_categorias')
+                        selectCategorias.setAttribute('class', 'form-control')
+                        var arrCats = ['Resistencia', 'Potencia', 'Isometria']
+                        arrCats.forEach((categoria) => {
                             var optionCat = document.createElement('option')
-                            optionCat.setAttribute('id',`${categoria}OPT`)
-                            optionCat.setAttribute('value',`${categoria}`)
+                            optionCat.setAttribute('id', `${categoria}OPT`)
+                            optionCat.setAttribute('value', `${categoria}`)
                             optionCat.innerHTML = `${categoria}`
                             selectCategorias.appendChild(optionCat)
 
                         })
                         CrossInputs1.appendChild(selectCategorias)
-                    }else{
+                    } else {
                         console.log('todos os filhos ja removidos')
                     }
-                    botao.setAttribute('onclick','mostra_por_categoria()')
+                    botao.setAttribute('onclick', 'mostra_por_categoria()')
                     botao.disabled = false;
                     var div_prossiga = document.getElementById('botaoProssiga')
-                    div_prossiga.setAttribute('onclick','mostra_por_categoria()')
+                    div_prossiga.setAttribute('onclick', 'mostra_por_categoria()')
                 }
 
-                if(valorInput1Value == 'Parte do corpo'){
+                if (valorInput1Value == 'Parte do corpo') {
                     // criar inputs com seleção porparte do corpo Membro superior, membro inferior, multi-articular e core
                     var crossInput = document.querySelector('#input_primeira_opcao_geral')
-                    while(crossInput.childElementCount > 0){
-                        crossInput.childNodes.forEach((filho)=>{
+                    while (crossInput.childElementCount > 0) {
+                        crossInput.childNodes.forEach((filho) => {
                             crossInput.removeChild(filho)
                         })
                     }
-                    arrOptPCR = ['Membro superior','Membro inferior','Core','Multi-articular']
-                    arrOptPCR.forEach((el)=>{
+                    arrOptPCR = ['Membro superior', 'Membro inferior', 'Core', 'Multi-articular']
+                    arrOptPCR.forEach((el) => {
                         var optionPCR = document.createElement('option')
-                        optionPCR.setAttribute('id',`optionPCR-${el}`)
-                        optionPCR.setAttribute('value',`${el}`)
-                        optionPCR.setAttribute('class','form-control')
+                        optionPCR.setAttribute('id', `optionPCR-${el}`)
+                        optionPCR.setAttribute('value', `${el}`)
+                        optionPCR.setAttribute('class', 'form-control')
                         optionPCR.innerHTML = `${el}`
                         crossInput.appendChild(optionPCR)
                     })
-                    botao.setAttribute('onclick','mostra_por_PCR()')
+                    botao.setAttribute('onclick', 'mostra_por_PCR()')
                     botao.disabled = false;
                     var div_prossiga = document.getElementById('botaoProssiga')
-                    div_prossiga.setAttribute('onclick','mostra_por_PCR()')
+                    div_prossiga.setAttribute('onclick', 'mostra_por_PCR()')
                 }
-            
-                if(valorInput1Value == 'Equipamento'){
+
+                if (valorInput1Value == 'Equipamento') {
                     var crossInput = document.querySelector('#input_primeira_opcao_geral')
-                    while(crossInput.childElementCount > 0){
-                        crossInput.childNodes.forEach((filho)=>{
+                    while (crossInput.childElementCount > 0) {
+                        crossInput.childNodes.forEach((filho) => {
                             crossInput.removeChild(filho)
                         })
                     }
-                    arrOptEquip = ['Peso corporal','Com equipamento']
-                    arrOptEquip.forEach((el)=>{
+                    arrOptEquip = ['Peso corporal', 'Com equipamento']
+                    arrOptEquip.forEach((el) => {
                         var optionEquip = document.createElement('option')
-                        optionEquip.setAttribute('class','form-control')
-                        optionEquip.setAttribute('value',`${el}`)
-                        optionEquip.setAttribute('id',`optionEquip-${el}`)
+                        optionEquip.setAttribute('class', 'form-control')
+                        optionEquip.setAttribute('value', `${el}`)
+                        optionEquip.setAttribute('id', `optionEquip-${el}`)
                         optionEquip.innerHTML = `${el}`
                         crossInput.appendChild(optionEquip)
                     })
-                    botao.setAttribute('onclick','mostra_por_Equip()')
+                    botao.setAttribute('onclick', 'mostra_por_Equip()')
                     botao.disabled = false;
                     var div_prossiga = document.getElementById('botaoProssiga')
-                    div_prossiga.setAttribute('onclick','mostra_por_Equip()')
+                    div_prossiga.setAttribute('onclick', 'mostra_por_Equip()')
+                }
+            
+                if(valorInput1Value == 'Nome do exercício'){
+                    crossInputs = document.getElementById('CrossInputs1')
+                    while(crossInputs.childElementCount > 0){
+                        crossInputs.childNodes.forEach((filho)=>{
+                            crossInputs.removeChild(filho)
+                        })
+                    }
+                    var input_nome_do_exercicio = document.createElement('input')
+                    input_nome_do_exercicio.setAttribute('class','form-control')
+                    input_nome_do_exercicio.setAttribute('id','input_nome_exercicio')
+                    input_nome_do_exercicio.setAttribute('type','text')
+                    input_nome_do_exercicio.setAttribute('placeholder','Digite o nome do exercício')
+
+                    crossInputs.appendChild(input_nome_do_exercicio)
+                    var botaoProssiga = document.getElementById('botaoProssiga')
+                    botaoProssiga.setAttribute('onclick','mostra_por_nome()')
+                    botaoProssiga.disabled = true
+
+                    var botaoPesquiar = document.getElementById('botao_')
+                    botaoPesquiar.disabled = false
+                    botaoPesquiar.setAttribute('onclick','mostra_por_nome()')
+                }
+            
+                if(valorInput1Value == 'Exercicio específico'){
+                    pai_input = valorInput1.parentNode
+                    while(pai_input.childElementCount > 0){
+                        pai_input.childNodes.forEach((filho)=>{
+                            pai_input.removeChild(filho)
+                        })
+                    }
+
+                    var campo_novos_inputs = document.createElement('div')
+                    campo_novos_inputs.setAttribute('id','campo_inputs_exercicio-espesifico')
+                    campo_novos_inputs.style.width = '100%'
+                    campo_novos_inputs.style.height = 'fit-content'
+                    campo_novos_inputs.style.display = 'flex'
+                    pai_input.appendChild(campo_novos_inputs)
+
+                    arrInputs = ['Categoria','Equipamento','Parte do corpo recrutada']
+                    inputs = []
+                    arrInputs.forEach((tipoInput)=>{
+                        var div_input = document.createElement('div')
+                        div_input.setAttribute('id',`div${tipoInput}`)
+                        div_input.style.flex = '1'
+                        div_input.style.margin = '0px 5px 0px 5px'
+                        div_input.style.display = 'flex'
+                        div_input.style.flexDirection = 'column'
+                        div_input.style.alignItems = 'center'
+
+                        var tituloCampo = document.createElement('p')
+                        tituloCampo.innerHTML = `<strong> ${tipoInput} </strong>`
+
+                        div_input.appendChild(tituloCampo)
+                        
+                        var input = document.createElement('select')
+                        input.setAttribute('id',`input${tipoInput}`)
+                        input.setAttribute('class','form-control')
+                        input.setAttribute('value',`${tipoInput}`)
+                        input.innerHTML = `${tipoInput}`
+                        inputs.push(input)
+                        div_input.appendChild(input)
+                        campo_novos_inputs.appendChild(div_input) 
+                    })
+
+                    optionCat = ['Potencia','Resistencia','Isometria']
+                    optionEquip = ['Peso corporal','Com equipamento']
+                    optionPCR = ['Membro superior','Membro inferior','Core','Multi-articular']
+                    arrOptions = [optionCat, optionEquip]
+
+                    inputs.forEach((input)=>{
+                       
+                        if(input.getAttribute('id')=='inputCategoria'){
+                            optionCat.forEach((valor)=>{
+                                var option = document.createElement('option')
+                                option.setAttribute('id',`${valor}`)
+                                option.setAttribute('value',`${valor}`)
+                                option.setAttribute('class','form-control')
+                                option.innerHTML = `${valor}`
+
+                                input.appendChild(option)
+                            })
+                        }else{
+                            if(input.getAttribute('id') == 'inputEquipamento'){
+                                optionEquip.forEach((valor)=>{
+                                var option = document.createElement('option')
+                                option.setAttribute('id',`${valor}`)
+                                option.setAttribute('value',`${valor}`)
+                                option.setAttribute('class','form-control')
+                                option.innerHTML = `${valor}`
+
+                                input.appendChild(option)
+                                })
+                            }else{
+                                optionPCR.forEach((valor)=>{
+                                var option = document.createElement('option')
+                                option.setAttribute('id',`${valor}`)
+                                option.setAttribute('value',`${valor}`)
+                                option.setAttribute('class','form-control')
+                                option.innerHTML = `${valor}`
+
+                                input.appendChild(option)
+                                })
+                            }
+                            
+                        }
+                    })
+
+                    
+                    var botaoProssiga = document.getElementById('botaoProssiga')
+                    botaoProssiga.setAttribute('onclick','mostra_exercicio_especifico()')
+
+                    
                 }
             }
         }
-        
-        function mostraTodosOsExerciciosCross(){
+
+        function mostraTodosOsExerciciosCross() {
             console.log('mostra geral')
             var resultado = document.getElementById('Resultado')
 
@@ -553,24 +677,24 @@
             resultado.style.maxHeight = '100%'
 
             filhosResultado = resultado.childNodes
-            while(resultado.childElementCount > 0){
-                filhosResultado.forEach((filho)=>{
-                resultado.removeChild(filho)
+            while (resultado.childElementCount > 0) {
+                filhosResultado.forEach((filho) => {
+                    resultado.removeChild(filho)
                 })
             }
             var exerCross = document.getElementById('Cross')
-            
+
             exerciciosCross = tiraText(exerCross.childNodes)
-            exerciciosCross.forEach((el)=>{
+            exerciciosCross.forEach((el) => {
                 console.log(el)
                 var divMainCrossExer = document.createElement('div')// div maior para mostrar exercicios cross
-                divMainCrossExer.setAttribute('id',`Main${el.getAttribute('id')}`)
+                divMainCrossExer.setAttribute('id', `Main${el.getAttribute('id')}`)
                 divMainCrossExer.style.display = 'flex'
                 divMainCrossExer.style.borderBottom = '1px solid grey'
                 divMainCrossExer.style.margimBottom = '5px'
 
                 var div1_2Main = document.createElement('div')// div que contera nome do exercicio
-                div1_2Main.setAttribute('id',`1_2${el.getAttribute('id')}`)
+                div1_2Main.setAttribute('id', `1_2${el.getAttribute('id')}`)
                 div1_2Main.style.flex = '1'
                 div1_2Main.style.display = 'flex'
                 div1_2Main.style.justifyContent = 'center'
@@ -578,7 +702,7 @@
                 div1_2Main.innerHTML = `<strong>${el.getAttribute('id')}</strong>`
 
                 var div2_2Main = document.createElement('div')
-                div2_2Main.setAttribute('id',`2_2${el.getAttribute('id')}`)
+                div2_2Main.setAttribute('id', `2_2${el.getAttribute('id')}`)
                 div2_2Main.style.display = 'flex'
                 div2_2Main.style.flexDirection = 'column'
                 div2_2Main.style.flex = '3'
@@ -589,25 +713,25 @@
                 //FALTA CRIAR AS DIVS QUE VÃO APARECER A CATEGORIA, PARTE DO CORPO E EQUIPAMENTO DO EXERCICIO
                 //el é a dic pai de todas
                 var filhos_el2_2 = tiraText(el.childNodes)
-                var filhos_el2_2sem_nome = filhos_el2_2.splice(1,1)
-                
-                
+                var filhos_el2_2sem_nome = filhos_el2_2.splice(1, 1)
+
+
                 //div sup 
-                    var div_221 = document.createElement('div')// div que contera categoria
-                    //pegar valor do nome e value do indice
-                    
-                    div_221.innerHTML = `Categoria: ${filhos_el2_2[0].value}`
-                    div2_2Main.appendChild(div_221)
+                var div_221 = document.createElement('div')// div que contera categoria
+                //pegar valor do nome e value do indice
+
+                div_221.innerHTML = `Categoria: ${filhos_el2_2[0].value}`
+                div2_2Main.appendChild(div_221)
                 //div med
-                    var div_222 = document.createElement('div')// div que contera parte do corpo
-                    //pegar valor do nome e value do indice 2
-                    div_222.innerHTML = `Parte do corpo: ${filhos_el2_2[1].value}`
-                    div2_2Main.appendChild(div_222)
+                var div_222 = document.createElement('div')// div que contera parte do corpo
+                //pegar valor do nome e value do indice 2
+                div_222.innerHTML = `Parte do corpo: ${filhos_el2_2[1].value}`
+                div2_2Main.appendChild(div_222)
                 //div inf
-                    var div_223 = document.createElement('div')//div que contera equipamento
-                    //pegar valor do nome e value do indice 
-                    div_223.innerHTML = `Equipamento: ${filhos_el2_2[2].value}`
-                    div2_2Main.appendChild(div_223)
+                var div_223 = document.createElement('div')//div que contera equipamento
+                //pegar valor do nome e value do indice 
+                div_223.innerHTML = `Equipamento: ${filhos_el2_2[2].value}`
+                div2_2Main.appendChild(div_223)
 
                 divMainCrossExer.appendChild(div1_2Main)
                 divMainCrossExer.appendChild(div2_2Main)
@@ -618,14 +742,14 @@
             })
             var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
             OptionsResultsResponse.style.overflowY = 'Auto'
-            OptionsResultsResponse.style.display ='flex'
+            OptionsResultsResponse.style.display = 'flex'
             OptionsResultsResponse.style.flexDirection = 'column'
-            OptionsResultsResponse.style.maxHeight ='391px'
+            OptionsResultsResponse.style.maxHeight = '391px'
             OptionsResultsResponse.style.alignItems = 'flex-stat'
             OptionsResultsResponse.style.justifyContent = 'flex-start'
         }
 
-        function mostra_por_categoria(){
+        function mostra_por_categoria() {
             var valor_categoria = document.getElementById('select_para_categorias')//seleciono input de seleção de categoria
             valor_cat = valor_categoria.value //pego o valor da categoria
             var Cross_exercicios = document.getElementById('Cross')//seleciono a div que contem os exericios
@@ -633,9 +757,9 @@
             var resultado = document.getElementById('Resultado')// div que contera o resultado
             removeTodosOsFilhos(resultado)
             console.log(resultado.clientHeight)
-            Cross_exercicios_sem_txt.forEach((exercicio_div)=>{//percorro os filhos da div CRoss
+            Cross_exercicios_sem_txt.forEach((exercicio_div) => {//percorro os filhos da div CRoss
                 exercicio_div_sem_txt = tiraText(exercicio_div.childNodes)// tiro elementos text dos filhos da div
-                if(valor_cat == exercicio_div_sem_txt[0].value){//se o exercicio for da categoria selecionada
+                if (valor_cat == exercicio_div_sem_txt[0].value) {//se o exercicio for da categoria selecionada
 
                     resultado.style.paddingTop = '40px'
                     resultado.style.overflowY = 'auto'
@@ -643,41 +767,41 @@
                     resultado.style.justifyContent = 'flex-start'
 
                     var resultado_div_main = document.createElement('div')
-                    resultado_div_main.setAttribute('id',`body_${exercicio_div_sem_txt[1].value}`) 
+                    resultado_div_main.setAttribute('id', `body_${exercicio_div_sem_txt[1].value}`)
                     resultado_div_main.style.display = 'flex'
                     resultado_div_main.style.width = '100%'
                     resultado_div_main.style.height = 'fit-content'
                     resultado_div_main.style.borderBottom = '1px solid black'
                     resultado_div_main.style.marginBottom = '5px'
                     resultado_div_main.style.padding = '5px'
-                        var resultado_div_left_nome = document.createElement('div')
-                        resultado_div_left_nome.setAttribute('id',`left_${exercicio_div_sem_txt[1].value}`)
-                        resultado_div_left_nome.style.flex = '1'
-                        resultado_div_left_nome.style.display = 'flex'
-                        resultado_div_left_nome.style.alignItems = 'center'
-                        resultado_div_left_nome.innerHTML = `<strong>${exercicio_div_sem_txt[1].value}</strong>`
-                        resultado_div_left_nome.style.borderRight = '1px solid grey'
-                        resultado_div_main.append(resultado_div_left_nome)
+                    var resultado_div_left_nome = document.createElement('div')
+                    resultado_div_left_nome.setAttribute('id', `left_${exercicio_div_sem_txt[1].value}`)
+                    resultado_div_left_nome.style.flex = '1'
+                    resultado_div_left_nome.style.display = 'flex'
+                    resultado_div_left_nome.style.alignItems = 'center'
+                    resultado_div_left_nome.innerHTML = `<strong>${exercicio_div_sem_txt[1].value}</strong>`
+                    resultado_div_left_nome.style.borderRight = '1px solid grey'
+                    resultado_div_main.append(resultado_div_left_nome)
 
-                        var resultado_div_right_pcr_equip = document.createElement('div')
-                        resultado_div_right_pcr_equip.setAttribute('id',`right-${exercicio_div_sem_txt[1].value}`)
-                        resultado_div_right_pcr_equip.style.display = 'flex'
-                        resultado_div_right_pcr_equip.style.flex = '2'
-                        resultado_div_right_pcr_equip.style.paddingLeft = '5px'
-                        resultado_div_right_pcr_equip.style.flexDirection = 'column'
-                        resultado_div_right_pcr_equip.innerHTML = `Recruta: ${exercicio_div_sem_txt[2].value}<br>Equipamento: ${exercicio_div_sem_txt[3].value}`
-                        resultado_div_main.appendChild(resultado_div_right_pcr_equip)
-                        resultado.appendChild(resultado_div_main)
+                    var resultado_div_right_pcr_equip = document.createElement('div')
+                    resultado_div_right_pcr_equip.setAttribute('id', `right-${exercicio_div_sem_txt[1].value}`)
+                    resultado_div_right_pcr_equip.style.display = 'flex'
+                    resultado_div_right_pcr_equip.style.flex = '2'
+                    resultado_div_right_pcr_equip.style.paddingLeft = '5px'
+                    resultado_div_right_pcr_equip.style.flexDirection = 'column'
+                    resultado_div_right_pcr_equip.innerHTML = `Recruta: ${exercicio_div_sem_txt[2].value}<br>Equipamento: ${exercicio_div_sem_txt[3].value}`
+                    resultado_div_main.appendChild(resultado_div_right_pcr_equip)
+                    resultado.appendChild(resultado_div_main)
 
 
                 }
             })
-            
+
         }
-    
-        function mostra_por_PCR(){
+
+        function mostra_por_PCR() {
             var div_resultadoPCR = document.querySelector('#Resultado')
-            if(div_resultadoPCR.childElementCount > 0 ){
+            if (div_resultadoPCR.childElementCount > 0) {
                 removeTodosOsFilhos(div_resultadoPCR)
             }
             var optionEscolhidoPCR = document.querySelector('#input_primeira_opcao_geral')
@@ -687,12 +811,12 @@
             div_resultadoPCR.style.justifyContent = 'flex-start'
             var divs_cross_exercicios = document.querySelector('#Cross')
             crossSemText = tiraText(divs_cross_exercicios.childNodes)
-            crossSemText.forEach((filho)=>{
+            crossSemText.forEach((filho) => {
                 var filhoSemText = tiraText(filho.childNodes)
-                
-                if(filhoSemText[2].value == optionEscolhidoPCR.value){
+
+                if (filhoSemText[2].value == optionEscolhidoPCR.value) {
                     var exercicioDivMain = document.createElement('div')
-                    exercicioDivMain.setAttribute('id',`div${filhoSemText[1].value}`)
+                    exercicioDivMain.setAttribute('id', `div${filhoSemText[1].value}`)
                     exercicioDivMain.style.display = 'flex'
                     exercicioDivMain.style.borderBottom = '1px solid grey'
                     exercicioDivMain.style.margimBottom = '5px'
@@ -706,7 +830,7 @@
                     exercicioDivMain_nome.style.justifyContent = 'center'
                     exercicioDivMain_nome.style.alignItems = 'center'
                     exercicioDivMain_nome.innerHTML = `<strong>${filhoSemText[1].value}</strong>`
-                    exercicioDivMain_nome.setAttribute('id',`div_nome${filhoSemText[1].value}`)
+                    exercicioDivMain_nome.setAttribute('id', `div_nome${filhoSemText[1].value}`)
                     exercicioDivMain.appendChild(exercicioDivMain_nome)
 
                     var exercicioDivMain_content = document.createElement('div')
@@ -715,14 +839,14 @@
                     exercicioDivMain_content.style.justifyContent = 'center'
                     exercicioDivMain_content.style.alignItems = 'center'
                     exercicioDivMain_content.innerHTML = `Categoria: ${filhoSemText[0].value}<br> Equipamento: ${filhoSemText[3].value} `
-                    exercicioDivMain_content.setAttribute('id',`div_content${filhoSemText[1].value}`)
+                    exercicioDivMain_content.setAttribute('id', `div_content${filhoSemText[1].value}`)
                     exercicioDivMain.appendChild(exercicioDivMain_content)
 
                 }
             })
         }
-   
-        function mostra_por_Equip(){
+
+        function mostra_por_Equip() {
             var resultado = document.getElementById('Resultado')
             removeTodosOsFilhos(resultado)
 
@@ -734,126 +858,246 @@
             resultado.style.overflowY = 'auto'
             resultado.style.height = '391px'
             resultado.style.justifyContent = 'flex-start'
-            crossExer_semText.forEach((exercicio)=>{
+            crossExer_semText.forEach((exercicio) => {
                 filho_exer = tiraText(exercicio.childNodes)
-                if(opcao_escolhida_equip.value == 'Peso corporal'){ 
-                    if(filho_exer[3].value == 'Peso corporal'){
-                    var exercicioDivMain = document.createElement('div')
-                    exercicioDivMain.setAttribute('id',`div${filho_exer[1].value}`)
-                    exercicioDivMain.style.display = 'flex'
-                    exercicioDivMain.style.borderBottom = '1px solid grey'
-                    exercicioDivMain.style.margimBottom = '5px'
-                    exercicioDivMain.style.width = '100%'
-                    exercicioDivMain.style.height = 'fit-content'
-                    resultado.appendChild(exercicioDivMain)
-
-                    var exercicioDivMain_nome = document.createElement('div')
-                    exercicioDivMain_nome.style.display = 'flex'
-                    exercicioDivMain_nome.style.flex = '1'
-                    exercicioDivMain_nome.style.justifyContent = 'center'
-                    exercicioDivMain_nome.style.alignItems = 'center'
-                    exercicioDivMain_nome.innerHTML = `<strong>${filho_exer[1].value}</strong>`
-                    exercicioDivMain_nome.setAttribute('id',`div_nome${filho_exer[1].value}`)
-                    exercicioDivMain.appendChild(exercicioDivMain_nome)
-
-                    var exercicioDivMain_content = document.createElement('div')
-                    exercicioDivMain_content.style.display = 'flex'
-                    exercicioDivMain_content.style.flex = '3'
-                    exercicioDivMain_content.style.justifyContent = 'center'
-                    exercicioDivMain_content.style.alignItems = 'center'
-                    exercicioDivMain_content.innerHTML = `Categoria: ${filho_exer[0].value}<br> Parte do corpo recrutada: ${filho_exer[2].value} `
-                    exercicioDivMain_content.setAttribute('id',`div_content${filho_exer[1].value}`)
-                    exercicioDivMain.appendChild(exercicioDivMain_content)
-                    }
-                }else{
-                    if(filho_exer[3].value != 'Peso corporal'){
+                if (opcao_escolhida_equip.value == 'Peso corporal') {
+                    if (filho_exer[3].value == 'Peso corporal') {
                         var exercicioDivMain = document.createElement('div')
-                    exercicioDivMain.setAttribute('id',`div${filho_exer[1].value}`)
-                    exercicioDivMain.style.display = 'flex'
-                    exercicioDivMain.style.borderBottom = '1px solid grey'
-                    exercicioDivMain.style.margimBottom = '5px'
-                    exercicioDivMain.style.width = '100%'
-                    exercicioDivMain.style.height = 'fit-content'
-                    resultado.appendChild(exercicioDivMain)
+                        exercicioDivMain.setAttribute('id', `div${filho_exer[1].value}`)
+                        exercicioDivMain.style.display = 'flex'
+                        exercicioDivMain.style.borderBottom = '1px solid grey'
+                        exercicioDivMain.style.margimBottom = '5px'
+                        exercicioDivMain.style.width = '100%'
+                        exercicioDivMain.style.height = 'fit-content'
+                        resultado.appendChild(exercicioDivMain)
 
-                    var exercicioDivMain_nome = document.createElement('div')
-                    exercicioDivMain_nome.style.display = 'flex'
-                    exercicioDivMain_nome.style.flex = '1'
-                    exercicioDivMain_nome.style.justifyContent = 'center'
-                    exercicioDivMain_nome.style.alignItems = 'center'
-                    exercicioDivMain_nome.innerHTML = `<strong>${filho_exer[1].value}</strong>`
-                    exercicioDivMain_nome.setAttribute('id',`div_nome${filho_exer[1].value}`)
-                    exercicioDivMain.appendChild(exercicioDivMain_nome)
+                        var exercicioDivMain_nome = document.createElement('div')
+                        exercicioDivMain_nome.style.display = 'flex'
+                        exercicioDivMain_nome.style.flex = '1'
+                        exercicioDivMain_nome.style.justifyContent = 'center'
+                        exercicioDivMain_nome.style.alignItems = 'center'
+                        exercicioDivMain_nome.innerHTML = `<strong>${filho_exer[1].value}</strong>`
+                        exercicioDivMain_nome.setAttribute('id', `div_nome${filho_exer[1].value}`)
+                        exercicioDivMain.appendChild(exercicioDivMain_nome)
 
-                    var exercicioDivMain_content = document.createElement('div')
-                    exercicioDivMain_content.style.display = 'flex'
-                    exercicioDivMain_content.style.flex = '3'
-                    exercicioDivMain_content.style.justifyContent = 'center'
-                    exercicioDivMain_content.style.alignItems = 'center'
-                    exercicioDivMain_content.innerHTML = `Categoria: ${filho_exer[0].value}<br> Parte do corpo recrutada: ${filho_exer[2].value} `
-                    exercicioDivMain_content.setAttribute('id',`div_content${filho_exer[1].value}`)
-                    exercicioDivMain.appendChild(exercicioDivMain_content)
+                        var exercicioDivMain_content = document.createElement('div')
+                        exercicioDivMain_content.style.display = 'flex'
+                        exercicioDivMain_content.style.flex = '3'
+                        exercicioDivMain_content.style.justifyContent = 'center'
+                        exercicioDivMain_content.style.alignItems = 'center'
+                        exercicioDivMain_content.innerHTML = `Categoria: ${filho_exer[0].value}<br> Parte do corpo recrutada: ${filho_exer[2].value} `
+                        exercicioDivMain_content.setAttribute('id', `div_content${filho_exer[1].value}`)
+                        exercicioDivMain.appendChild(exercicioDivMain_content)
+                    }
+                } else {
+                    if (filho_exer[3].value != 'Peso corporal') {
+                        var exercicioDivMain = document.createElement('div')
+                        exercicioDivMain.setAttribute('id', `div${filho_exer[1].value}`)
+                        exercicioDivMain.style.display = 'flex'
+                        exercicioDivMain.style.borderBottom = '1px solid grey'
+                        exercicioDivMain.style.margimBottom = '5px'
+                        exercicioDivMain.style.width = '100%'
+                        exercicioDivMain.style.height = 'fit-content'
+                        resultado.appendChild(exercicioDivMain)
+
+                        var exercicioDivMain_nome = document.createElement('div')
+                        exercicioDivMain_nome.style.display = 'flex'
+                        exercicioDivMain_nome.style.flex = '1'
+                        exercicioDivMain_nome.style.justifyContent = 'center'
+                        exercicioDivMain_nome.style.alignItems = 'center'
+                        exercicioDivMain_nome.innerHTML = `<strong>${filho_exer[1].value}</strong>`
+                        exercicioDivMain_nome.setAttribute('id', `div_nome${filho_exer[1].value}`)
+                        exercicioDivMain.appendChild(exercicioDivMain_nome)
+
+                        var exercicioDivMain_content = document.createElement('div')
+                        exercicioDivMain_content.style.display = 'flex'
+                        exercicioDivMain_content.style.flex = '3'
+                        exercicioDivMain_content.style.justifyContent = 'center'
+                        exercicioDivMain_content.style.alignItems = 'center'
+                        exercicioDivMain_content.innerHTML = `Categoria: ${filho_exer[0].value}<br> Parte do corpo recrutada: ${filho_exer[2].value} `
+                        exercicioDivMain_content.setAttribute('id', `div_content${filho_exer[1].value}`)
+                        exercicioDivMain.appendChild(exercicioDivMain_content)
                     }
                 }
             })
         }
-    </script>
     
+        function mostra_por_nome(){
+            var nomeExercicio = document.getElementById('input_nome_exercicio')
+            nome_exercicio = nomeExercicio.value
+
+            var exerciciosCross = document.getElementById('Cross')
+            exerciciosCross_sem_text = tiraText(exerciciosCross.childNodes)
+            arrExercicio = []
+            exerciciosCross_sem_text.forEach((exercicio)=>{
+                if(nome_exercicio == exercicio.getAttribute('id')){
+                    arrExercicio.push(exercicio)
+                }
+            })
+            var resultado = document.getElementById('Resultado')
+            removeTodosOsFilhos(resultado)
+            arrExercicio.forEach((exercicio_)=>{
+                exer = tiraText(exercicio_.childNodes)
+                var div_exercicio = document.createElement('div')
+                div_exercicio.setAttribute('name',`${exercicio_.getAttribute('id')}`)
+                div_exercicio.style.width = '80%'
+                div_exercicio.style.border = '1px solid grey'
+                div_exercicio.style.padding = '5px'
+                div_exercicio.style.display = 'flex'
+                div_exercicio.style.flexDirection = 'column'
+                div_exercicio.style.marginBottom = '5px'
+                div_exercicio.style.boxShadow = '3px 3px 3px grey'
+                div_exercicio.style.borderRadius = '10px'
+
+                var titulo = document.createElement('div')
+                titulo.setAttribute('name',`titulo-${exercicio_.getAttribute('id')}`)
+                titulo.style.display = 'flex'
+                titulo.style.justifyContent = 'center'
+                titulo.style.alignItems = 'center'
+                titulo.innerHTML = `<strong> ${exercicio_.getAttribute('id')} </strong>`
+                div_exercicio.appendChild(titulo)
+
+                var conteudo = document.createElement('div')
+                conteudo.setAttribute('name',`conteudo-${exercicio_.getAttribute('id')}`)
+                conteudo.style.display = 'flex'
+                conteudo.style.justifyContent = 'center'
+                conteudo.style.alignItems = 'center'
+                conteudo.style.paddingTop = '5px'
+                conteudo.style.marginTop = '5px'
+                conteudo.innerHTML = `<p><strong>Categoria:</strong> ${exer[0].value}<br>
+                <strong>Parte recrutada:</strong> ${exer[2].value}<br>
+                <strong>Equipamento:</strong> ${exer[3].value}</p>`
+                div_exercicio.appendChild(conteudo)
+
+
+                resultado.appendChild(div_exercicio)
+
+                
+                
+            })
+        }
+    
+        function mostra_exercicio_especifico(){
+            var categoria = document.getElementById('inputCategoria')
+            var equipamento = document.getElementById('inputEquipamento')
+            var PCR = document.getElementById('inputParte do corpo recrutada')
+            var resultado = document.getElementById('Resultado')
+            removeTodosOsFilhos(resultado)
+
+            var exercicios_cross = document.getElementById('Cross')
+            cross = tiraText(exercicios_cross.childNodes)
+
+            cross.forEach((div_exercicio)=>{
+                filhos = tiraText(div_exercicio.childNodes)
+                if(filhos[0].value == categoria.value){
+                    if(equipamento.value == 'Peso corporal'){
+                            if(filhos[3].value == 'Peso corporal'){
+                                if(filhos[2].value == PCR.value){
+                                    var div_exercicio = document.createElement('div')
+                                    div_exercicio.setAttribute('name',`${filhos[1].value}`)
+                                    div_exercicio.style.width = '80%'
+                                    div_exercicio.style.border = '1px solid grey'
+                                    div_exercicio.style.padding = '5px'
+                                    div_exercicio.style.display = 'flex'
+                                    div_exercicio.style.justifyContent = 'center'
+                                    div_exercicio.innerHTML = `<strong>${filhos[1].value}</strong>`
+                                    div_exercicio.style.margin = '10px 5px 10px 5px'
+                                    div_exercicio.style.boxShadow = '1px 1px 1px grey'
+                                    div_exercicio.style.borderRadius = '5px'
+
+
+                                    resultado.appendChild(div_exercicio)
+
+
+                                }
+                            }
+                    }else{
+                        if(filhos[3].value != 'Peso corporal'){
+                            if(filhos[2].value == PCR.value){
+                                 var div_exercicio = document.createElement('div')
+                                    div_exercicio.setAttribute('name',`${filhos[1].value}`)
+                                    div_exercicio.style.width = '80%'
+                                    div_exercicio.style.border = '1px solid grey'
+                                    div_exercicio.style.padding = '5px'
+                                    div_exercicio.style.display = 'flex'
+                                    div_exercicio.style.justifyContent = 'center'
+                                    div_exercicio.innerHTML = `<strong>${filhos[1].value}</strong>`
+                                    div_exercicio.style.margin = '10px 5px 10px 5px'
+                                    div_exercicio.style.boxShadow = '1px 1px 1px grey'
+                                    div_exercicio.style.borderRadius = '5px'
+
+
+                                    resultado.appendChild(div_exercicio)
+                            }
+                        }
+                    }
+                    var OptionsResultsResponse = document.querySelector('.OptionsResultsResponse')
+                    OptionsResultsResponse.style.overflowY = 'Auto'
+                    OptionsResultsResponse.style.display = 'flex'
+                    OptionsResultsResponse.style.flexDirection = 'column'
+                    OptionsResultsResponse.style.maxHeight = '391px'
+                    OptionsResultsResponse.style.alignItems = 'flex-stat'
+                    OptionsResultsResponse.style.justifyContent = 'flex-start'
+                }
+            })
+        }
+    </script>
+
     <!--Users-->
     {{#each User}}
-        <form action="" id="User-{{this.nome}}">
-            <input type="hidden" id="User name:" value="{{this.userName}}">
-            <input type="hidden" id="Nome:" value="{{this.nome}}">
-            <input type="hidden" id="Nascimento:" value="{{this.nascimento2}}">
-            <input type="hidden" id="Email:" value="{{this.email}}">
-            <input type="hidden" id="Sexo:" value="{{this.sexo}}">
-            <input type="hidden" id="É Admin:" value="{{this.EhAdmin}}">
-        </form>
+    <form action="" id="User-{{this.nome}}">
+        <input type="hidden" id="User name:" value="{{this.userName}}">
+        <input type="hidden" id="Nome:" value="{{this.nome}}">
+        <input type="hidden" id="Nascimento:" value="{{this.nascimento2}}">
+        <input type="hidden" id="Email:" value="{{this.email}}">
+        <input type="hidden" id="Sexo:" value="{{this.sexo}}">
+        <input type="hidden" id="É Admin:" value="{{this.EhAdmin}}">
+    </form>
     {{/each}}
     <!--Alunos-->
     {{#each Alunos}}
-        <form action="" id="Aluno-{{this.objNSNIPA.nome}}">
-            {{#each this.objNSNIPA}}
-                <input type="hidden" name="{{@key}}" value="{{this}}">
-            {{/each}}
-            {{#each this.objMedidas}}
-                <input type="hidden" name="{{@key}}" value="{{this}}">
-            {{/each}}
-            {{#each this.objPesoKG_RMOG}}
-                <input type="hidden" name="{{@key}}" value="{{this}}">
-            {{/each}}
-            {{#each this.objPorcem}}
-                <input type="hidden" name="{{@key}}" value="{{this}}">
-            {{/each}}
-        </form>
+    <form action="" id="Aluno-{{this.objNSNIPA.nome}}">
+        {{#each this.objNSNIPA}}
+        <input type="hidden" name="{{@key}}" value="{{this}}">
+        {{/each}}
+        {{#each this.objMedidas}}
+        <input type="hidden" name="{{@key}}" value="{{this}}">
+        {{/each}}
+        {{#each this.objPesoKG_RMOG}}
+        <input type="hidden" name="{{@key}}" value="{{this}}">
+        {{/each}}
+        {{#each this.objPorcem}}
+        <input type="hidden" name="{{@key}}" value="{{this}}">
+        {{/each}}
+    </form>
     {{/each}}
     <!--MUSCULOS-->
     {{#each Musculos}}
-        <form action="" class="musculo" id="{{this.nome}}" >
-            <input type="hidden" name="Nome" value="{{this.nome}}">
-            
-            <input type="hidden" name="Região" value="{{this.regiao}}">
-            <div id='Porções'>
+    <form action="" class="musculo" id="{{this.nome}}">
+        <input type="hidden" name="Nome" value="{{this.nome}}">
+
+        <input type="hidden" name="Região" value="{{this.regiao}}">
+        <div id='Porções'>
             {{#each porcoes}}
-                <input type="hidden" name="{{@key}}" value="{{this}}">
+            <input type="hidden" name="{{@key}}" value="{{this}}">
             {{/each}}
-            </div>
-            
-        </form>
+        </div>
+
+    </form>
     {{/each }}
     {{#if PeitoralMaior}}
-        <input type="hidden" id="PeitoralMaior" value="{{PeitoralMaior}}">
+    <input type="hidden" id="PeitoralMaior" value="{{PeitoralMaior}}">
     {{/if}}
     {{#if AbdomenObliquo}}
-        <input type="hidden" id="AbdomenObliquo" value="{{AbdomenObliquo}}">
+    <input type="hidden" id="AbdomenObliquo" value="{{AbdomenObliquo}}">
     {{/if}}
-    <div type='hidden' id='Cross' >
+    <div type='hidden' id='Cross'>
         {{#each Cross}}
-            <div type="hidden" id='{{this.exercicio.Nome_exercicio}}' name="{{this._id}}">
+        <div type="hidden" id='{{this.exercicio.Nome_exercicio}}' name="{{this._id}}">
             {{#each exercicio}}
-                <input type="hidden" name="{{@key}}" value="{{this}}">
+            <input type="hidden" name="{{@key}}" value="{{this}}">
             {{/each}}
-            </div>
+        </div>
         {{/each}}
     </div>
     <div class="mesaContainer">
@@ -861,7 +1105,7 @@
             <div class="Option" id="OptionUM" onclick="criaInputUser()">
                 Users
             </div>
-            <div class="Option" onclick="criaInputAluno()" >
+            <div class="Option" onclick="criaInputAluno()">
                 Alunos
             </div>
             <div class="Option" onclick="criaInputMusculos()">
@@ -885,20 +1129,17 @@
                 </div>
             </div>
             <div class="OptionsResults">
-                
+
                 <div class="OptionsResultsResponse" id="Resultado">
-                    
+
                 </div>
                 <div class="Pesquise border-top ">
-                    <button class="btn btn-success aling"  id="botao_">pesquisar</button>
+                    <button class="btn btn-success aling" id="botao_">pesquisar</button>
                 </div>
-                
+
             </div>
- 
+
         </div>
 
     </div>
 </body>
-
-
-
